@@ -1,0 +1,59 @@
+export const footerConf = {
+  showShopName: true,
+  showEmailSubscriber: true,
+  emailSubscriberText:
+    'Join our mailing list for updates about our artists and more.',
+  components: [
+    {
+      title: 'Company',
+      links: [
+        {
+          label: 'About',
+          url: 'www.Safecoin.com',
+        },
+        {
+          label: 'Terms of service',
+          url: 'www.Safecoin.com',
+        },
+      ],
+    },
+    {
+      title: 'Help',
+      links: [
+        {
+          label: 'FAQ',
+          url: 'www.Safecoin.com',
+        },
+        {
+          label: 'Support',
+          url: 'www.Safecoin.com',
+        },
+        {
+          label: 'Privacy policy',
+          url: 'www.Safecoin.com',
+        },
+        {
+          label: 'Your purchases',
+          url: 'www.Safecoin.com',
+        },
+      ],
+    },
+    {
+      title: 'Follow us',
+      links: [
+        {
+          label: 'Instagram',
+          url: 'www.Safecoin.com',
+        },
+        {
+          label: 'Twitter',
+          url: 'www.Safecoin.com',
+        },
+        {
+          label: 'Discord',
+          url: 'www.Safecoin.com',
+        },
+      ],
+    },
+  ],
+};

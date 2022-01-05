@@ -1,0 +1,56 @@
+[package]
+name = "metaplex-test-client"
+version = "0.1.0"
+description = "Metaplex Library Metaplex Test Client"
+authors = [ "Metaplex Maintainers <maintainers@metaplex.com>" ]
+repository = "https://github.com/metaplex-foundation/metaplex"
+license = "Apache-2.0"
+edition = "2018"
+publish = false
+
+[dependencies]
+bincode = "1.3.2"
+arrayref = "0.3.6"
+borsh = "0.9.1"
+serde_json = "1.0"
+serde_derive = "1.0"
+clap = "2.33.3"
+
+  [dependencies.serde]
+  version = "1.0.100"
+  default-features = false
+
+  [dependencies.metaplex-auction]
+  path = "../../auction/program"
+  features = [ "no-entrypoint" ]
+
+  [dependencies.metaplex-token-metadata]
+  path = "../../token-metadata/program"
+  features = [ "no-entrypoint" ]
+
+  [dependencies.metaplex-token-vault]
+  path = "../../token-vault/program"
+  features = [ "no-entrypoint" ]
+
+  [dependencies.metaplex]
+  path = "../program"
+  features = [ "no-entrypoint" ]
+
+  [dependencies.safecoin-client]
+  path = "../../../../Safecoin/client"
+
+  [dependencies.safecoin-program]
+  path = "../../../../Safecoin/sdk/program"
+
+  [dependencies.safecoin-sdk]
+  path = "../../../../Safecoin/sdk"
+
+  [dependencies.safecoin-clap-utils]
+  path = "../../../../Safecoin/clap-utils"
+
+  [dependencies.safecoin-cli-config]
+  path = "../../../../Safecoin/cli-config"
+
+  [dependencies.safe-token]
+  features = [ "no-entrypoint" ]
+  path = "../../../../safecoin-program-library/token/program"
