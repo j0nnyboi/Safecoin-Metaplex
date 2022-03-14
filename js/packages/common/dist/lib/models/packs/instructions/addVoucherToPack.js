@@ -5,12 +5,13 @@ const web3_js_1 = require("@safecoin/web3.js");
 const borsh_1 = require("borsh");
 const __1 = require("../../..");
 const utils_1 = require("../../../utils");
+const find_1 = require("../find");
 async function addVoucherToPack({ index, packSetKey, authority, mint, tokenAccount, }) {
     const PROGRAM_IDS = (0, utils_1.programIds)();
     const value = new __1.AddVoucherToPackArgs();
     const masterMetadataKey = await (0, __1.getMetadata)(mint);
     const masterEdition = await (0, __1.getEdition)(mint);
-    const packVoucher = await (0, __1.findPackVoucherProgramAddress)(packSetKey, index);
+    const packVoucher = await (0, find_1.findPackVoucherProgramAddress)(packSetKey, index);
     const { pubkey: sourceKey } = tokenAccount;
     const store = PROGRAM_IDS.store;
     if (!store) {
@@ -91,13 +92,11 @@ async function addVoucherToPack({ index, packSetKey, authority, mint, tokenAccou
             isWritable: false,
         },
     ];
-    return [
-        new web3_js_1.TransactionInstruction({
-            keys,
-            programId: (0, utils_1.toPublicKey)(PROGRAM_IDS.pack_create),
-            data,
-        }),
-    ];
+    return new web3_js_1.TransactionInstruction({
+        keys,
+        programId: (0, utils_1.toPublicKey)(PROGRAM_IDS.pack_create),
+        data,
+    });
 }
 exports.addVoucherToPack = addVoucherToPack;
 //# sourceMappingURL=addVoucherToPack.js.map

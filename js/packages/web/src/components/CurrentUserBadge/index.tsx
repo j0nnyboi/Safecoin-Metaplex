@@ -113,8 +113,7 @@ const AddFundsModal = (props: {
     >
       <div style={{ maxWidth: '100%' }}>
         <p style={{ color: 'white' }}>
-          We partner with <b>FTX</b> to make it simple to start purchasing
-          digital collectibles.
+          To add funds please make your way over to SafeTrade
         </p>
         <div
           style={{
@@ -142,15 +141,11 @@ const AddFundsModal = (props: {
                 lineHeight: 1,
               }}
             >
-              <img src="/sol.svg" width="10" />
+              <img src="/Safecoin.svg" width="10" />
             </span>{' '}
-            SOL
+           Safe
           </span>
         </div>
-        <p>
-          If you have not used FTX Pay before, it may take a few moments to get
-          set up.
-        </p>
         <Button
           onClick={() => props.setShowAddFundsModal(false)}
           style={{
@@ -162,38 +157,6 @@ const AddFundsModal = (props: {
           }}
         >
           Close
-        </Button>
-        <Button
-          onClick={() => {
-            window.open(
-              `https://ftx.com/pay/request?coin=SOL&address=${props.publicKey?.toBase58()}&tag=&wallet=sol&memoIsRequired=false`,
-              '_blank',
-              'resizable,width=680,height=860',
-            );
-          }}
-          style={{
-            background: 'black',
-            borderRadius: 14,
-            width: '68%',
-            marginLeft: '2%',
-            padding: 10,
-            height: 'auto',
-            borderColor: 'black',
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              placeContent: 'center',
-              justifyContent: 'center',
-              alignContent: 'center',
-              alignItems: 'center',
-              fontSize: 16,
-            }}
-          >
-            <span style={{ marginRight: 5 }}>Sign with</span>
-            <img src="/ftxpay.png" width="80" />
-          </div>
         </Button>
       </div>
     </MetaplexModal>
@@ -213,9 +176,9 @@ export const CurrentUserBadge = (props: {
   if (!wallet || !publicKey) {
     return null;
   }
-  const balance = (account?.lamports || 0) / LAMPORTS_PER_SAFE;
+  const balance = (account?.lamports || 0) / LAMPORTS_PER_SAFE
   const balanceInUSD = balance * solPrice;
-  const solMintInfo = useTokenList().tokenMap.get(WRAPPED_SAFE_MINT.toString());
+  const solMintInfo = useTokenList().tokenMap.get(WRAPPED_SOL_MINT.toString());
   const iconStyle: React.CSSProperties = {
     display: 'flex',
     width: props.iconSize,
@@ -238,7 +201,7 @@ export const CurrentUserBadge = (props: {
     <div className="wallet-wrapper">
       {props.showBalance && (
         <span>
-          {formatNumber.format((account?.lamports || 0) / LAMPORTS_PER_SAFE)} SAFE
+          {formatNumber.format((account?.lamports || 0) / LAMPORTS_PER_SAFE)} SOL
         </span>
       )}
 
@@ -476,9 +439,9 @@ export const CurrentUserBadgeMobile = (props: {
         <span className="balance-title">Balance</span>
         <span>
           <span className="sol-img-wrapper">
-            <img src="/sol.svg" width="10" />
+            <img src="/Safecoin.svg" width="10" />
           </span>{' '}
-          {formatNumber.format(balance)}&nbsp;&nbsp; SOL{' '}
+          {formatNumber.format(balance)}&nbsp;&nbsp; Safe{' '}
           <span
             style={{
               marginLeft: 5,

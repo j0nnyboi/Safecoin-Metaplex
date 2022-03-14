@@ -1,15 +1,15 @@
 import { PublicKey } from '@safecoin/web3.js';
 
 export const CANDY_MACHINE_ID = new PublicKey(
-  'cndyAnrLdpjq1Ssp1z8xxDsB8dxe7u4HL5Nxi2K5WXZ',
+  '55aUHnbRfsG3aft1VisRgkVkQqm2hoFbbiGDAsZctpii',
 );
 
 export const GUMDROP_DISTRIBUTOR_ID = new PublicKey(
-  'gdrpGjVffourzkdDRrQmySw4aTHr8a3xmQzzxSwFD1a'
+  '43jHxgqwh2HCKQ6W8oRdRmC3H6S7cHUWy2KmZm8t4YFs',
 );
 
 export const GUMDROP_TEMPORAL_SIGNER = new PublicKey(
-  'MSv9H2sMceAzccBganUXwGq3GXgqYAstmZAbFDZYbAV'
+  'MSv9H2sMceAzccBganUXwGq3GXgqYAstmZAbFDZYbAV',
 );
 
 export const SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID = new PublicKey(
@@ -17,5 +17,5 @@ export const SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID = new PublicKey(
 );
 
 export const TOKEN_METADATA_PROGRAM_ID = new PublicKey(
-  'metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s',
+  'FFQ39M4FxfqGN8oA5Vg8ZgSuWDCGoEW4nb2ubgYpAHR3',
 );

@@ -1,14 +1,6 @@
 import BN from 'bn.js';
-import { PublicKey } from '@safecoin/web3.js';
-import { StringPublicKey } from '../utils';
 import { PackDistributionType } from '../models/packs/types';
-import { AddCardToPackParams, InitPackSetParams } from '../models/packs/interface';
-export declare const PACKS_PREFIX = "packs";
-export declare const CARD_PREFIX = "card";
-export declare const VOUCHER_PREFIX = "voucher";
-export declare function getProgramAuthority(): Promise<StringPublicKey>;
-export declare function findPackCardProgramAddress(pack: PublicKey, index: number): Promise<StringPublicKey>;
-export declare function findPackVoucherProgramAddress(pack: PublicKey, index: number): Promise<StringPublicKey>;
+import { AddCardToPackParams, InitPackSetParams, RequestCardToRedeemParams, ClaimPackParams } from '../models/packs/interface';
 export declare class InitPackSetArgs {
     instruction: number;
     name: Uint8Array;
@@ -33,6 +25,20 @@ export declare class AddVoucherToPackArgs {
     constructor();
 }
 export declare class ActivatePackArgs {
+    instruction: number;
+    constructor();
+}
+export declare class ClaimPackArgs {
+    instruction: number;
+    index: number;
+    constructor(args: ClaimPackParams);
+}
+export declare class RequestCardToRedeemArgs {
+    instruction: number;
+    index: number;
+    constructor(args: RequestCardToRedeemParams);
+}
+export declare class CleanUpArgs {
     instruction: number;
     constructor();
 }

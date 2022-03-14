@@ -4,7 +4,8 @@ import {
   WalletProvider as BaseWalletProvider,
 } from '@safecoin/wallet-adapter-react';
 import {
-  getSafecoinWallet,
+  getSolletWallet,
+  WalletName,
 } from '@safecoin/wallet-adapter-wallets';
 import { Button, Collapse } from 'antd';
 import React, {
@@ -44,7 +45,7 @@ export const WalletModal: FC = () => {
     setShowWallets(false);
   }, [setVisible, setShowWallets]);
 
-
+  const SolletWallet = useMemo(() => getSolletWallet(), []);
 
   return (
     <MetaplexModal title="Connect Wallet" visible={visible} onCancel={close}>
@@ -61,7 +62,17 @@ export const WalletModal: FC = () => {
         RECOMMENDED
       </span>
 
-     
+      <Button
+        className="phantom-button metaplex-button"
+        onClick={() => {
+          console.log(SolletWallet.name);
+          select(SolletWallet.name);
+          close();
+        }}
+      >
+        <img src={SolletWallet?.icon} style={{ width: '1.2rem' }} />
+        &nbsp;Connect to Safecoin
+      </Button>
       <Collapse
         ghost
         expandIcon={panelProps =>
@@ -117,6 +128,7 @@ export const WalletModal: FC = () => {
           key="1"
         >
           {wallets.map((wallet, idx) => {
+            if (wallet.name === 'Sollet') return null;
 
             return (
               <Button
@@ -191,14 +203,8 @@ export const WalletModalProvider: FC<{ children: ReactNode }> = ({
 export const WalletProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const wallets = useMemo(
     () => [
-      // getTorusWallet({
-      //   options: {
-      //     // @FIXME: this should be changed for Metaplex, and by each Metaplex storefront
-      //     clientId:
-      //       'BOM5Cl7PXgE9Ylq1Z1tqzhpydY0RVr8k90QQ85N7AKI5QGSrr9iDC-3rvmy0K_hF0JfpLMiXoDhta68JwcxS1LQ',
-      //   },
-      // }),
-      getSafecoinWallet(),
+
+      getSolletWallet(),
     ],
     [],
   );

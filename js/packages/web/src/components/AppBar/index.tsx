@@ -12,6 +12,7 @@ import {
   CurrentUserBadgeMobile,
 } from '../CurrentUserBadge';
 import { ConnectButton } from '@oyster/common';
+import { MobileNavbar } from '../MobileNavbar';
 
 const getDefaultLinkActions = (connected: boolean) => {
   return [
@@ -41,7 +42,7 @@ const DefaultActions = ({ vertical = false }: { vertical?: boolean }) => {
   );
 };
 
-const MetaplexMenu = () => {
+export const MetaplexMenu = () => {
   const { width } = useWindowDimensions();
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const { connected } = useWallet();
@@ -50,7 +51,7 @@ const MetaplexMenu = () => {
     return (
       <>
         <Modal
-          title={<img src={'/metaplex-logo.svg'} />}
+          title={<img src={'/Safecoin.svg'} />}
           visible={isModalVisible}
           footer={null}
           className={'modal-box'}
@@ -118,10 +119,7 @@ export const AppBar = () => {
   const { connected } = useWallet();
   return (
     <>
-      <div id="mobile-navbar">
-        <LogoLink />
-        <MetaplexMenu />
-      </div>
+      <MobileNavbar />
       <div id="desktop-navbar">
         <div className="app-left">
           <LogoLink />

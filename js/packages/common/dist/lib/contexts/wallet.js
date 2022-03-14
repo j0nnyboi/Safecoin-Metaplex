@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -40,6 +44,7 @@ const WalletModal = () => {
         setVisible(false);
         setShowWallets(false);
     }, [setVisible, setShowWallets]);
+    const SolletWallet = (0, react_1.useMemo)(() => (0, wallet_adapter_wallets_1.getSolletWallet)(), []);
     return (react_1.default.createElement(components_1.MetaplexModal, { title: "Connect Wallet", visible: visible, onCancel: close },
         react_1.default.createElement("span", { style: {
                 color: 'rgba(255, 255, 255, 0.75)',
@@ -49,6 +54,13 @@ const WalletModal = () => {
                 letterSpacing: '0.02em',
                 marginBottom: 14,
             } }, "RECOMMENDED"),
+        react_1.default.createElement(antd_1.Button, { className: "phantom-button metaplex-button", onClick: () => {
+                console.log(SolletWallet.name);
+                select(SolletWallet.name);
+                close();
+            } },
+            react_1.default.createElement("img", { src: SolletWallet === null || SolletWallet === void 0 ? void 0 : SolletWallet.icon, style: { width: '1.2rem' } }),
+            "\u00A0Connect to Safecoin"),
         react_1.default.createElement(antd_1.Collapse, { ghost: true, expandIcon: panelProps => panelProps.isActive ? (react_1.default.createElement("svg", { width: "20", height: "20", viewBox: "0 0 20 20", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
                 react_1.default.createElement("path", { d: "M15 7.5L10 12.5L5 7.5", stroke: "white", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round" }))) : (react_1.default.createElement("svg", { width: "20", height: "20", viewBox: "0 0 20 20", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
                 react_1.default.createElement("path", { d: "M7.5 5L12.5 10L7.5 15", stroke: "white", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round" }))) },
@@ -59,6 +71,8 @@ const WalletModal = () => {
                         letterSpacing: '-0.01em',
                         color: 'rgba(255, 255, 255, 255)',
                     } }, "Other Wallets"), key: "1" }, wallets.map((wallet, idx) => {
+                if (wallet.name === 'Sollet')
+                    return null;
                 return (react_1.default.createElement(antd_1.Button, { key: idx, className: "metaplex-button w100", style: {
                         marginBottom: 5,
                     }, onClick: () => {
@@ -105,14 +119,7 @@ const WalletModalProvider = ({ children, }) => {
 exports.WalletModalProvider = WalletModalProvider;
 const WalletProvider = ({ children }) => {
     const wallets = (0, react_1.useMemo)(() => [
-        // getTorusWallet({
-        //   options: {
-        //     // @FIXME: this should be changed for Metaplex, and by each Metaplex storefront
-        //     clientId:
-        //       'BOM5Cl7PXgE9Ylq1Z1tqzhpydY0RVr8k90QQ85N7AKI5QGSrr9iDC-3rvmy0K_hF0JfpLMiXoDhta68JwcxS1LQ',
-        //   },
-        // }),
-        (0, wallet_adapter_wallets_1.getSafecoinWallet)(),
+        (0, wallet_adapter_wallets_1.getSolletWallet)(),
     ], []);
     const onError = (0, react_1.useCallback)((error) => {
         console.error(error);

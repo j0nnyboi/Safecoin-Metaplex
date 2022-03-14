@@ -45,7 +45,7 @@ export const CurrentUserBadge = (props: {
     <div className="wallet-wrapper">
       {props.showBalance && (
         <span>
-          {formatNumber.format((account?.lamports || 0) / LAMPORTS_PER_SAFE)} SAFE
+          {formatNumber.format((account?.lamports || 0) / LAMPORTS_PER_SAFE)} Safe
         </span>
       )}
 

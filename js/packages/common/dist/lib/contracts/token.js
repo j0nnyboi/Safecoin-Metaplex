@@ -9,7 +9,7 @@ const mintNFT = async (connection, wallet,
 owner) => {
     if (!wallet.publicKey)
         throw new wallet_adapter_base_1.WalletNotConnectedError();
-    const TOKEN_PROGRAM_ID = new web3_js_1.PublicKey('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA');
+    const TOKEN_PROGRAM_ID = new web3_js_1.PublicKey('ToKLx75MGim1d1jRusuVX8xvdvvbSDESVaNXpRA9PHN');
     //const SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID = new PublicKey(
     //  'ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL',
     //);

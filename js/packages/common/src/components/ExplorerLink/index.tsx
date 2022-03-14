@@ -25,7 +25,7 @@ export const ExplorerLink = (props: {
 
   return (
     <a
-      href={`https://explorer.safecoin.com/${type}/${address}`}
+      href={`https://explorer.safecoin.org/${type}/${address}`}
       // eslint-disable-next-line react/jsx-no-target-blank
       target="_blank"
       title={address}

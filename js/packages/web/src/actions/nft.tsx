@@ -18,6 +18,7 @@ import {
   getAssetCostToStore,
   ARWEAVE_UPLOAD_ENDPOINT
 } from '@oyster/common';
+
 import React, { Dispatch, SetStateAction } from 'react';
 import { MintLayout, Token } from '@safecoin/safe-token';
 import {
@@ -33,6 +34,7 @@ import BN from 'bn.js';
 
 const RESERVED_TXN_MANIFEST = 'manifest.json';
 const RESERVED_METADATA = 'metadata.json';
+        
 
 interface IArweaveResult {
   error?: string;
@@ -54,18 +56,20 @@ const uploadToArweave = async (data: FormData): Promise<IArweaveResult> => {
     },
   );
 
+
   if (!resp.ok) {
     return Promise.reject(
       new Error(
-        'Unable to upload the artwork to Arweave. Please wait and then try again.',
+        'Arweave issues. Please wait and then try again.',
       ),
     );
   }
-
+  
   const result: IArweaveResult = await resp.json();
-
+   
+   //console.log(result.error)
   if (result.error) {
-    return Promise.reject(new Error(result.error));
+    return Promise.reject(new Error(resp));
   }
 
   return result;
@@ -124,6 +128,7 @@ export const mintNFT = async (
     await prepPayForFilesTxn(wallet, realFiles, metadata);
 
   progressCallback(1);
+  
 
   const TOKEN_PROGRAM_ID = programIds().token;
 
@@ -221,11 +226,15 @@ export const mintNFT = async (
   await connection.getParsedConfirmedTransaction(txid, 'confirmed');
 
   progressCallback(5);
+  
+  
 
-  // this means we're done getting AR txn setup. Ship it off to ARWeave!
   const data = new FormData();
   data.append('transaction', txid);
   data.append('env', endpoint);
+  
+  
+  
 
   const tags = realFiles.reduce(
     (acc: Record<string, Array<{ name: string; value: string }>>, f) => {
@@ -238,19 +247,25 @@ export const mintNFT = async (
   realFiles.map(f => data.append('file[]', f));
 
   // TODO: convert to absolute file name for image
-
-  const result: IArweaveResult = await uploadToArweave(data);
+  
   progressCallback(6);
-
+ 
+  
+  const result: IArweaveResult = await uploadToArweave(data);
+  
+ console.log(result.messages)
   const metadataFile = result.messages?.find(
     m => m.filename === RESERVED_TXN_MANIFEST,
   );
+  
   if (metadataFile?.transactionId && wallet.publicKey) {
     const updateInstructions: TransactionInstruction[] = [];
     const updateSigners: Keypair[] = [];
 
     // TODO: connect to testnet arweave
-    const arweaveLink = `https://arweave.net/${metadataFile.transactionId}`;
+    //const arweaveLink = `https://arweave.net/${metadataFile.transactionId}`;
+    const arweaveLink = `http://www.metaplex.darkartlabs.tech:1984/${metadataFile.transactionId}`;
+  
     await updateMetadata(
       new Data({
         name: metadata.name,

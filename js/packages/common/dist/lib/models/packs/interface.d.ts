@@ -15,4 +15,10 @@ export interface AddCardToPackParams {
     weight: BN | null;
     index: number;
 }
+export interface RequestCardToRedeemParams {
+    index: number;
+}
+export interface ClaimPackParams {
+    index: number;
+}
 //# sourceMappingURL=interface.d.ts.map

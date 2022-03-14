@@ -6,6 +6,7 @@ import { StringPublicKey } from '../utils';
 export declare const AUCTION_PREFIX = "auction";
 export declare const METADATA = "metadata";
 export declare const EXTENDED = "extended";
+export declare const BIDDER_POT_TOKEN = "bidder_pot_token";
 export declare const MAX_AUCTION_DATA_EXTENDED_SIZE: number;
 export declare enum AuctionState {
     Created = 0,
@@ -191,7 +192,7 @@ export declare const decodeAuctionData: (buffer: Buffer) => AuctionData;
 export declare function createAuction(settings: CreateAuctionArgs, creator: StringPublicKey, instructions: TransactionInstruction[]): Promise<void>;
 export declare function startAuctionWithResource(resource: StringPublicKey, creator: StringPublicKey, instructions: TransactionInstruction[]): Promise<void>;
 export declare function setAuctionAuthority(auction: StringPublicKey, currentAuthority: StringPublicKey, newAuthority: StringPublicKey, instructions: TransactionInstruction[]): Promise<void>;
-export declare function placeBid(bidderPubkey: StringPublicKey, bidderTokenPubkey: StringPublicKey, bidderPotTokenPubkey: StringPublicKey, tokenMintPubkey: StringPublicKey, transferAuthority: StringPublicKey, payer: StringPublicKey, resource: StringPublicKey, amount: BN, instructions: TransactionInstruction[]): Promise<{
+export declare function placeBid(bidderPubkey: StringPublicKey, bidderTokenPubkey: StringPublicKey, bidderPotTokenPubkey: StringPublicKey | undefined, tokenMintPubkey: StringPublicKey, transferAuthority: StringPublicKey, payer: StringPublicKey, resource: StringPublicKey, amount: BN, instructions: TransactionInstruction[]): Promise<{
     amount: BN;
 }>;
 export declare function getBidderPotKey({ auctionProgramId, auctionKey, bidderPubkey, }: {

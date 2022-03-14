@@ -9,6 +9,6 @@ interface Params extends AddCardToPackParams {
     tokenAccount: TokenAccount;
     toAccount: Keypair;
 }
-export declare function addCardToPack({ maxSupply, weight, index, packSetKey, authority, mint, tokenAccount, toAccount, }: Params): Promise<TransactionInstruction[]>;
+export declare function addCardToPack({ maxSupply, weight, index, packSetKey, authority, mint, tokenAccount, toAccount, }: Params): Promise<TransactionInstruction>;
 export {};
 //# sourceMappingURL=addCardToPack.d.ts.map

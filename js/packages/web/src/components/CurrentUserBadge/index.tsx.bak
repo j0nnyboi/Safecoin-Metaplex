@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useWallet } from '@safecoin/wallet-adapter-react';
-import { LAMPORTS_PER_SOL, PublicKey } from '@safecoin/web3.js';
+import { LAMPORTS_PER_SAFE, PublicKey } from '@safecoin/web3.js';
 import { Button, Popover, Select } from 'antd';
 import {
   ENDPOINTS,
@@ -213,7 +213,7 @@ export const CurrentUserBadge = (props: {
   if (!wallet || !publicKey) {
     return null;
   }
-  const balance = (account?.lamports || 0) / LAMPORTS_PER_SOL;
+  const balance = (account?.lamports || 0) / LAMPORTS_PER_SAFE
   const balanceInUSD = balance * solPrice;
   const solMintInfo = useTokenList().tokenMap.get(WRAPPED_SOL_MINT.toString());
   const iconStyle: React.CSSProperties = {
@@ -238,7 +238,7 @@ export const CurrentUserBadge = (props: {
     <div className="wallet-wrapper">
       {props.showBalance && (
         <span>
-          {formatNumber.format((account?.lamports || 0) / LAMPORTS_PER_SOL)} SOL
+          {formatNumber.format((account?.lamports || 0) / LAMPORTS_PER_Safe)} SOL
         </span>
       )}
 
@@ -276,7 +276,7 @@ export const CurrentUserBadge = (props: {
                       color: '#FFFFFF',
                     }}
                   >
-                    {formatNumber.format(balance)} SOL
+                    {formatNumber.format(balance)} SAFE
                   </span>
                   &nbsp;
                   <span

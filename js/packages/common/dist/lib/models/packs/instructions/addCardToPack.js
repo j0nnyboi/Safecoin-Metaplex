@@ -6,6 +6,7 @@ const borsh_1 = require("borsh");
 const __1 = require("../../..");
 const utils_1 = require("../../../utils");
 const packs_1 = require("../../../actions/packs");
+const find_1 = require("../find");
 async function addCardToPack({ maxSupply, weight, index, packSetKey, authority, mint, tokenAccount, toAccount, }) {
     const PROGRAM_IDS = (0, utils_1.programIds)();
     const value = new packs_1.AddCardToPackArgs({
@@ -19,14 +20,21 @@ async function addCardToPack({ maxSupply, weight, index, packSetKey, authority, 
     }
     const masterMetadataKey = await (0, __1.getMetadata)(mint);
     const masterEdition = await (0, __1.getEdition)(mint);
-    const programAuthority = await (0, packs_1.getProgramAuthority)();
-    const packCard = await (0, packs_1.findPackCardProgramAddress)(packSetKey, index);
+    const programAuthority = await (0, find_1.getProgramAuthority)();
+    const packCard = await (0, find_1.findPackCardProgramAddress)(packSetKey, index);
+    const packConfig = await (0, find_1.findPackConfigProgramAddress)(packSetKey);
     const { pubkey: sourceKey } = tokenAccount;
     const data = Buffer.from((0, borsh_1.serialize)(packs_1.PACKS_SCHEMA, value));
     const keys = [
         // pack_set
         {
             pubkey: (0, utils_1.toPublicKey)(packSetKey),
+            isSigner: false,
+            isWritable: true,
+        },
+        // pack_config
+        {
+            pubkey: (0, utils_1.toPublicKey)(packConfig),
             isSigner: false,
             isWritable: true,
         },
@@ -103,13 +111,11 @@ async function addCardToPack({ maxSupply, weight, index, packSetKey, authority, 
             isWritable: false,
         },
     ];
-    return [
-        new web3_js_1.TransactionInstruction({
-            keys,
-            programId: (0, utils_1.toPublicKey)(PROGRAM_IDS.pack_create),
-            data,
-        }),
-    ];
+    return new web3_js_1.TransactionInstruction({
+        keys,
+        programId: (0, utils_1.toPublicKey)(PROGRAM_IDS.pack_create),
+        data,
+    });
 }
 exports.addCardToPack = addCardToPack;
 //# sourceMappingURL=addCardToPack.js.map

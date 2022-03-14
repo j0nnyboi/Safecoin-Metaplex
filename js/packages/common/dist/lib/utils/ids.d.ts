@@ -28,5 +28,6 @@ export declare const VAULT_ID: string;
 export declare const AUCTION_ID: string;
 export declare const METAPLEX_ID: string;
 export declare const PACK_CREATE_ID: PublicKey;
+export declare const ORACLE_ID: PublicKey;
 export declare const SYSTEM: PublicKey;
 //# sourceMappingURL=ids.d.ts.map

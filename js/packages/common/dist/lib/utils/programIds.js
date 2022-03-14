@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.programIds = exports.setProgramIds = exports.getStoreID = void 0;
+const __1 = require("..");
 const utils_1 = require("../utils");
 const ids_1 = require("./ids");
 const getStoreID = async (storeOwnerAddress) => {
@@ -34,6 +35,7 @@ const programIds = () => {
         auction: ids_1.AUCTION_ID,
         metaplex: ids_1.METAPLEX_ID,
         pack_create: ids_1.PACK_CREATE_ID,
+        oracle: __1.ORACLE_ID,
         store: STORE,
     };
 };

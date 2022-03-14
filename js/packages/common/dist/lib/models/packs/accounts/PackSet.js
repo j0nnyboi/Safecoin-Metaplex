@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getPackSets = exports.decodePackSet = exports.PACK_SET_SCHEMA = exports.PackSet = void 0;
+exports.getPackSetByPubkey = exports.getPackSets = exports.decodePackSet = exports.PACK_SET_SCHEMA = exports.PackSet = void 0;
+const web3_js_1 = require("@safecoin/web3.js");
 const borsh_1 = require("borsh");
 const __1 = require("..");
 const __2 = require("../../..");
@@ -16,6 +17,7 @@ class PackSet {
         this.name = new TextDecoder().decode(args.name).replace(/\0/g, '');
         this.packCards = args.packCards;
         this.packVouchers = args.packVouchers;
+        this.totalWeight = args.totalWeight;
         this.totalEditions = args.totalEditions;
         this.mutable = !!args.mutable;
         this.packState = args.packState;
@@ -23,6 +25,7 @@ class PackSet {
         this.distributionType = args.distributionType;
         this.redeemStartDate = args.redeemStartDate;
         this.redeemEndDate = args.redeemEndDate;
+        this.randomOracle = args.randomOracle;
     }
 }
 exports.PackSet = PackSet;
@@ -48,6 +51,7 @@ exports.PACK_SET_SCHEMA = new Map([
                 ['allowedAmountToRedeem', 'u32'],
                 ['redeemStartDate', 'u64'],
                 ['redeemEndDate', { kind: 'option', type: 'u64' }],
+                ['randomOracle', 'pubkeyAsString'],
             ],
         },
     ],
@@ -75,4 +79,15 @@ const getPackSets = ({ connection, storeId, }) => {
     });
 };
 exports.getPackSets = getPackSets;
+const getPackSetByPubkey = async (connection, pubkey) => {
+    const info = await connection.getAccountInfo(new web3_js_1.PublicKey(pubkey));
+    if (!info) {
+        throw new Error(`Unable to find account: ${pubkey}`);
+    }
+    return {
+        pubkey,
+        account: info,
+    };
+};
+exports.getPackSetByPubkey = getPackSetByPubkey;
 //# sourceMappingURL=PackSet.js.map

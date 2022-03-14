@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.cancelBid = exports.getAuctionExtended = exports.getBidderPotKey = exports.placeBid = exports.setAuctionAuthority = exports.startAuctionWithResource = exports.createAuction = exports.decodeAuctionData = exports.AUCTION_SCHEMA = exports.CreateAuctionArgs = exports.WinnerLimit = exports.WinnerLimitType = exports.BidderPot = exports.BIDDER_POT_LEN = exports.BidderMetadata = exports.BIDDER_METADATA_LEN = exports.AuctionData = exports.AuctionDataExtended = exports.PriceFloor = exports.PriceFloorType = exports.BASE_AUCTION_DATA_SIZE = exports.decodeBidderMetadata = exports.BidderMetadataParser = exports.decodeAuctionDataExtended = exports.AuctionDataExtendedParser = exports.decodeBidderPot = exports.BidderPotParser = exports.decodeAuction = exports.AuctionParser = exports.BidState = exports.Bid = exports.BidStateType = exports.AuctionState = exports.MAX_AUCTION_DATA_EXTENDED_SIZE = exports.EXTENDED = exports.METADATA = exports.AUCTION_PREFIX = void 0;
+exports.cancelBid = exports.getAuctionExtended = exports.getBidderPotKey = exports.placeBid = exports.setAuctionAuthority = exports.startAuctionWithResource = exports.createAuction = exports.decodeAuctionData = exports.AUCTION_SCHEMA = exports.CreateAuctionArgs = exports.WinnerLimit = exports.WinnerLimitType = exports.BidderPot = exports.BIDDER_POT_LEN = exports.BidderMetadata = exports.BIDDER_METADATA_LEN = exports.AuctionData = exports.AuctionDataExtended = exports.PriceFloor = exports.PriceFloorType = exports.BASE_AUCTION_DATA_SIZE = exports.decodeBidderMetadata = exports.BidderMetadataParser = exports.decodeAuctionDataExtended = exports.AuctionDataExtendedParser = exports.decodeBidderPot = exports.BidderPotParser = exports.decodeAuction = exports.AuctionParser = exports.BidState = exports.Bid = exports.BidStateType = exports.AuctionState = exports.MAX_AUCTION_DATA_EXTENDED_SIZE = exports.BIDDER_POT_TOKEN = exports.EXTENDED = exports.METADATA = exports.AUCTION_PREFIX = void 0;
 const web3_js_1 = require("@safecoin/web3.js");
 const programIds_1 = require("../utils/programIds");
 const borsh_1 = require("borsh");
@@ -13,6 +13,7 @@ const utils_1 = require("../utils");
 exports.AUCTION_PREFIX = 'auction';
 exports.METADATA = 'metadata';
 exports.EXTENDED = 'extended';
+exports.BIDDER_POT_TOKEN = 'bidder_pot_token';
 exports.MAX_AUCTION_DATA_EXTENDED_SIZE = 8 + 9 + 2 + 9 + 33 + 158;
 var AuctionState;
 (function (AuctionState) {
@@ -554,6 +555,17 @@ async function placeBid(bidderPubkey, bidderTokenPubkey, bidderPotTokenPubkey, t
         (0, utils_1.toPublicKey)(bidderPubkey).toBuffer(),
         Buffer.from('metadata'),
     ], (0, utils_1.toPublicKey)(auctionProgramId)))[0];
+    let bidderPotTokenAccount;
+    if (!bidderPotTokenPubkey) {
+        bidderPotTokenAccount = (0, utils_1.toPublicKey)((await (0, utils_1.findProgramAddress)([
+            Buffer.from(exports.AUCTION_PREFIX),
+            (0, utils_1.toPublicKey)(bidderPotKey).toBuffer(),
+            Buffer.from(exports.BIDDER_POT_TOKEN),
+        ], (0, utils_1.toPublicKey)(auctionProgramId)))[0]);
+    }
+    else {
+        bidderPotTokenAccount = (0, utils_1.toPublicKey)(bidderPotTokenPubkey);
+    }
     const keys = [
         {
             pubkey: (0, utils_1.toPublicKey)(bidderPubkey),
@@ -571,7 +583,7 @@ async function placeBid(bidderPubkey, bidderTokenPubkey, bidderPotTokenPubkey, t
             isWritable: true,
         },
         {
-            pubkey: (0, utils_1.toPublicKey)(bidderPotTokenPubkey),
+            pubkey: bidderPotTokenAccount,
             isSigner: false,
             isWritable: true,
         },

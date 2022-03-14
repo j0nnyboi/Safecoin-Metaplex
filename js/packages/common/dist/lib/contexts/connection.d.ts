@@ -6,7 +6,7 @@ interface BlockhashAndFeeCalculator {
     blockhash: Blockhash;
     feeCalculator: FeeCalculator;
 }
-export declare type ENDPOINT_NAME = 'mainnet-beta' | 'mainnet-beta-safecoin' | 'mainnet-beta-serum' | 'testnet' | 'devnet' | 'localnet' | 'lending';
+export declare type ENDPOINT_NAME = 'mainnet-beta' | 'testnet' | 'devnet' | 'localnet' | 'lending';
 declare type Endpoint = {
     name: ENDPOINT_NAME;
     label: string;
@@ -29,7 +29,9 @@ export declare enum SequenceType {
     StopOnFailure = 2
 }
 export declare function sendTransactionsWithManualRetry(connection: Connection, wallet: WalletSigner, instructions: TransactionInstruction[][], signers: Keypair[][]): Promise<void>;
+export declare const sendTransactionsInChunks: (connection: Connection, wallet: WalletSigner, instructionSet: TransactionInstruction[][], signersSet: Keypair[][], sequenceType: SequenceType | undefined, commitment: Commitment | undefined, timeout: number | undefined, batchSize: number) => Promise<number>;
 export declare const sendTransactions: (connection: Connection, wallet: WalletSigner, instructionSet: TransactionInstruction[][], signersSet: Keypair[][], sequenceType?: SequenceType, commitment?: Commitment, successCallback?: (txid: string, ind: number) => void, failCallback?: (reason: string, ind: number) => boolean, block?: BlockhashAndFeeCalculator | undefined) => Promise<number>;
+export declare const sendTransactionsWithRecentBlock: (connection: Connection, wallet: WalletSigner, instructionSet: TransactionInstruction[][], signersSet: Keypair[][], commitment?: Commitment) => Promise<number>;
 export declare const sendTransaction: (connection: Connection, wallet: WalletSigner, instructions: TransactionInstruction[], signers: Keypair[], awaitConfirmation?: boolean, commitment?: Commitment, includesFeePayer?: boolean, block?: BlockhashAndFeeCalculator | undefined) => Promise<{
     txid: string;
     slot: number;

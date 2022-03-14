@@ -191,7 +191,7 @@ export const useExtendedArt = (id?: StringPublicKey) => {
         let result = uri;
         if (USE_CDN) {
           result = uri.replace(
-            'https://arweave.net/',
+            'http://172.19.1.58:1984/',
             'https://coldcdn.com/api/cdn/bronil/',
           );
         }

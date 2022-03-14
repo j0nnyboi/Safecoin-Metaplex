@@ -41,6 +41,11 @@ async function initPackSet({ name, description, uri, mutable, distributionType, 
             isWritable: false,
         },
         {
+            pubkey: PROGRAM_IDS.oracle,
+            isSigner: false,
+            isWritable: false,
+        },
+        {
             pubkey: (0, utils_1.toPublicKey)(web3_js_1.SYSVAR_RENT_PUBKEY),
             isSigner: false,
             isWritable: false,

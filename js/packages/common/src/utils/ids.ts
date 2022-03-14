@@ -46,15 +46,15 @@ export interface PublicKeyStringAndAccount<T> {
 }
 
 export const WRAPPED_SOL_MINT = new PublicKey(
-  'So11111111111111111111111111111111111111112',
+  'Safe111111111111111111111111111111111111111',
 );
 
 export const TOKEN_PROGRAM_ID = new PublicKey(
-  'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
+  'ToKLx75MGim1d1jRusuVX8xvdvvbSDESVaNXpRA9PHN',
 );
 
 export const SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID = new PublicKey(
-  'ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL',
+  'AToD9iqHSc2fhEP9Jp7UYA6mRjHQ4CTWyzCsw8X3tH7K',
 );
 
 export const BPF_UPGRADE_LOADER_ID = new PublicKey(
@@ -62,23 +62,27 @@ export const BPF_UPGRADE_LOADER_ID = new PublicKey(
 );
 
 export const MEMO_ID = new PublicKey(
-  'MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr',
+  'MEMWKbqsjEB8o972BvDHExZFSauzGZKvB4xHDVPFowh',
 );
 
 export const METADATA_PROGRAM_ID =
-  'ECX5RApZutLouaPDAmcoWkPr3Q443GjTeq9zNKjgs3fh' as StringPublicKey;
+  'FFQ39M4FxfqGN8oA5Vg8ZgSuWDCGoEW4nb2ubgYpAHR3' as StringPublicKey;
 
 export const VAULT_ID =
-  '3mWWZ3AUhu5uMmCX5bcDNRocXGsQFG9UkYtUJGxQyJx4' as StringPublicKey;
+  'C8M5uDsTwnTVeZFTcPCkPtF81rg2UgyGBVAoKXnAJB9D' as StringPublicKey;
 
 export const AUCTION_ID =
-  'Hz59yD8jEm9jFTtC4GnxM1bbBKRcb57NtoSJYa1CBA8K' as StringPublicKey;
+  '9AFcqUZfuNQgH7jsNHvBkKBibmrpwv3LZT6T3NNXueqi' as StringPublicKey;
 
 export const METAPLEX_ID =
-  '9VDp1UoquCEaDs42go4ubDvzHBH4S4a295nDNuAXPvYm' as StringPublicKey;
+  '314JQqufYJpSJQ8fyqb1zGmbko1m18W7QFQzk51Dbm37' as StringPublicKey;
 
 export const PACK_CREATE_ID = new PublicKey(
   'packFeFNZzMfD9aVWL7QbGz1WcU7R9zpf6pvNsw2BLu',
+);
+
+export const ORACLE_ID = new PublicKey(
+  'rndshKFf48HhGaPbaCd3WQYtgCNKzRgVQ3U2we4Cvf9',
 );
 
 export const SYSTEM = new PublicKey('11111111111111111111111111111111');

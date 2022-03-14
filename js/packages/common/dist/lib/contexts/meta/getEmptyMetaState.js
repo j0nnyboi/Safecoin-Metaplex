@@ -28,6 +28,10 @@ const getEmptyMetaState = () => ({
     auctionCaches: {},
     storeIndexer: [],
     packs: {},
+    packCards: {},
+    packCardsByPackSet: {},
+    vouchers: {},
+    provingProcesses: {},
 });
 exports.getEmptyMetaState = getEmptyMetaState;
 //# sourceMappingURL=getEmptyMetaState.js.map

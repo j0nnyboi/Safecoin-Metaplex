@@ -12,6 +12,7 @@ export declare class PackSet {
     name: string;
     packCards: number;
     packVouchers: number;
+    totalWeight?: BN;
     totalEditions?: BN;
     mutable: boolean;
     packState: PackSetState;
@@ -19,6 +20,7 @@ export declare class PackSet {
     allowedAmountToRedeem: number;
     redeemStartDate: BN;
     redeemEndDate?: BN;
+    randomOracle: StringPublicKey;
     constructor(args: {
         key: PackKey;
         store: StringPublicKey;
@@ -28,6 +30,7 @@ export declare class PackSet {
         name: Uint8Array;
         packCards: number;
         packVouchers: number;
+        totalWeight?: BN;
         totalEditions?: BN;
         mutable: number;
         packState: PackSetState;
@@ -35,6 +38,7 @@ export declare class PackSet {
         allowedAmountToRedeem: number;
         redeemStartDate: BN;
         redeemEndDate?: BN;
+        randomOracle: StringPublicKey;
     });
 }
 export declare const PACK_SET_SCHEMA: Map<any, any>;
@@ -43,4 +47,5 @@ export declare const getPackSets: ({ connection, storeId, }: {
     connection: Connection;
     storeId?: PublicKey | undefined;
 }) => Promise<AccountAndPubkey[]>;
+export declare const getPackSetByPubkey: (connection: Connection, pubkey: StringPublicKey) => Promise<AccountAndPubkey>;
 //# sourceMappingURL=PackSet.d.ts.map

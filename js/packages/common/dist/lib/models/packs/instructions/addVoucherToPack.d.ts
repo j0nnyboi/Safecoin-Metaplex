@@ -8,6 +8,6 @@ interface Params {
     mint: StringPublicKey;
     tokenAccount: TokenAccount;
 }
-export declare function addVoucherToPack({ index, packSetKey, authority, mint, tokenAccount, }: Params): Promise<TransactionInstruction[]>;
+export declare function addVoucherToPack({ index, packSetKey, authority, mint, tokenAccount, }: Params): Promise<TransactionInstruction>;
 export {};
 //# sourceMappingURL=addVoucherToPack.d.ts.map

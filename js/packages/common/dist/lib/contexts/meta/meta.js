@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -21,8 +25,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useMeta = exports.MetaProvider = void 0;
 const react_1 = __importStar(require("react"));
+const wallet_adapter_react_1 = require("@safecoin/wallet-adapter-react");
 const queryExtendedMetadata_1 = require("./queryExtendedMetadata");
-const subscribeAccountsChange_1 = require("./subscribeAccountsChange");
 const getEmptyMetaState_1 = require("./getEmptyMetaState");
 const loadAccounts_1 = require("./loadAccounts");
 const connection_1 = require("../connection");
@@ -33,18 +37,22 @@ const __1 = require("../..");
 const MetaContext = react_1.default.createContext({
     ...(0, getEmptyMetaState_1.getEmptyMetaState)(),
     isLoading: false,
+    isFetching: false,
     // @ts-ignore
     update: () => [actions_1.AuctionData, actions_1.BidderMetadata, actions_1.BidderPot],
 });
 function MetaProvider({ children = null }) {
     const connection = (0, connection_1.useConnection)();
     const { isReady, storeAddress } = (0, store_1.useStore)();
+    const wallet = (0, wallet_adapter_react_1.useWallet)();
     const [state, setState] = (0, react_1.useState)((0, getEmptyMetaState_1.getEmptyMetaState)());
     const [page, setPage] = (0, react_1.useState)(0);
-    const [metadataLoaded, setMetadataLoaded] = (0, react_1.useState)(false);
     const [lastLength, setLastLength] = (0, react_1.useState)(0);
     const { userAccounts } = (0, __1.useUserAccounts)();
-    const [isLoading, setIsLoading] = (0, react_1.useState)(true);
+    const [isLoading, setIsLoading] = (0, react_1.useState)(false);
+    const updateRequestsInQueue = (0, react_1.useRef)(0);
+    const [isLoadingMetadata, setIsLoadingMetadata] = (0, react_1.useState)(false);
+    const loadedMetadataLength = (0, react_1.useRef)(0);
     const updateMints = (0, react_1.useCallback)(async (metadataByMint) => {
         try {
             const { metadata, mintToMetadata } = await (0, queryExtendedMetadata_1.queryExtendedMetadata)(connection, metadataByMint);
@@ -113,6 +121,36 @@ function MetaProvider({ children = null }) {
         await updateMints(nextState.metadataByMint);
         return nextState;
     }
+    async function pullItemsPage(userTokenAccounts) {
+        if (isFetching) {
+            return;
+        }
+        const shouldEnableNftPacks = process.env.NEXT_ENABLE_NFT_PACKS === 'true';
+        const packsState = shouldEnableNftPacks
+            ? await (0, _1.pullPacks)(connection, state, wallet === null || wallet === void 0 ? void 0 : wallet.publicKey)
+            : state;
+        await pullUserMetadata(userTokenAccounts, packsState);
+    }
+    async function pullPackPage(userTokenAccounts, packSetKey) {
+        if (isFetching) {
+            return;
+        }
+        const packState = await (0, _1.pullPack)({
+            connection,
+            state,
+            packSetKey,
+            walletKey: wallet === null || wallet === void 0 ? void 0 : wallet.publicKey,
+        });
+        await pullUserMetadata(userTokenAccounts, packState);
+    }
+    async function pullUserMetadata(userTokenAccounts, tempState) {
+        setIsLoadingMetadata(true);
+        loadedMetadataLength.current = userTokenAccounts.length;
+        const nextState = await (0, loadAccounts_1.pullYourMetadata)(connection, userTokenAccounts, tempState || state);
+        await updateMints(nextState.metadataByMint);
+        setState(nextState);
+        setIsLoadingMetadata(false);
+    }
     async function pullAllSiteData() {
         if (isLoading)
             return state;
@@ -132,7 +170,7 @@ function MetaProvider({ children = null }) {
         await updateMints(nextState.metadataByMint);
         return;
     }
-    async function update(auctionAddress, bidderAddress, userTokenAccounts) {
+    async function update(auctionAddress, bidderAddress) {
         if (!storeAddress) {
             if (isReady) {
                 //@ts-ignore
@@ -146,8 +184,9 @@ function MetaProvider({ children = null }) {
             window.loadingData = true;
             setIsLoading(true);
         }
+        const shouldFetchNftPacks = process.env.NEXT_ENABLE_NFT_PACKS === 'true';
+        let nextState = await (0, _1.pullPage)(connection, page, state, wallet === null || wallet === void 0 ? void 0 : wallet.publicKey, shouldFetchNftPacks);
         console.log('-----> Query started');
-        let nextState = await (0, _1.pullPage)(connection, page, state);
         if (nextState.storeIndexer.length) {
             if (loadAccounts_1.USE_SPEED_RUN) {
                 nextState = await (0, loadAccounts_1.limitedLoadAccounts)(connection);
@@ -159,19 +198,6 @@ function MetaProvider({ children = null }) {
             }
             else {
                 console.log('------->Pagination detected, pulling page', page);
-                // Ensures we get the latest so beat race conditions and avoid double pulls.
-                let currMetadataLoaded = false;
-                setMetadataLoaded(loaded => {
-                    currMetadataLoaded = loaded;
-                    return loaded;
-                });
-                if (userTokenAccounts &&
-                    userTokenAccounts.length &&
-                    !currMetadataLoaded) {
-                    console.log('--------->User metadata loading now.');
-                    setMetadataLoaded(true);
-                    nextState = await (0, loadAccounts_1.pullYourMetadata)(connection, userTokenAccounts, nextState);
-                }
                 const auction = window.location.href.match(/#\/auction\/(\w+)/);
                 const billing = window.location.href.match(/#\/auction\/(\w+)\/billing/);
                 if (auction && page == 0) {
@@ -209,7 +235,6 @@ function MetaProvider({ children = null }) {
             setIsLoading(false);
         }
         console.log('------->set finished');
-        await updateMints(nextState.metadataByMint);
         if (auctionAddress && bidderAddress) {
             nextState = await (0, _1.pullAuctionSubaccounts)(connection, auctionAddress, nextState);
             setState(nextState);
@@ -225,6 +250,7 @@ function MetaProvider({ children = null }) {
         //@ts-ignore
         if (window.loadingData) {
             console.log('currently another update is running, so queue for 3s...');
+            updateRequestsInQueue.current += 1;
             const interval = setInterval(() => {
                 //@ts-ignore
                 if (window.loadingData) {
@@ -232,14 +258,16 @@ function MetaProvider({ children = null }) {
                 }
                 else {
                     console.log('running queued update');
-                    update(undefined, undefined, userAccounts);
+                    update(undefined, undefined);
+                    updateRequestsInQueue.current -= 1;
                     clearInterval(interval);
                 }
             }, 3000);
         }
         else {
             console.log('no update is running, updating.');
-            update(undefined, undefined, userAccounts);
+            update(undefined, undefined);
+            updateRequestsInQueue.current = 0;
         }
     }, [
         connection,
@@ -248,38 +276,22 @@ function MetaProvider({ children = null }) {
         storeAddress,
         isReady,
         page,
-        userAccounts.length > 0,
     ]);
+    // Fetch metadata on userAccounts change
     (0, react_1.useEffect)(() => {
-        if (isLoading) {
-            return;
+        const shouldFetch = !isLoading &&
+            !isLoadingMetadata &&
+            loadedMetadataLength.current !== userAccounts.length;
+        if (shouldFetch) {
+            pullUserMetadata(userAccounts);
         }
-        return (0, subscribeAccountsChange_1.subscribeAccountsChange)(connection, () => state, setState);
-    }, [connection, setState, isLoading, state]);
-    // TODO: fetch names dynamically
-    // TODO: get names for creators
-    // useEffect(() => {
-    //   (async () => {
-    //     const twitterHandles = await connection.getProgramAccounts(NAME_PROGRAM_ID, {
-    //      filters: [
-    //        {
-    //           dataSize: TWITTER_ACCOUNT_LENGTH,
-    //        },
-    //        {
-    //          memcmp: {
-    //           offset: VERIFICATION_AUTHORITY_OFFSET,
-    //           bytes: TWITTER_VERIFICATION_AUTHORITY.toBase58()
-    //          }
-    //        }
-    //      ]
-    //     });
-    //     const handles = twitterHandles.map(t => {
-    //       const owner = new PublicKey(t.account.data.slice(32, 64));
-    //       const name = t.account.data.slice(96, 114).toString();
-    //     });
-    //     console.log(handles);
-    //   })();
-    // }, [whitelistedCreatorsByCreator]);
+    }, [
+        isLoading,
+        isLoadingMetadata,
+        loadedMetadataLength.current,
+        userAccounts.length,
+    ]);
+    const isFetching = isLoading || updateRequestsInQueue.current > 0;
     return (react_1.default.createElement(MetaContext.Provider, { value: {
             ...state,
             // @ts-ignore
@@ -289,7 +301,11 @@ function MetaProvider({ children = null }) {
             pullBillingPage,
             // @ts-ignore
             pullAllSiteData,
+            pullItemsPage,
+            pullPackPage,
+            pullUserMetadata,
             isLoading,
+            isFetching,
         } }, children));
 }
 exports.MetaProvider = MetaProvider;

@@ -41,7 +41,7 @@ const CurrentUserBadge = (props) => {
     return (react_1.default.createElement("div", { className: "wallet-wrapper" },
         props.showBalance && (react_1.default.createElement("span", null,
             utils_1.formatNumber.format(((account === null || account === void 0 ? void 0 : account.lamports) || 0) / web3_js_1.LAMPORTS_PER_SAFE),
-            " SAFE")),
+            " Safe")),
         react_1.default.createElement(antd_1.Popover, { placement: "topRight", title: "Settings", content: react_1.default.createElement(Settings_1.Settings, null), trigger: "click" },
             react_1.default.createElement("div", { className: "wallet-key", style: walletKeyStyle },
                 react_1.default.createElement("span", { style: { marginRight: '0.5rem' } }, wallet.name),

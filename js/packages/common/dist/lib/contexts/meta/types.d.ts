@@ -1,8 +1,12 @@
 /// <reference types="node" />
 import { AccountInfo } from '@safecoin/web3.js';
+import { TokenAccount } from '../..';
 import { AuctionData, AuctionDataExtended, BidderMetadata, BidderPot, Edition, MasterEditionV1, MasterEditionV2, Metadata, SafetyDepositBox, Vault } from '../../actions';
 import { AuctionCache, AuctionManagerV1, AuctionManagerV2, BidRedemptionTicket, BidRedemptionTicketV2, PayoutTicket, PrizeTrackingTicket, SafetyDepositConfig, Store, StoreIndexer, WhitelistedCreator } from '../../models/metaplex';
+import { PackCard } from '../../models/packs/accounts/PackCard';
 import { PackSet } from '../../models/packs/accounts/PackSet';
+import { PackVoucher } from '../../models/packs/accounts/PackVoucher';
+import { ProvingProcess } from '../../models/packs/accounts/ProvingProcess';
 import { PublicKeyStringAndAccount, StringPublicKey } from '../../utils';
 import { ParsedAccount } from '../accounts/types';
 export interface MetaState {
@@ -32,10 +36,15 @@ export interface MetaState {
     auctionCaches: Record<string, ParsedAccount<AuctionCache>>;
     storeIndexer: ParsedAccount<StoreIndexer>[];
     packs: Record<string, ParsedAccount<PackSet>>;
+    packCards: Record<string, ParsedAccount<PackCard>>;
+    packCardsByPackSet: Record<string, ParsedAccount<PackCard>[]>;
+    vouchers: Record<string, ParsedAccount<PackVoucher>>;
+    provingProcesses: Record<string, ParsedAccount<ProvingProcess>>;
 }
 export interface MetaContextState extends MetaState {
     isLoading: boolean;
-    update: (auctionAddress?: any, bidderAddress?: any) => [
+    isFetching: boolean;
+    update: (auctionAddress?: any, bidderAddress?: any, userTokenAccounts?: TokenAccount[]) => [
         ParsedAccount<AuctionData>,
         ParsedAccount<BidderPot>,
         ParsedAccount<BidderMetadata>
@@ -44,6 +53,9 @@ export interface MetaContextState extends MetaState {
     pullBillingPage: (auctionAddress: StringPublicKey) => void;
     pullAllSiteData: () => void;
     pullAllMetadata: () => void;
+    pullItemsPage: (userTokenAccounts: TokenAccount[]) => Promise<void>;
+    pullPackPage: (userTokenAccounts: TokenAccount[], packSetKey: StringPublicKey) => Promise<void>;
+    pullUserMetadata: (userTokenAccounts: TokenAccount[], tempState?: MetaState) => Promise<void>;
 }
 export declare type AccountAndPubkey = {
     pubkey: string;

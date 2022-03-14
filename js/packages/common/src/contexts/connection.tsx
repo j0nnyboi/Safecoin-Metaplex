@@ -19,7 +19,7 @@ import {
   Blockhash,
   FeeCalculator,
 } from '@safecoin/web3.js';
-import { sleep, useLocalStorageState } from '../utils/utils';
+import { chunks, sleep, useLocalStorageState } from '../utils/utils';
 import { notify } from '../utils/notifications';
 import { ExplorerLink } from '../components/ExplorerLink';
 import { useQuerySearch } from '../hooks';
@@ -32,8 +32,6 @@ interface BlockhashAndFeeCalculator {
 
 export type ENDPOINT_NAME =
   | 'mainnet-beta'
-  | 'mainnet-beta-safecoin'
-  | 'mainnet-beta-serum'
   | 'testnet'
   | 'devnet'
   | 'localnet'
@@ -50,19 +48,7 @@ export const ENDPOINTS: Array<Endpoint> = [
   {
     name: 'mainnet-beta',
     label: 'mainnet-beta',
-    url: 'https://api.metaplex.safecoin.org/',
-    chainId: ChainId.MainnetBeta,
-  },
-  {
-    name: 'mainnet-beta-safecoin',
-    label: 'mainnet-beta (safecoin)',
-    url: 'https://api.mainnet-beta.safecoin.org',
-    chainId: ChainId.MainnetBeta,
-  },
-  {
-    name: 'mainnet-beta-serum',
-    label: 'mainnet-beta (Serum)',
-    url: 'https://safecoin-api.projectserum.org/',
+    url: 'https://api.mainnet-beta.safecoin.org/',
     chainId: ChainId.MainnetBeta,
   },
   {
@@ -74,7 +60,7 @@ export const ENDPOINTS: Array<Endpoint> = [
   {
     name: 'devnet',
     label: 'devnet',
-    url: clusterApiUrl('devnet'),
+    url: 'https://api.devnet.safecoin.org/',
     chainId: ChainId.Devnet,
   },
 ];
@@ -293,6 +279,86 @@ export async function sendTransactionsWithManualRetry(
   }
 }
 
+export const sendTransactionsInChunks = async (
+  connection: Connection,
+  wallet: WalletSigner,
+  instructionSet: TransactionInstruction[][],
+  signersSet: Keypair[][],
+  sequenceType: SequenceType = SequenceType.Parallel,
+  commitment: Commitment = 'singleGossip',
+  timeout: number = 120000,
+  batchSize: number,
+): Promise<number> => {
+  if (!wallet.publicKey) throw new WalletNotConnectedError();
+  let instructionsChunk: TransactionInstruction[][][] = [instructionSet];
+  let signersChunk: Keypair[][][] = [signersSet];
+
+  instructionsChunk = chunks(instructionSet, batchSize);
+  signersChunk = chunks(signersSet, batchSize);
+
+  for (let c = 0; c < instructionsChunk.length; c++) {
+    const unsignedTxns: Transaction[] = [];
+
+    for (let i = 0; i < instructionsChunk[c].length; i++) {
+      const instructions = instructionsChunk[c][i];
+      const signers = signersChunk[c][i];
+      if (instructions.length === 0) {
+        continue;
+      }
+      const transaction = new Transaction();
+      const block = await connection.getRecentBlockhash(commitment);
+
+      instructions.forEach(instruction => transaction.add(instruction));
+      transaction.recentBlockhash = block.blockhash;
+      transaction.setSigners(
+        // fee payed by the wallet owner
+        wallet.publicKey,
+        ...signers.map(s => s.publicKey),
+      );
+      if (signers.length > 0) {
+        transaction.partialSign(...signers);
+      }
+      unsignedTxns.push(transaction);
+    }
+
+    const signedTxns = await wallet.signAllTransactions(unsignedTxns);
+
+    const breakEarlyObject = { breakEarly: false, i: 0 };
+    console.log(
+      'Signed txns length',
+      signedTxns.length,
+      'vs handed in length',
+      instructionSet.length,
+    );
+    for (let i = 0; i < signedTxns.length; i++) {
+      const signedTxnPromise = sendSignedTransaction({
+        connection,
+        signedTransaction: signedTxns[i],
+        timeout,
+      });
+      signedTxnPromise.catch(reason => {
+        // @ts-ignore
+        if (sequenceType === SequenceType.StopOnFailure) {
+          breakEarlyObject.breakEarly = true;
+          breakEarlyObject.i = i;
+        }
+      });
+
+      try {
+        await signedTxnPromise;
+      } catch (e) {
+        console.log('Caught failure', e);
+        if (breakEarlyObject.breakEarly) {
+          console.log('Died on ', breakEarlyObject.i);
+          return breakEarlyObject.i; // Return the txn we failed on by index
+        }
+      }
+    }
+  }
+
+  return instructionSet.length;
+};
+
 export const sendTransactions = async (
   connection: Connection,
   wallet: WalletSigner,
@@ -383,6 +449,78 @@ export const sendTransactions = async (
 
   if (sequenceType !== SequenceType.Parallel) {
     await Promise.all(pendingTxns);
+  }
+
+  return signedTxns.length;
+};
+
+export const sendTransactionsWithRecentBlock = async (
+  connection: Connection,
+  wallet: WalletSigner,
+  instructionSet: TransactionInstruction[][],
+  signersSet: Keypair[][],
+  commitment: Commitment = 'singleGossip',
+): Promise<number> => {
+  if (!wallet.publicKey) throw new WalletNotConnectedError();
+
+  const unsignedTxns: Transaction[] = [];
+
+  for (let i = 0; i < instructionSet.length; i++) {
+    const instructions = instructionSet[i];
+    const signers = signersSet[i];
+
+    if (instructions.length === 0) {
+      continue;
+    }
+
+    const block = await connection.getRecentBlockhash(commitment);
+    await sleep(1200);
+
+    const transaction = new Transaction();
+    instructions.forEach(instruction => transaction.add(instruction));
+    transaction.recentBlockhash = block.blockhash;
+    transaction.setSigners(
+      // fee payed by the wallet owner
+      wallet.publicKey,
+      ...signers.map(s => s.publicKey),
+    );
+
+    if (signers.length > 0) {
+      transaction.partialSign(...signers);
+    }
+
+    unsignedTxns.push(transaction);
+  }
+
+  const signedTxns = await wallet.signAllTransactions(unsignedTxns);
+
+  const breakEarlyObject = { breakEarly: false, i: 0 };
+  console.log(
+    'Signed txns length',
+    signedTxns.length,
+    'vs handed in length',
+    instructionSet.length,
+  );
+  for (let i = 0; i < signedTxns.length; i++) {
+    const signedTxnPromise = sendSignedTransaction({
+      connection,
+      signedTransaction: signedTxns[i],
+    });
+
+    signedTxnPromise.catch(() => {
+      breakEarlyObject.breakEarly = true;
+      breakEarlyObject.i = i;
+    });
+
+    try {
+      await signedTxnPromise;
+    } catch (e) {
+      console.log('Caught failure', e);
+      if (breakEarlyObject.breakEarly) {
+        console.log('Died on ', breakEarlyObject.i);
+        return breakEarlyObject.i; // Return the txn we failed on by index
+      }
+    }
   }
 
   return signedTxns.length;

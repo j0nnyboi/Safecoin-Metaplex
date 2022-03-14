@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.initMetadata = exports.metadataByMintUpdater = exports.processingAccounts = exports.makeSetter = exports.loadAccounts = exports.limitedLoadAccounts = exports.pullPage = exports.pullPages = exports.pullAuctionSubaccounts = exports.pullPayoutTickets = exports.pullYourMetadata = exports.pullStoreMetadata = exports.USE_SPEED_RUN = void 0;
+exports.initMetadata = exports.metadataByMintUpdater = exports.processingAccounts = exports.makeSetter = exports.pullMetadataByKeys = exports.loadAccounts = exports.limitedLoadAccounts = exports.pullPage = exports.pullPages = exports.pullAuctionSubaccounts = exports.pullPack = exports.pullPacks = exports.pullPayoutTickets = exports.pullYourMetadata = exports.pullStoreMetadata = exports.USE_SPEED_RUN = void 0;
 const ids_1 = require("../../utils/ids");
 const models_1 = require("../../models");
 const actions_1 = require("../../actions");
@@ -19,6 +19,12 @@ const createPipelineExecutor_1 = require("../../utils/createPipelineExecutor");
 const __1 = require("../..");
 const PackSet_1 = require("../../models/packs/accounts/PackSet");
 const processPackSets_1 = require("./processPackSets");
+const PackVoucher_1 = require("../../models/packs/accounts/PackVoucher");
+const processPackVouchers_1 = require("./processPackVouchers");
+const PackCard_1 = require("../../models/packs/accounts/PackCard");
+const processPackCards_1 = require("./processPackCards");
+const ProvingProcess_1 = require("../../models/packs/accounts/ProvingProcess");
+const processProvingProcess_1 = require("./processProvingProcess");
 const MULTIPLE_ACCOUNT_BATCH_SIZE = 100;
 exports.USE_SPEED_RUN = false;
 const WHITELISTED_METADATA = ['98vYFjBYS9TguUMWQRPjy2SZuxKuUMcqR4vnQiLjZbte'];
@@ -55,18 +61,16 @@ const pullYourMetadata = async (connection, userTokenAccounts, tempCache) => {
     const editions = [];
     for (let i = 0; i < userTokenAccounts.length; i++) {
         if (userTokenAccounts[i].info.amount.toNumber() == 1) {
-            if (2 + currBatch.length > MULTIPLE_ACCOUNT_BATCH_SIZE) {
+            const edition = await (0, actions_1.getEdition)(userTokenAccounts[i].info.mint.toBase58());
+            const newAdd = [
+                await (0, actions_1.getMetadata)(userTokenAccounts[i].info.mint.toBase58()),
+                edition,
+            ];
+            editions.push(edition);
+            currBatch = currBatch.concat(newAdd);
+            if (2 + currBatch.length >= MULTIPLE_ACCOUNT_BATCH_SIZE) {
                 batches.push(currBatch);
                 currBatch = [];
-            }
-            else {
-                const edition = await (0, actions_1.getEdition)(userTokenAccounts[i].info.mint.toBase58());
-                const newAdd = [
-                    await (0, actions_1.getMetadata)(userTokenAccounts[i].info.mint.toBase58()),
-                    edition,
-                ];
-                editions.push(edition);
-                currBatch = currBatch.concat(newAdd);
             }
         }
     }
@@ -144,6 +148,65 @@ const pullPayoutTickets = async (connection, tempCache) => {
     return tempCache;
 };
 exports.pullPayoutTickets = pullPayoutTickets;
+const pullPacks = async (connection, state, walletKey) => {
+    const updateTemp = (0, exports.makeSetter)(state);
+    const forEach = (fn) => async (accounts) => {
+        for (const account of accounts.flat()) {
+            await fn(account, updateTemp);
+        }
+    };
+    const store = (0, __1.programIds)().store;
+    if (store) {
+        await (0, PackSet_1.getPackSets)({ connection, storeId: store }).then(forEach(processPackSets_1.processPackSets));
+    }
+    // Fetch packs' cards
+    const fetchCardsPromises = Object.keys(state.packs).map(packSetKey => (0, PackCard_1.getCardsByPackSet)({ connection, packSetKey }));
+    await Promise.all(fetchCardsPromises).then(cards => cards.forEach(forEach(processPackCards_1.processPackCards)));
+    const packKeys = Object.keys(state.packs);
+    // Fetch vouchers
+    const fetchVouchersPromises = packKeys.map(packSetKey => (0, PackVoucher_1.getVouchersByPackSet)({
+        connection,
+        packSetKey,
+    }));
+    await Promise.all(fetchVouchersPromises).then(vouchers => vouchers.forEach(forEach(processPackVouchers_1.processPackVouchers)));
+    // Fetch proving process if user connected wallet
+    if (walletKey) {
+        const fetchProvingProcessPromises = packKeys.map(packSetKey => (0, ProvingProcess_1.getProvingProcessByPackSetAndWallet)({
+            connection,
+            packSetKey,
+            walletKey,
+        }));
+        await Promise.all(fetchProvingProcessPromises).then(provingProcess => provingProcess.forEach(forEach(processProvingProcess_1.processProvingProcess)));
+    }
+    const metadataKeys = Object.values(state.packCards).map(({ info }) => info.metadata);
+    const newState = await (0, exports.pullMetadataByKeys)(connection, state, metadataKeys);
+    await pullEditions(connection, updateTemp, newState, metadataKeys.map(m => newState.metadataByMetadata[m]));
+    return newState;
+};
+exports.pullPacks = pullPacks;
+const pullPack = async ({ connection, state, packSetKey, walletKey, }) => {
+    const updateTemp = (0, exports.makeSetter)(state);
+    const packSet = await (0, PackSet_1.getPackSetByPubkey)(connection, packSetKey);
+    (0, processPackSets_1.processPackSets)(packSet, updateTemp);
+    const packCards = await (0, PackCard_1.getCardsByPackSet)({
+        connection,
+        packSetKey,
+    });
+    packCards.forEach(card => (0, processPackCards_1.processPackCards)(card, updateTemp));
+    if (walletKey) {
+        const provingProcess = await (0, ProvingProcess_1.getProvingProcessByPackSetAndWallet)({
+            connection,
+            packSetKey,
+            walletKey,
+        });
+        provingProcess.forEach(process => (0, processProvingProcess_1.processProvingProcess)(process, updateTemp));
+    }
+    const metadataKeys = Object.values(state.packCardsByPackSet[packSetKey] || {}).map(({ info }) => info.metadata);
+    const newState = await (0, exports.pullMetadataByKeys)(connection, state, metadataKeys);
+    await pullEditions(connection, updateTemp, newState, metadataKeys.map(m => newState.metadataByMetadata[m]));
+    return newState;
+};
+exports.pullPack = pullPack;
 const pullAuctionSubaccounts = async (connection, auction, tempCache) => {
     var _a;
     const updateTemp = (0, exports.makeSetter)(tempCache);
@@ -282,7 +345,7 @@ const pullPages = async (connection) => {
     return pages;
 };
 exports.pullPages = pullPages;
-const pullPage = async (connection, page, tempCache) => {
+const pullPage = async (connection, page, tempCache, walletKey, shouldFetchNftPacks) => {
     const updateTemp = (0, exports.makeSetter)(tempCache);
     const forEach = (fn) => async (accounts) => {
         for (const account of accounts) {
@@ -365,9 +428,8 @@ const pullPage = async (connection, page, tempCache) => {
                 tempCache.metadataByAuction[auctionCache.info.auction] = metadata;
             }
         }
-        const store = (0, __1.programIds)().store;
-        if (store) {
-            await (0, PackSet_1.getPackSets)({ connection, storeId: store }).then(forEach(processPackSets_1.processPackSets));
+        if (shouldFetchNftPacks) {
+            await (0, exports.pullPacks)(connection, tempCache, walletKey);
         }
         if (page == 0) {
             console.log('-------->Page 0, pulling creators and store');
@@ -378,6 +440,7 @@ const pullPage = async (connection, page, tempCache) => {
                     },
                 ],
             }).then(forEach(processMetaplexAccounts_1.processMetaplexAccounts));
+            const store = (0, __1.programIds)().store;
             if (store) {
                 const storeAcc = await connection.getAccountInfo(store);
                 if (storeAcc) {
@@ -553,7 +616,6 @@ const loadAccounts = async (connection) => {
     const state = (0, getEmptyMetaState_1.getEmptyMetaState)();
     const updateState = (0, exports.makeSetter)(state);
     const forEachAccount = (0, exports.processingAccounts)(updateState);
-    const STORE_ID = (0, __1.programIds)().store;
     const forEach = (fn) => async (accounts) => {
         for (const account of accounts) {
             await fn(account, updateState);
@@ -571,13 +633,11 @@ const loadAccounts = async (connection) => {
     }).then(forEach(processMetaplexAccounts_1.processMetaplexAccounts));
     const loadMetadata = () => pullMetadataByCreators(connection, state, updateState);
     const loadEditions = () => pullEditions(connection, updateState, state, state.metadata);
-    const loadPacks = () => (0, PackSet_1.getPackSets)({ connection, storeId: STORE_ID }).then(forEachAccount(processPackSets_1.processPackSets));
     const loading = [
         loadCreators().then(loadMetadata).then(loadEditions),
         loadVaults(),
         loadAuctions(),
         loadMetaplex(),
-        loadPacks(),
     ];
     await Promise.all(loading);
     state.metadata = (0, lodash_1.uniqWith)(state.metadata, (a, b) => a.pubkey === b.pubkey);
@@ -671,6 +731,29 @@ const pullMetadataByCreators = (connection, state, updater) => {
     }
     return Promise.all(additionalPromises);
 };
+const pullMetadataByKeys = async (connection, state, metadataKeys) => {
+    const updateState = (0, exports.makeSetter)(state);
+    let setOf100MetadataEditionKeys = [];
+    const metadataPromises = [];
+    const loadBatch = () => {
+        metadataPromises.push((0, getMultipleAccounts_1.getMultipleAccounts)(connection, setOf100MetadataEditionKeys, 'recent').then(({ keys, array }) => {
+            keys.forEach((key, index) => (0, processMetaData_1.processMetaData)({ pubkey: key, account: array[index] }, updateState));
+        }));
+        setOf100MetadataEditionKeys = [];
+    };
+    for (const metadata of metadataKeys) {
+        setOf100MetadataEditionKeys.push(metadata);
+        if (setOf100MetadataEditionKeys.length >= 100) {
+            loadBatch();
+        }
+    }
+    if (setOf100MetadataEditionKeys.length >= 0) {
+        loadBatch();
+    }
+    await Promise.all(metadataPromises);
+    return state;
+};
+exports.pullMetadataByKeys = pullMetadataByKeys;
 const makeSetter = (state) => (prop, key, value) => {
     if (prop === 'store') {
         state[prop] = value;
@@ -682,6 +765,15 @@ const makeSetter = (state) => (prop, key, value) => {
         state.storeIndexer = state.storeIndexer.filter(p => p.info.page.toNumber() != value.info.page.toNumber());
         state.storeIndexer.push(value);
         state.storeIndexer = state.storeIndexer.sort((a, b) => a.info.page.sub(b.info.page).toNumber());
+    }
+    else if (prop === 'packCardsByPackSet') {
+        if (!state.packCardsByPackSet[key]) {
+            state.packCardsByPackSet[key] = [];
+        }
+        const alreadyHasInState = state.packCardsByPackSet[key].some(({ pubkey }) => pubkey === value.pubkey);
+        if (!alreadyHasInState) {
+            state.packCardsByPackSet[key].push(value);
+        }
     }
     else {
         state[prop][key] = value;
@@ -712,9 +804,10 @@ const metadataByMintUpdater = async (metadata, state) => {
         if (masterEditionKey) {
             state.metadataByMasterEdition[masterEditionKey] = metadata;
         }
-        state.metadataByMint[key] = metadata;
-        if (!state.metadataByMint[key])
+        if (!state.metadata.some(({ pubkey }) => metadata.pubkey === pubkey)) {
             state.metadata.push(metadata);
+        }
+        state.metadataByMint[key] = metadata;
     }
     else {
         delete state.metadataByMint[key];

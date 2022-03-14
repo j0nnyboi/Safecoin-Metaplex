@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -19,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendSignedTransaction = exports.getUnixTs = exports.sendTransactionWithRetry = exports.sendTransaction = exports.sendTransactions = exports.sendTransactionsWithManualRetry = exports.SequenceType = exports.getErrorForTransaction = exports.useConnectionConfig = exports.useConnection = exports.ConnectionProvider = exports.ENDPOINTS = void 0;
+exports.sendSignedTransaction = exports.getUnixTs = exports.sendTransactionWithRetry = exports.sendTransaction = exports.sendTransactionsWithRecentBlock = exports.sendTransactions = exports.sendTransactionsInChunks = exports.sendTransactionsWithManualRetry = exports.SequenceType = exports.getErrorForTransaction = exports.useConnectionConfig = exports.useConnection = exports.ConnectionProvider = exports.ENDPOINTS = void 0;
 const react_1 = __importStar(require("react"));
 const safe_token_registry_1 = require("@safecoin/safe-token-registry");
 const wallet_adapter_base_1 = require("@safecoin/wallet-adapter-base");
@@ -32,19 +36,7 @@ exports.ENDPOINTS = [
     {
         name: 'mainnet-beta',
         label: 'mainnet-beta',
-        url: 'https://api.metaplex.safecoin.org/',
-        chainId: safe_token_registry_1.ENV.MainnetBeta,
-    },
-    {
-        name: 'mainnet-beta-safecoin',
-        label: 'mainnet-beta (safecoin)',
-        url: 'https://api.mainnet-beta.safecoin.org',
-        chainId: safe_token_registry_1.ENV.MainnetBeta,
-    },
-    {
-        name: 'mainnet-beta-serum',
-        label: 'mainnet-beta (Serum)',
-        url: 'https://safecoin-api.projectserum.org/',
+        url: 'https://api.mainnet-beta.safecoin.org/',
         chainId: safe_token_registry_1.ENV.MainnetBeta,
     },
     {
@@ -56,7 +48,7 @@ exports.ENDPOINTS = [
     {
         name: 'devnet',
         label: 'devnet',
-        url: (0, web3_js_1.clusterApiUrl)('devnet'),
+        url: 'https://api.devnet.safecoin.org/',
         chainId: safe_token_registry_1.ENV.Devnet,
     },
 ];
@@ -214,6 +206,64 @@ async function sendTransactionsWithManualRetry(connection, wallet, instructions,
     }
 }
 exports.sendTransactionsWithManualRetry = sendTransactionsWithManualRetry;
+const sendTransactionsInChunks = async (connection, wallet, instructionSet, signersSet, sequenceType = SequenceType.Parallel, commitment = 'singleGossip', timeout = 120000, batchSize) => {
+    if (!wallet.publicKey)
+        throw new wallet_adapter_base_1.WalletNotConnectedError();
+    let instructionsChunk = [instructionSet];
+    let signersChunk = [signersSet];
+    instructionsChunk = (0, utils_1.chunks)(instructionSet, batchSize);
+    signersChunk = (0, utils_1.chunks)(signersSet, batchSize);
+    for (let c = 0; c < instructionsChunk.length; c++) {
+        const unsignedTxns = [];
+        for (let i = 0; i < instructionsChunk[c].length; i++) {
+            const instructions = instructionsChunk[c][i];
+            const signers = signersChunk[c][i];
+            if (instructions.length === 0) {
+                continue;
+            }
+            const transaction = new web3_js_1.Transaction();
+            const block = await connection.getRecentBlockhash(commitment);
+            instructions.forEach(instruction => transaction.add(instruction));
+            transaction.recentBlockhash = block.blockhash;
+            transaction.setSigners(
+            // fee payed by the wallet owner
+            wallet.publicKey, ...signers.map(s => s.publicKey));
+            if (signers.length > 0) {
+                transaction.partialSign(...signers);
+            }
+            unsignedTxns.push(transaction);
+        }
+        const signedTxns = await wallet.signAllTransactions(unsignedTxns);
+        const breakEarlyObject = { breakEarly: false, i: 0 };
+        console.log('Signed txns length', signedTxns.length, 'vs handed in length', instructionSet.length);
+        for (let i = 0; i < signedTxns.length; i++) {
+            const signedTxnPromise = sendSignedTransaction({
+                connection,
+                signedTransaction: signedTxns[i],
+                timeout,
+            });
+            signedTxnPromise.catch(reason => {
+                // @ts-ignore
+                if (sequenceType === SequenceType.StopOnFailure) {
+                    breakEarlyObject.breakEarly = true;
+                    breakEarlyObject.i = i;
+                }
+            });
+            try {
+                await signedTxnPromise;
+            }
+            catch (e) {
+                console.log('Caught failure', e);
+                if (breakEarlyObject.breakEarly) {
+                    console.log('Died on ', breakEarlyObject.i);
+                    return breakEarlyObject.i; // Return the txn we failed on by index
+                }
+            }
+        }
+    }
+    return instructionSet.length;
+};
+exports.sendTransactionsInChunks = sendTransactionsInChunks;
 const sendTransactions = async (connection, wallet, instructionSet, signersSet, sequenceType = SequenceType.Parallel, commitment = 'singleGossip', successCallback = (txid, ind) => { }, failCallback = (txid, ind) => false, block) => {
     if (!wallet.publicKey)
         throw new wallet_adapter_base_1.WalletNotConnectedError();
@@ -281,6 +331,55 @@ const sendTransactions = async (connection, wallet, instructionSet, signersSet, 
     return signedTxns.length;
 };
 exports.sendTransactions = sendTransactions;
+const sendTransactionsWithRecentBlock = async (connection, wallet, instructionSet, signersSet, commitment = 'singleGossip') => {
+    if (!wallet.publicKey)
+        throw new wallet_adapter_base_1.WalletNotConnectedError();
+    const unsignedTxns = [];
+    for (let i = 0; i < instructionSet.length; i++) {
+        const instructions = instructionSet[i];
+        const signers = signersSet[i];
+        if (instructions.length === 0) {
+            continue;
+        }
+        const block = await connection.getRecentBlockhash(commitment);
+        await (0, utils_1.sleep)(1200);
+        const transaction = new web3_js_1.Transaction();
+        instructions.forEach(instruction => transaction.add(instruction));
+        transaction.recentBlockhash = block.blockhash;
+        transaction.setSigners(
+        // fee payed by the wallet owner
+        wallet.publicKey, ...signers.map(s => s.publicKey));
+        if (signers.length > 0) {
+            transaction.partialSign(...signers);
+        }
+        unsignedTxns.push(transaction);
+    }
+    const signedTxns = await wallet.signAllTransactions(unsignedTxns);
+    const breakEarlyObject = { breakEarly: false, i: 0 };
+    console.log('Signed txns length', signedTxns.length, 'vs handed in length', instructionSet.length);
+    for (let i = 0; i < signedTxns.length; i++) {
+        const signedTxnPromise = sendSignedTransaction({
+            connection,
+            signedTransaction: signedTxns[i],
+        });
+        signedTxnPromise.catch(() => {
+            breakEarlyObject.breakEarly = true;
+            breakEarlyObject.i = i;
+        });
+        try {
+            await signedTxnPromise;
+        }
+        catch (e) {
+            console.log('Caught failure', e);
+            if (breakEarlyObject.breakEarly) {
+                console.log('Died on ', breakEarlyObject.i);
+                return breakEarlyObject.i; // Return the txn we failed on by index
+            }
+        }
+    }
+    return signedTxns.length;
+};
+exports.sendTransactionsWithRecentBlock = sendTransactionsWithRecentBlock;
 const sendTransaction = async (connection, wallet, instructions, signers, awaitConfirmation = true, commitment = 'singleGossip', includesFeePayer = false, block) => {
     if (!wallet.publicKey)
         throw new wallet_adapter_base_1.WalletNotConnectedError();

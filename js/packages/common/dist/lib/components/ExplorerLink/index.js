@@ -17,7 +17,7 @@ const ExplorerLink = (props) => {
         return null;
     }
     const length = (_b = props.length) !== null && _b !== void 0 ? _b : 9;
-    return (react_1.default.createElement("a", { href: `https://explorer.safecoin.com/${type}/${address}`, 
+    return (react_1.default.createElement("a", { href: `https://explorer.safecoin.org/${type}/${address}`, 
         // eslint-disable-next-line react/jsx-no-target-blank
         target: "_blank", title: address, style: props.style }, code ? (react_1.default.createElement(antd_1.Typography.Text, { style: props.style, code: true }, (0, utils_1.shortenAddress)(address, length))) : ((0, utils_1.shortenAddress)(address, length))));
 };

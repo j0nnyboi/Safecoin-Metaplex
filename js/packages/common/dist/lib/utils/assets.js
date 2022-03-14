@@ -4,7 +4,7 @@ exports.getAssetCostToStore = exports.ARWEAVE_UPLOAD_ENDPOINT = exports.LAMPORT_
 const arweave_cost_1 = require("@metaplex/arweave-cost");
 const web3_js_1 = require("@safecoin/web3.js");
 exports.LAMPORT_MULTIPLIER = web3_js_1.LAMPORTS_PER_SAFE;
-exports.ARWEAVE_UPLOAD_ENDPOINT = 'https://us-central1-metaplex-studios.cloudfunctions.net/uploadFile';
+exports.ARWEAVE_UPLOAD_ENDPOINT = 'http://www.metaplex.darkartlabs.tech:5000';
 async function getAssetCostToStore(files) {
     const sizes = files.map(f => f.size);
     const result = await (0, arweave_cost_1.calculate)(sizes);

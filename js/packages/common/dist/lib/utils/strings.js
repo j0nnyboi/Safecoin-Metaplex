@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fromUTF8Array = exports.toUTF8Array = void 0;
+exports.getSearchParams = exports.fromUTF8Array = exports.toUTF8Array = void 0;
 // credit https://stackoverflow.com/questions/18729405/how-to-convert-utf8-string-to-byte-array
 function toUTF8Array(str) {
     const utf8 = [];
@@ -61,4 +61,13 @@ function fromUTF8Array(data) {
     return str;
 }
 exports.fromUTF8Array = fromUTF8Array;
+function getSearchParams(search) {
+    const searchParams = new URLSearchParams(search);
+    const searchData = {};
+    for (const key of searchParams.keys()) {
+        searchData[key] = searchParams.get(key);
+    }
+    return searchData;
+}
+exports.getSearchParams = getSearchParams;
 //# sourceMappingURL=strings.js.map

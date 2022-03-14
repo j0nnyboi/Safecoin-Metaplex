@@ -29,4 +29,5 @@ export declare const formatNumber: {
 export declare const formatPct: Intl.NumberFormat;
 export declare function convert(account?: TokenAccount | number, mint?: MintInfo, rate?: number): number;
 export declare function sleep(ms: number): Promise<void>;
+export declare function royalty(value: number | undefined): string;
 //# sourceMappingURL=utils.d.ts.map

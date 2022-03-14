@@ -4,13 +4,7 @@ import {
   WalletProvider as BaseWalletProvider,
 } from "@safecoin/wallet-adapter-react";
 import {
-  getLedgerWallet,
-  getMathWallet,
-  getPhantomWallet,
-  getSolflareWallet,
   getSolletWallet,
-  getSolongWallet,
-  getTorusWallet,
 } from "@safecoin/wallet-adapter-wallets";
 import { Button } from "antd";
 import React, {
@@ -169,18 +163,6 @@ export const WalletModalProvider: FC<{ children: ReactNode }> = ({
 export const WalletProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const wallets = useMemo(
     () => [
-      getPhantomWallet(),
-      getSolflareWallet(),
-      getTorusWallet({
-        options: {
-          clientId:
-            "BEB_D44HovHuXH0Ace97QVqSu1ahCKndjpGhzhVcMy_9XmDTbHyqTbzQTufcyaN0kFwtlVbfPzJwpJXg94gWJqE",
-          uxMode: "redirect",
-        },
-      }),
-      getLedgerWallet(),
-      getSolongWallet(),
-      getMathWallet(),
       getSolletWallet(),
     ],
     []

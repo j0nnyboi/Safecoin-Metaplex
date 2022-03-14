@@ -14,9 +14,9 @@ export interface AllSplTokens {
 }
 
 export const solToUSD = async (): Promise<number> => {
-  const url = `${COINGECKO_COIN_PRICE_API}?ids=safecoin&vs_currencies=usd`;
+  const url = `${COINGECKO_COIN_PRICE_API}?ids=safe-coin-2&vs_currencies=usd`;
   const resp = await window.fetch(url).then(resp => resp.json());
-  return resp.safecoin.usd;
+  return resp.safe-"coin-2".usd;
 };
 
 export const altSplToUSD = async (cgTokenName?: string): Promise<number> => {

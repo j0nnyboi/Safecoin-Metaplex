@@ -1,34 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PACKS_SCHEMA = exports.ActivatePackArgs = exports.AddVoucherToPackArgs = exports.AddCardToPackArgs = exports.InitPackSetArgs = exports.findPackVoucherProgramAddress = exports.findPackCardProgramAddress = exports.getProgramAuthority = exports.VOUCHER_PREFIX = exports.CARD_PREFIX = exports.PACKS_PREFIX = void 0;
-const web3_js_1 = require("@safecoin/web3.js");
-const programIds_1 = require("../utils/programIds");
-const utils_1 = require("../utils");
-exports.PACKS_PREFIX = 'packs';
-exports.CARD_PREFIX = 'card';
-exports.VOUCHER_PREFIX = 'voucher';
-async function getProgramAuthority() {
-    const PROGRAM_IDS = (0, programIds_1.programIds)();
-    return (await (0, utils_1.findProgramAddress)([
-        Buffer.from(exports.PACKS_PREFIX),
-        (0, utils_1.toPublicKey)(PROGRAM_IDS.pack_create).toBuffer(),
-    ], (0, utils_1.toPublicKey)(PROGRAM_IDS.pack_create)))[0];
-}
-exports.getProgramAuthority = getProgramAuthority;
-async function findPackCardProgramAddress(pack, index) {
-    return findProgramAddressByPrefix(pack, index, exports.CARD_PREFIX);
-}
-exports.findPackCardProgramAddress = findPackCardProgramAddress;
-async function findPackVoucherProgramAddress(pack, index) {
-    return findProgramAddressByPrefix(pack, index, exports.VOUCHER_PREFIX);
-}
-exports.findPackVoucherProgramAddress = findPackVoucherProgramAddress;
-async function findProgramAddressByPrefix(packSetKey, index, prefix) {
-    const PROGRAM_IDS = (0, programIds_1.programIds)();
-    const numberBuffer = Buffer.allocUnsafe(4);
-    numberBuffer.writeUInt16LE(index);
-    return (await (0, utils_1.findProgramAddress)([Buffer.from(prefix), new web3_js_1.PublicKey(packSetKey).toBuffer(), numberBuffer], (0, utils_1.toPublicKey)(PROGRAM_IDS.pack_create)))[0];
-}
+exports.PACKS_SCHEMA = exports.CleanUpArgs = exports.RequestCardToRedeemArgs = exports.ClaimPackArgs = exports.ActivatePackArgs = exports.AddVoucherToPackArgs = exports.AddCardToPackArgs = exports.InitPackSetArgs = void 0;
 class InitPackSetArgs {
     constructor(args) {
         this.instruction = 0;
@@ -64,6 +36,26 @@ class ActivatePackArgs {
     }
 }
 exports.ActivatePackArgs = ActivatePackArgs;
+class ClaimPackArgs {
+    constructor(args) {
+        this.instruction = 6;
+        this.index = args.index;
+    }
+}
+exports.ClaimPackArgs = ClaimPackArgs;
+class RequestCardToRedeemArgs {
+    constructor(args) {
+        this.instruction = 12;
+        this.index = args.index;
+    }
+}
+exports.RequestCardToRedeemArgs = RequestCardToRedeemArgs;
+class CleanUpArgs {
+    constructor() {
+        this.instruction = 13;
+    }
+}
+exports.CleanUpArgs = CleanUpArgs;
 exports.PACKS_SCHEMA = new Map([
     [
         InitPackSetArgs,
@@ -103,6 +95,33 @@ exports.PACKS_SCHEMA = new Map([
     ],
     [
         ActivatePackArgs,
+        {
+            kind: 'struct',
+            fields: [['instruction', 'u8']],
+        },
+    ],
+    [
+        ClaimPackArgs,
+        {
+            kind: 'struct',
+            fields: [
+                ['instruction', 'u8'],
+                ['index', 'u32'],
+            ],
+        },
+    ],
+    [
+        RequestCardToRedeemArgs,
+        {
+            kind: 'struct',
+            fields: [
+                ['instruction', 'u8'],
+                ['index', 'u32'],
+            ],
+        },
+    ],
+    [
+        CleanUpArgs,
         {
             kind: 'struct',
             fields: [['instruction', 'u8']],
