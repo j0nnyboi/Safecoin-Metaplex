@@ -4,7 +4,7 @@ import {
   TokenListContainer,
   TokenListProvider,
 } from "@safecoin/safe-token-registry";
-import { WRAPPED_SOL_MINT } from '@project-serum/serum/lib/token-instructions';
+import { WRAPPED_SOL_MINT } from '@j0nnyboi/serum/lib/token-instructions';
 
 // Tag in the spl-token-registry for sollet wrapped tokens.
 export const SPL_REGISTRY_SOLLET_TAG = "wrapped-safecoin";

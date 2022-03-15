@@ -1,7 +1,7 @@
 import { shortenAddress, royalty, pubkeyToString } from '@oyster/common';
 import React from 'react';
 import { Skeleton, Divider } from 'antd';
-import { useWallet } from '@safecoin/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 
 import { MetaAvatar } from '../../../../components/MetaAvatar';
 import { ArtContent } from '../../../../components/ArtContent';

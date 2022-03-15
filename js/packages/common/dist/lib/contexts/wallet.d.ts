@@ -1,4 +1,4 @@
-import { WalletAdapter } from '@safecoin/wallet-adapter-base';
+import { WalletAdapter } from '@j0nnyboi/wallet-adapter-base';
 import React, { FC, ReactNode } from 'react';
 export interface WalletModalContextState {
     visible: boolean;

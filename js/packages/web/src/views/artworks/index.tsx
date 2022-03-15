@@ -1,4 +1,4 @@
-import { useWallet } from '@safecoin/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import React, { useEffect, useState } from 'react';
 import { Layout, Row, Col, Tabs, Dropdown, Menu } from 'antd';
 import { useMeta } from '../../contexts';

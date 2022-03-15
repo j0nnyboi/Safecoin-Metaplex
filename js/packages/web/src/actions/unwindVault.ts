@@ -16,7 +16,7 @@ import {
 
 import BN from 'bn.js';
 import { closeVault } from './closeVault';
-import { WalletNotConnectedError } from '@safecoin/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 const BATCH_SIZE = 1;
 

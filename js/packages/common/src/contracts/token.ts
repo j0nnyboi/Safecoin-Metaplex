@@ -7,7 +7,7 @@ import {
   SystemProgram,
 } from '@safecoin/web3.js';
 import { WalletSigner } from '../contexts';
-import { WalletNotConnectedError } from '@safecoin/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 export const mintNFT = async (
   connection: Connection,

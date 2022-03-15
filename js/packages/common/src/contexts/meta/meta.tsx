@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { useWallet } from '@safecoin/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 
 import { queryExtendedMetadata } from './queryExtendedMetadata';
 import { getEmptyMetaState } from './getEmptyMetaState';

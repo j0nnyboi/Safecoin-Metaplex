@@ -4,7 +4,7 @@ import {
   WalletSigner,
 } from '@oyster/common';
 import { SafetyDepositDraft } from './createAuctionManager';
-import { WalletNotConnectedError } from '@safecoin/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 const SALE_TRANSACTION_SIZE = 10;
 
 export async function markItemsThatArentMineAsSold(

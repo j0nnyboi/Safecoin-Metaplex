@@ -1,5 +1,5 @@
 import { Keypair, Connection, TransactionInstruction } from '@safecoin/web3.js';
-import { WalletNotConnectedError } from '@safecoin/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 import { StringPublicKey, toPublicKey, WalletSigner } from '@oyster/common';
 import { createTokenAccount } from '@oyster/common/dist/lib/actions/account';
 import {

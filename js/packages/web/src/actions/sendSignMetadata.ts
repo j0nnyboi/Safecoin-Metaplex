@@ -5,7 +5,7 @@ import {
   StringPublicKey,
   WalletSigner,
 } from '@oyster/common';
-import { WalletNotConnectedError } from '@safecoin/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 export async function sendSignMetadata(
   connection: Connection,

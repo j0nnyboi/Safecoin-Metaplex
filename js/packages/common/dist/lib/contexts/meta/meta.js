@@ -25,7 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useMeta = exports.MetaProvider = void 0;
 const react_1 = __importStar(require("react"));
-const wallet_adapter_react_1 = require("@safecoin/wallet-adapter-react");
+const wallet_adapter_react_1 = require("@j0nnyboi/wallet-adapter-react");
 const queryExtendedMetadata_1 = require("./queryExtendedMetadata");
 const getEmptyMetaState_1 = require("./getEmptyMetaState");
 const loadAccounts_1 = require("./loadAccounts");

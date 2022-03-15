@@ -35,7 +35,7 @@ import {
   useCreators,
   useUserBalance,
 } from '../../hooks';
-import { useWallet } from '@safecoin/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { sendPlaceBid } from '../../actions/sendPlaceBid';
 import { AuctionCountdown, AuctionNumbers } from '../AuctionNumbers';
 import {

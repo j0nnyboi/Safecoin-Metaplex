@@ -4,7 +4,7 @@ import {
   SequenceType,
 } from '@oyster/common';
 import { Keypair, TransactionInstruction } from '@safecoin/web3.js';
-import { WalletNotConnectedError } from '@safecoin/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 import { programIds } from '@oyster/common';
 
 import { CreatePackParams } from './interface';

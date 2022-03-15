@@ -1,5 +1,5 @@
 import React from 'react';
-import { useWallet } from '@safecoin/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 
 import { Notifications } from '../Notifications';
 import { LogoLink, MetaplexMenu } from '../AppBar';

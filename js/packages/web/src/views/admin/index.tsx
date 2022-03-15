@@ -28,7 +28,7 @@ import {
   useWalletModal,
   WalletSigner,
 } from '@oyster/common';
-import { useWallet } from '@safecoin/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { Connection } from '@safecoin/web3.js';
 import { saveAdmin } from '../../actions/saveAdmin';
 import {

@@ -7,7 +7,7 @@ import {
   toPublicKey,
 } from '@oyster/common';
 import { ProvingProcess } from '@oyster/common/dist/lib/models/packs/accounts/ProvingProcess';
-import { WalletNotConnectedError } from '@safecoin/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 import { requestCards } from '../../transactions/requestCards';
 import {

@@ -1,7 +1,7 @@
 import { Button, Dropdown, Menu } from 'antd';
 import { ButtonProps } from 'antd/lib/button';
 import React, { useCallback } from 'react';
-import { useWallet } from '@safecoin/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { useWalletModal } from '../../contexts';
 
 export interface ConnectButtonProps

@@ -1,4 +1,4 @@
-import { useWallet } from '@safecoin/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { AuctionView } from '../../../hooks';
 import { BidStateType } from '@oyster/common';
 

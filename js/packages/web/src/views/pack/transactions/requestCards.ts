@@ -6,7 +6,7 @@ import {
   chunks,
 } from '@oyster/common';
 
-import { WalletNotConnectedError } from '@safecoin/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 import { Keypair, TransactionInstruction } from '@safecoin/web3.js';
 
 import {

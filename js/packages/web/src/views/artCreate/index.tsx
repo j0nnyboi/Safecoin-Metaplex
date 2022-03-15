@@ -35,7 +35,7 @@ import {
   getAssetCostToStore,
   LAMPORT_MULTIPLIER,
 } from '@oyster/common';
-import { useWallet } from '@safecoin/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { Connection } from '@safecoin/web3.js';
 import { MintLayout } from '@safecoin/safe-token';
 import { useHistory, useParams } from 'react-router-dom';

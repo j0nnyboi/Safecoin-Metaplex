@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.mintNFT = void 0;
 const safe_token_1 = require("@safecoin/safe-token");
 const web3_js_1 = require("@safecoin/web3.js");
-const wallet_adapter_base_1 = require("@safecoin/wallet-adapter-base");
+const wallet_adapter_base_1 = require("@j0nnyboi/wallet-adapter-base");
 const mintNFT = async (connection, wallet, 
 // SOL account
 owner) => {

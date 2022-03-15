@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { Button, Select } from 'antd';
 import { Tooltip } from 'antd';
-import { useWallet } from '@safecoin/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { ENDPOINTS, useConnectionConfig } from '../../contexts/connection';
 import { useWalletModal } from '../../contexts';
 import { notify, shortenAddress } from '../../utils';

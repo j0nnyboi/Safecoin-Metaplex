@@ -25,7 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useAccount = exports.useMint = exports.useNativeAccount = exports.AccountsProvider = exports.useAccountsContext = void 0;
 const react_1 = __importStar(require("react"));
-const wallet_adapter_react_1 = require("@safecoin/wallet-adapter-react");
+const wallet_adapter_react_1 = require("@j0nnyboi/wallet-adapter-react");
 const web3_js_1 = require("@safecoin/web3.js");
 const safe_token_1 = require("@safecoin/safe-token");
 const connection_1 = require("../../contexts/connection");

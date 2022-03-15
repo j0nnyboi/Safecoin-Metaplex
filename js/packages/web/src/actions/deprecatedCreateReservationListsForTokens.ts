@@ -4,7 +4,7 @@ import {
   StringPublicKey,
   WalletSigner,
 } from '@oyster/common';
-import { WalletNotConnectedError } from '@safecoin/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 import { SafetyDepositInstructionTemplate } from './addTokensToVault';
 import { WinningConfigType } from '@oyster/common/dist/lib/models/metaplex/index';
 

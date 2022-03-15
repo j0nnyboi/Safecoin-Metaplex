@@ -36,7 +36,7 @@ import {
   useNativeAccount,
 } from '@oyster/common';
 import { Connection, LAMPORTS_PER_SOL, PublicKey } from '@safecoin/web3.js';
-import { useWallet } from '@safecoin/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { MintInfo, MintLayout } from '@safecoin/safe-token';
 import { useHistory, useParams } from 'react-router-dom';
 import { capitalize } from 'lodash';

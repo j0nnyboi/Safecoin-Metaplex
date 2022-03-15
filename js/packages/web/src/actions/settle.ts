@@ -19,7 +19,7 @@ import { AuctionView } from '../hooks';
 import { claimBid } from '@oyster/common/dist/lib/models/metaplex/claimBid';
 import { emptyPaymentAccount } from '@oyster/common/dist/lib/models/metaplex/emptyPaymentAccount';
 import { setupPlaceBid } from './sendPlaceBid';
-import { WalletNotConnectedError } from '@safecoin/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 const BATCH_SIZE = 10;
 const SETTLE_TRANSACTION_SIZE = 6;

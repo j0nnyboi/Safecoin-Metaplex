@@ -26,7 +26,7 @@ import {
   pubkeyToString,
   WRAPPED_SOL_MINT,
 } from '@oyster/common';
-import { WalletNotConnectedError } from '@safecoin/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 import { AccountLayout, MintLayout, Token } from '@safecoin/safe-token';
 import { AuctionView } from '../hooks';
 import {

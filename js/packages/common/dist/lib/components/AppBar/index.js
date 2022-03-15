@@ -11,7 +11,7 @@ const icons_1 = require("@ant-design/icons");
 const Settings_1 = require("../Settings");
 const labels_1 = require("../../constants/labels");
 const __1 = require("..");
-const wallet_adapter_react_1 = require("@safecoin/wallet-adapter-react");
+const wallet_adapter_react_1 = require("@j0nnyboi/wallet-adapter-react");
 const AppBar = (props) => {
     const { connected } = (0, wallet_adapter_react_1.useWallet)();
     const TopBar = (react_1.default.createElement("div", { className: "App-Bar-right" },

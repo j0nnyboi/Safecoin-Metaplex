@@ -8,7 +8,7 @@ import {
   StringPublicKey,
   toPublicKey,
 } from '@oyster/common';
-import { WalletNotConnectedError } from '@safecoin/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 export async function createMintAndAccountWithOne(
   wallet: any,

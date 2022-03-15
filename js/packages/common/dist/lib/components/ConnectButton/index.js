@@ -26,7 +26,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ConnectButton = void 0;
 const antd_1 = require("antd");
 const react_1 = __importStar(require("react"));
-const wallet_adapter_react_1 = require("@safecoin/wallet-adapter-react");
+const wallet_adapter_react_1 = require("@j0nnyboi/wallet-adapter-react");
 const contexts_1 = require("../../contexts");
 const ConnectButton = (props) => {
     const { children, disabled, allowWalletChange, className, ...rest } = props;

@@ -26,7 +26,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendSignedTransaction = exports.getUnixTs = exports.sendTransactionWithRetry = exports.sendTransaction = exports.sendTransactionsWithRecentBlock = exports.sendTransactions = exports.sendTransactionsInChunks = exports.sendTransactionsWithManualRetry = exports.SequenceType = exports.getErrorForTransaction = exports.useConnectionConfig = exports.useConnection = exports.ConnectionProvider = exports.ENDPOINTS = void 0;
 const react_1 = __importStar(require("react"));
 const safe_token_registry_1 = require("@safecoin/safe-token-registry");
-const wallet_adapter_base_1 = require("@safecoin/wallet-adapter-base");
+const wallet_adapter_base_1 = require("@j0nnyboi/wallet-adapter-base");
 const web3_js_1 = require("@safecoin/web3.js");
 const utils_1 = require("../utils/utils");
 const notifications_1 = require("../utils/notifications");

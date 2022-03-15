@@ -6,7 +6,7 @@ import {
   ParsedAccount,
 } from '@oyster/common';
 import { ProvingProcess } from '@oyster/common/dist/lib/models/packs/accounts/ProvingProcess';
-import { useWallet } from '@safecoin/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router';
 

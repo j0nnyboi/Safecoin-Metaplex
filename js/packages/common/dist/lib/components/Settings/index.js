@@ -26,7 +26,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Settings = void 0;
 const react_1 = __importStar(require("react"));
 const antd_1 = require("antd");
-const wallet_adapter_react_1 = require("@safecoin/wallet-adapter-react");
+const wallet_adapter_react_1 = require("@j0nnyboi/wallet-adapter-react");
 const connection_1 = require("../../contexts/connection");
 const contexts_1 = require("../../contexts");
 const utils_1 = require("../../utils");

@@ -1,4 +1,4 @@
-import { calculate } from '@metaplex/arweave-cost';
+import { calculate } from '@j0nnyboi/arweave-cost';
 import { LAMPORTS_PER_SAFE } from '@safecoin/web3.js';
 
 export const LAMPORT_MULTIPLIER = LAMPORTS_PER_SAFE;

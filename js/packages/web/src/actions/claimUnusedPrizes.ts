@@ -13,7 +13,7 @@ import {
   toPublicKey,
   WalletSigner,
 } from '@oyster/common';
-import { WalletNotConnectedError } from '@safecoin/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 import { AccountLayout, MintLayout } from '@safecoin/safe-token';
 import { AuctionView } from '../hooks';
 import {

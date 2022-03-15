@@ -24,7 +24,7 @@ import {
 } from '@oyster/common/dist/lib/models/metaplex/index';
 import { claimUnusedPrizes } from './claimUnusedPrizes';
 import { findAta, setupPlaceBid } from './sendPlaceBid';
-import { WalletNotConnectedError } from '@safecoin/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 export async function sendCancelBid(
   connection: Connection,

@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CurrentUserBadge = void 0;
 const react_1 = __importDefault(require("react"));
 const web3_js_1 = require("@safecoin/web3.js");
-const wallet_adapter_react_1 = require("@safecoin/wallet-adapter-react");
+const wallet_adapter_react_1 = require("@j0nnyboi/wallet-adapter-react");
 const accounts_1 = require("../../contexts/accounts");
 const utils_1 = require("../../utils");
 const antd_1 = require("antd");

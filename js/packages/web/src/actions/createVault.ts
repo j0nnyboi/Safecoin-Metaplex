@@ -20,7 +20,7 @@ import {
 import { createTokenAccount } from '@oyster/common/dist/lib/actions/account';
 
 import { AccountLayout, MintLayout } from '@safecoin/safe-token';
-import { WalletNotConnectedError } from '@safecoin/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 // This command creates the external pricing oracle a vault
 // This gets the vault ready for adding the tokens.

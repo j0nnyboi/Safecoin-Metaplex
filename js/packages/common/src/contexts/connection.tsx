@@ -4,7 +4,7 @@ import {
   TokenListProvider,
   ENV as ChainId,
 } from '@safecoin/safe-token-registry';
-import { WalletNotConnectedError } from '@safecoin/wallet-adapter-base';
+import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 import {
   Keypair,
   clusterApiUrl,
