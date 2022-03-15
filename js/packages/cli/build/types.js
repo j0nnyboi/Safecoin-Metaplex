@@ -1,17 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.METADATA_SCHEMA = exports.Metadata = exports.Data = exports.Edition = exports.EditionMarker = exports.MasterEditionV2 = exports.MasterEditionV1 = exports.MetadataKey = exports.ConfigData = exports.Creator = void 0;
-var Creator = /** @class */ (function () {
-    function Creator(args) {
+class Creator {
+    constructor(args) {
         this.address = args.address;
         this.verified = args.verified;
         this.share = args.share;
     }
-    return Creator;
-}());
+}
 exports.Creator = Creator;
-var ConfigData = /** @class */ (function () {
-    function ConfigData(args) {
+class ConfigData {
+    constructor(args) {
         this.name = args.name;
         this.symbol = args.symbol;
         this.uri = args.uri;
@@ -22,8 +21,7 @@ var ConfigData = /** @class */ (function () {
         this.maxSupply = args.maxSupply;
         this.retainAuthority = args.retainAuthority;
     }
-    return ConfigData;
-}());
+}
 exports.ConfigData = ConfigData;
 var MetadataKey;
 (function (MetadataKey) {
@@ -34,8 +32,8 @@ var MetadataKey;
     MetadataKey[MetadataKey["MasterEditionV2"] = 6] = "MasterEditionV2";
     MetadataKey[MetadataKey["EditionMarker"] = 7] = "EditionMarker";
 })(MetadataKey = exports.MetadataKey || (exports.MetadataKey = {}));
-var MasterEditionV1 = /** @class */ (function () {
-    function MasterEditionV1(args) {
+class MasterEditionV1 {
+    constructor(args) {
         this.key = MetadataKey.MasterEditionV1;
         this.supply = args.supply;
         this.maxSupply = args.maxSupply;
@@ -43,48 +41,43 @@ var MasterEditionV1 = /** @class */ (function () {
         this.oneTimePrintingAuthorizationMint =
             args.oneTimePrintingAuthorizationMint;
     }
-    return MasterEditionV1;
-}());
+}
 exports.MasterEditionV1 = MasterEditionV1;
-var MasterEditionV2 = /** @class */ (function () {
-    function MasterEditionV2(args) {
+class MasterEditionV2 {
+    constructor(args) {
         this.key = MetadataKey.MasterEditionV2;
         this.supply = args.supply;
         this.maxSupply = args.maxSupply;
     }
-    return MasterEditionV2;
-}());
+}
 exports.MasterEditionV2 = MasterEditionV2;
-var EditionMarker = /** @class */ (function () {
-    function EditionMarker(args) {
+class EditionMarker {
+    constructor(args) {
         this.key = MetadataKey.EditionMarker;
         this.ledger = args.ledger;
     }
-    return EditionMarker;
-}());
+}
 exports.EditionMarker = EditionMarker;
-var Edition = /** @class */ (function () {
-    function Edition(args) {
+class Edition {
+    constructor(args) {
         this.key = MetadataKey.EditionV1;
         this.parent = args.parent;
         this.edition = args.edition;
     }
-    return Edition;
-}());
+}
 exports.Edition = Edition;
-var Data = /** @class */ (function () {
-    function Data(args) {
+class Data {
+    constructor(args) {
         this.name = args.name;
         this.symbol = args.symbol;
         this.uri = args.uri;
         this.sellerFeeBasisPoints = args.sellerFeeBasisPoints;
         this.creators = args.creators;
     }
-    return Data;
-}());
+}
 exports.Data = Data;
-var Metadata = /** @class */ (function () {
-    function Metadata(args) {
+class Metadata {
+    constructor(args) {
         this.key = MetadataKey.MetadataV1;
         this.updateAuthority = args.updateAuthority;
         this.mint = args.mint;
@@ -92,8 +85,7 @@ var Metadata = /** @class */ (function () {
         this.primarySaleHappened = args.primarySaleHappened;
         this.isMutable = args.isMutable;
     }
-    return Metadata;
-}());
+}
 exports.Metadata = Metadata;
 exports.METADATA_SCHEMA = new Map([
     [
