@@ -11,7 +11,7 @@
     "@j0nnyboi/arweave-cost": "^1.0.0",
     "@oyster/common": "file:../common",
     "@j0nnyboi/serum": "^0.1.0",
-    "@safecoin/safe-name-service": "file:../../../../safecoin-program-libary/name-service/js",
+    "@safecoin/safe-name-service": "^0.1.3",
     "@safecoin/safe-token": "^0.1.7-b",
     "@safecoin/safe-token-registry": "^0.2.282",
     "@j0nnyboi/wallet-adapter-base": "^0.2.0",
