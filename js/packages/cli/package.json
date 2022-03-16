@@ -57,7 +57,7 @@
     "mime": "^3.0.0",
     "node-fetch": "^2.6.1",
     "weighted": "^0.3.0",
-    "@metaplex-foundation/mpl-token-metadata": "file:../../metaplex-program-library/token-metadata/js"
+    "@metaplex-foundation/mpl-token-metadata": "file:../../Metaplex-program-library/token-metadata/js"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.6",
