@@ -8,7 +8,7 @@
     "@cloudflare/stream-react": "^1.1.0",
     "@google/model-viewer": "^1.7.2",
     "@j0nnyboi/magic-ext-safecoin": "^0.1.0",
-    "@j0nnyboi/arweave-cost": "^1.0.0",
+    "@j0nnyboi/arweave-cost": "^2.0.0",
     "@oyster/common": "file:../common",
     "@j0nnyboi/serum": "^0.1.0",
     "@safecoin/safe-name-service": "^0.1.3",
