@@ -6,32 +6,13 @@
 
 
 
-you need these respostries 
+Safecoin-Metaplex is a protocol built on top of safecoin forked from Metaplex that allows:
 
-https://github.com/charles-e/bh-serumdex
-
-https://github.com/charles-e/bh-serum-4.0.0
-
-https://github.com/charles-e/bh-anchor18 // please rename to just "bh-anchor"
-
-safecoin and safecoin-program-library installed and build
-
-https://github.com/Fair-Exchange/Safecoin ./scripts/cargo-install-all.sh .
-
-https://github.com/Fair-Exchange/safecoin-program-library cargo build-bpf
-
-
-
-
-
-
-Metaplex is a protocol built on top of safecoin that allows:
-
-- **Creating/Minting** Non-Fungible Tokens;
+- **Creating/Minting** Non-Fungible Toens;
 - **Starting** A variety of auctions for primary/secondary sales;
 - and **Visualizing** NFTs in a standard way across wallets and applications.
 
-Metaplex is comprised of two core components: an on-chain program, and a self-hosted front-end web3 application.
+Safecoin-Metaplex is comprised of two core components: an on-chain program, and a self-hosted front-end web3 application.
 
 ## Important NOTE
 
