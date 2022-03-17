@@ -1167,14 +1167,6 @@ const LaunchStep = (props: {
         >
           Pay with SAFE
         </Button>
-        <Button
-          disabled={true}
-          size="large"
-          onClick={props.confirm}
-          className="action-btn"
-        >
-          Pay with Credit Card
-        </Button>
       </Row>
     </>
   );
@@ -1278,11 +1270,11 @@ const Congrats = (props: {
 
   const newTweetURL = () => {
     const params = {
-      text: "I've created a new NFT artwork on Metaplex, check it out!",
+      text: "I've created a new NFT artwork on Safecoin-Metaplex, check it out!",
       url: `${
         window.location.origin
       }/#/art/${props.nft?.metadataAccount.toString()}`,
-      hashtags: 'NFT,Crypto,Metaplex',
+      hashtags: 'NFT,Crypto,Safecoin-Metaplex',
       // via: "Metaplex",
       related: 'Metaplex,safecoin',
     };

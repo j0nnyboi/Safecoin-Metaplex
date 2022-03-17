@@ -1191,7 +1191,7 @@ const PriceAuction = (props: {
                 placeholder="Fixed Price"
                 prefix="◎"
                 suffix={props.attributes.quoteMintInfoExtended? props.attributes.quoteMintInfoExtended.symbol
-                    : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "SOL": "CUSTOM"}
+                    : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "Safe": "CUSTOM"}
                 onChange={info =>
                   props.setAttributes({
                     ...props.attributes,
@@ -1217,7 +1217,7 @@ const PriceAuction = (props: {
                 placeholder="Price"
                 prefix="◎"
                 suffix={props.attributes.quoteMintInfoExtended? props.attributes.quoteMintInfoExtended.symbol
-                  : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "SOL": "CUSTOM"}
+                  : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "Safe": "CUSTOM"}
                 onChange={info =>
                   props.setAttributes({
                     ...props.attributes,
@@ -1237,10 +1237,10 @@ const PriceAuction = (props: {
               min={0}
               className="input"
               placeholder={`Tick size in ${props.attributes.quoteMintInfoExtended? props.attributes.quoteMintInfoExtended.symbol
-                : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "SOL": "your custom currency"}`}
+                : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "Safe": "your custom currency"}`}
               prefix="◎"
               suffix={props.attributes.quoteMintInfoExtended? props.attributes.quoteMintInfoExtended.symbol
-                : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "SOL": "CUSTOM"}
+                : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "Safe": "CUSTOM"}
               onChange={info =>
                 props.setAttributes({
                   ...props.attributes,
