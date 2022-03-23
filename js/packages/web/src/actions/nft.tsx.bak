@@ -60,7 +60,7 @@ const uploadToArweave = async (data: FormData): Promise<IArweaveResult> => {
   if (!resp.ok) {
     return Promise.reject(
       new Error(
-        'Safe-Store issues. Please wait and then try again.',
+        'Arweave issues. Please wait and then try again.',
       ),
     );
   }
@@ -338,7 +338,7 @@ export const mintNFT = async (
       message: 'Art created on safecoin',
       description: (
         <a href={arweaveLink} target="_blank" rel="noopener noreferrer">
-          Safe-Store Link
+          Arweave Link
         </a>
       ),
       type: 'success',
