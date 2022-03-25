@@ -34,7 +34,7 @@
     "@j0nnyboi/arweave-cost": "^2.0.0",
     "@j0nnyboi/serum": "^0.1.0",
     "@safecoin/safe-token": "^0.1.7-b",
-    "@safecoin/safe-token-registry": "^0.2.282",
+    "@j0nnyboi/token-registry": "^0.2.0",
     "@j0nnyboi/wallet-adapter-base": "^0.2.0",
     "@j0nnyboi/wallet-adapter-react": "^0.2.0",
     "@j0nnyboi/wallet-adapter-wallets": "^0.2.0",
