@@ -5,7 +5,7 @@ import { TokenAccount } from './../models';
 import { PublicKey } from '@safecoin/web3.js';
 import BN from 'bn.js';
 import { WAD, ZERO } from '../constants';
-import { TokenInfo } from '@safecoin/safe-token-registry';
+import { TokenInfo } from '@j0nnyboi/safe-token-registry';
 import { useLocalStorage } from './useLocalStorage';
 
 export type KnownTokenMap = Map<string, TokenInfo>;

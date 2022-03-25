@@ -3,7 +3,7 @@ import {
   TokenInfo,
   TokenListProvider,
   ENV as ChainId,
-} from '@safecoin/safe-token-registry';
+} from '@j0nnyboi/safe-token-registry';
 import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 import {
   Keypair,
