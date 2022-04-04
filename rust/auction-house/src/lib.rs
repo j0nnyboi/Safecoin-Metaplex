@@ -17,7 +17,7 @@ use {
     safe_token::instruction::{approve, revoke},
 };
 
-anchor_lang::declare_id!("8MdxQtTSgatujFtx3fRM4puvoZafP8kVbTNSDhUi2RgN");
+anchor_lang::declare_id!("56gcEM7RFeoAvZzgdWLfhi53bdNPd4doTodaJHcn5pZt");
 
 const PREFIX: &str = "auction_house";
 const FEE_PAYER: &str = "fee_payer";

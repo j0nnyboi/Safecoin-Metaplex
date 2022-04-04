@@ -11,4 +11,4 @@ pub mod processor;
 pub const PREFIX: &str = "auction";
 
 pub const EXTENDED: &str = "extended";
-safecoin_program::declare_id!("9AFcqUZfuNQgH7jsNHvBkKBibmrpwv3LZT6T3NNXueqi");
+safecoin_program::declare_id!("Hz59yD8jEm9jFTtC4GnxM1bbBKRcb57NtoSJYa1CBA8K");

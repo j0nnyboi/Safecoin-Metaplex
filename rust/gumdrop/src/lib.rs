@@ -13,7 +13,7 @@ use std::io::Write;
 
 pub mod merkle_proof;
 
-declare_id!("43jHxgqwh2HCKQ6W8oRdRmC3H6S7cHUWy2KmZm8t4YFs");
+declare_id!("HPh9XLtCU1LcMi3pSYBkptAZjkue1xKZ7MmzSDWiynKK");
 
 fn get_or_create_claim_count<'a>(
     distributor     : &Account<'a, MerkleDistributor>,
