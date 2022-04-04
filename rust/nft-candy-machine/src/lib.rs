@@ -17,7 +17,7 @@ use {
     safe_token::state::Mint,
     std::cell::Ref,
 };
-anchor_lang::declare_id!("55aUHnbRfsG3aft1VisRgkVkQqm2hoFbbiGDAsZctpii");
+anchor_lang::declare_id!("Fge8g9NWgysGk2FdqMFxWaZ8mNLWFZydRquWqVdSfh2N");
 
 const PREFIX: &str = "candy_machine";
 #[program]

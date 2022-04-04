@@ -12,4 +12,4 @@ pub mod utils_test;
 // Export current sdk types for downstream users building with a different sdk version
 pub use safecoin_program;
 
-safecoin_program::declare_id!("FFQ39M4FxfqGN8oA5Vg8ZgSuWDCGoEW4nb2ubgYpAHR3");
+safecoin_program::declare_id!("9VDp1UoquCEaDs42go4ubDvzHBH4S4a295nDNuAXPvYm");
