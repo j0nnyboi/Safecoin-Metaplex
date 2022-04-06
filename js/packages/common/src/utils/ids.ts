@@ -66,16 +66,16 @@ export const MEMO_ID = new PublicKey(
 );
 
 export const METADATA_PROGRAM_ID =
-  '3GbymizMREdDpAcpahKtzXHrdJME7LbBcHRZ6x8NktYX' as StringPublicKey;
+  'WbMTNyvtk8vSMu2AmXV7mKuYrADRNw9GSkNtWKsZ7qe' as StringPublicKey;
 
 export const VAULT_ID =
-  'AaBB3JH4isHshw6Uv1u4vPCa5yrSFDnKenEdmVJYgX9V ' as StringPublicKey;
+  '9sfa9YXCZKvzMcpRFfaW3kudtqoqW4jKTfjsn5Q3fp8N ' as StringPublicKey;
 
 export const AUCTION_ID =
-  '8zJZSWUfYAT2bqZHrtFfxjhEcJFdwEeKLvoxCbU4XEwC' as StringPublicKey;
+  'ETy2M4RHk1K9fXtzP5wuvP7iUZPazbsgsTvAWFDigkj4' as StringPublicKey;
 
 export const METAPLEX_ID =
-  '2ghhLodRp9Lo8zj8SbZxd6TvWDYcxsrL12WmcMu71Dkr' as StringPublicKey;
+  '4Mwn4v5KdBGv5KGbjjiVJtKQLjEmTFATmhLv8gHf6LNg' as StringPublicKey;
 
 export const PACK_CREATE_ID = new PublicKey(
   'packFeFNZzMfD9aVWL7QbGz1WcU7R9zpf6pvNsw2BLu',
