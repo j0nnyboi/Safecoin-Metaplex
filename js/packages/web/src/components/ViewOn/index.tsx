@@ -16,7 +16,7 @@ export const ViewOn = ({ id }: { id: string }) => {
             className="tag"
             onClick={() => window.open(art.uri || '', '_blank')}
           >
-            Safe-Store
+            Arweave
           </Button>
           <Button
             className="tag"

@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import { TransactionInstruction } from '@safecoin/web3.js';
 import BN from 'bn.js';
 import { AccountParser } from '../contexts/accounts/types';

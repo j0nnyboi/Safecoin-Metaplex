@@ -1,5 +1,4 @@
 /// <reference types="react" />
-/// <reference types="node" />
 import { AccountInfo, PublicKey } from '@safecoin/web3.js';
 import { MintInfo } from '@safecoin/safe-token';
 import { TokenAccount } from '../../models';

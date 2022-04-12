@@ -69,7 +69,7 @@ export const METADATA_PROGRAM_ID =
   'WbMTNyvtk8vSMu2AmXV7mKuYrADRNw9GSkNtWKsZ7qe' as StringPublicKey;
 
 export const VAULT_ID =
-  '9sfa9YXCZKvzMcpRFfaW3kudtqoqW4jKTfjsn5Q3fp8N ' as StringPublicKey;
+  '9sfa9YXCZKvzMcpRFfaW3kudtqoqW4jKTfjsn5Q3fp8N' as StringPublicKey;
 
 export const AUCTION_ID =
   'ETy2M4RHk1K9fXtzP5wuvP7iUZPazbsgsTvAWFDigkj4' as StringPublicKey;

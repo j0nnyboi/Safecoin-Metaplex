@@ -387,8 +387,8 @@ const UploadStep = (props: {
       <Row className="call-to-action">
         <h2>Now, let's upload your creation</h2>
         <p style={{ fontSize: '1.2rem' }}>
-          Your file will be uploaded to the decentralized web via Safe-Store.
-          Depending on file type, can take up to 1 minute. Safe-Store is a new type
+          Your file will be uploaded to the decentralized web via Arweave.
+          Depending on file type, can take up to 1 minute. Arweave is a new type
           of storage that backs data with sustainable and perpetual endowments,
           allowing users and developers to truly store data forever – for the
           very first time.
@@ -1167,6 +1167,14 @@ const LaunchStep = (props: {
         >
           Pay with SAFE
         </Button>
+        <Button
+          disabled={true}
+          size="large"
+          onClick={props.confirm}
+          className="action-btn"
+        >
+          Pay with Credit Card
+        </Button>
       </Row>
     </>
   );
@@ -1240,7 +1248,7 @@ const WaitingStep = (props: {
           />
           <Step
             className={'white-description'}
-            title="Uploading to Safe-Store"
+            title="Uploading to Arweave"
             icon={setIconForStep(props.step, 6)}
           />
           <Step
@@ -1270,11 +1278,11 @@ const Congrats = (props: {
 
   const newTweetURL = () => {
     const params = {
-      text: "I've created a new NFT artwork on Safecoin-Metaplex, check it out!",
+      text: "I've created a new NFT artwork on Metaplex, check it out!",
       url: `${
         window.location.origin
       }/#/art/${props.nft?.metadataAccount.toString()}`,
-      hashtags: 'NFT,Crypto,Safecoin-Metaplex',
+      hashtags: 'NFT,Crypto,Metaplex',
       // via: "Metaplex",
       related: 'Metaplex,safecoin',
     };

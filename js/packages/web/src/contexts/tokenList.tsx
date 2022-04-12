@@ -3,11 +3,11 @@ import {
   TokenInfo,
   TokenListContainer,
   TokenListProvider,
-} from "@j0nnyboi/safe-token-registry";
+} from "@safecoin/safe-token-registry";
 import { WRAPPED_SOL_MINT } from '@j0nnyboi/serum/lib/token-instructions';
 
 // Tag in the spl-token-registry for sollet wrapped tokens.
-export const SPL_REGISTRY_SOLLET_TAG = "wrapped-safe";
+export const SPL_REGISTRY_SOLLET_TAG = "wrapped-safecoin";
 
 // Tag in the spl-token-registry for wormhole wrapped tokens.
 export const SPL_REGISTRY_WORM_TAG = "wormhole";
@@ -43,7 +43,7 @@ export function SPLTokenListProvider({ children = null as any }) {
   const hasOtherTokens = !!process.env.NEXT_SPL_TOKEN_MINTS;
 
   // Added tokenList to know in which currency the auction is (SOL or other SPL)
-  const mainnetTokens = tokenList?tokenList.filterByClusterSlug("mainnet-beta").getList().filter(f=> subscribedTokenMints.some(s=> s == f.address) )
+  const mainnetTokens = tokenList?tokenList.filterByClusterSlug("devnet").getList().filter(f=> subscribedTokenMints.some(s=> s == f.address) )
     :[]
 
   const tokenMap = useMemo(() => {
