@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { TokenInfo, ENV as ChainId } from '@safecoin/safe-token-registry';
+import { TokenInfo, ENV as ChainId } from '@j0nnyboi/safe-token-registry';
 import { Keypair, Commitment, Connection, Transaction, TransactionInstruction, Blockhash, FeeCalculator } from '@safecoin/web3.js';
 import { WalletSigner } from './wallet';
 interface BlockhashAndFeeCalculator {

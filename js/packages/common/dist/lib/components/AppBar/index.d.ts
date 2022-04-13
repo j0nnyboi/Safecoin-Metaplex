@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export declare const AppBar: (props: {
     left?: JSX.Element;
     right?: JSX.Element;

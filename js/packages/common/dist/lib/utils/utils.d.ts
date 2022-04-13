@@ -1,9 +1,8 @@
-/// <reference types="node" />
 import { MintInfo } from '@safecoin/safe-token';
 import { TokenAccount } from './../models';
 import { PublicKey } from '@safecoin/web3.js';
 import BN from 'bn.js';
-import { TokenInfo } from '@safecoin/safe-token-registry';
+import { TokenInfo } from '@j0nnyboi/safe-token-registry';
 export declare type KnownTokenMap = Map<string, TokenInfo>;
 export declare const formatPriceNumber: Intl.NumberFormat;
 export declare function useLocalStorageState<T>(key: string, defaultState?: T): [T, (key: string) => void];

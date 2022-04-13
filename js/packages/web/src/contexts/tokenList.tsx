@@ -3,7 +3,7 @@ import {
   TokenInfo,
   TokenListContainer,
   TokenListProvider,
-} from "@safecoin/safe-token-registry";
+} from "@j0nnyboi/safe-token-registry";
 import { WRAPPED_SOL_MINT } from '@j0nnyboi/serum/lib/token-instructions';
 
 // Tag in the spl-token-registry for sollet wrapped tokens.

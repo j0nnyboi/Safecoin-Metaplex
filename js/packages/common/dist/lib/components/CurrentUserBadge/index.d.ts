@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export declare const CurrentUserBadge: (props: {
     showBalance?: boolean;
     showAddress?: boolean;
