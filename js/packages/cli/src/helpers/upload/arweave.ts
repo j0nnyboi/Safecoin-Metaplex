@@ -1,11 +1,11 @@
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 import FormData from 'form-data';
 import fs from 'fs';
 import path from 'path';
 import log from 'loglevel';
 import fetch from 'node-fetch';
 import { stat } from 'fs/promises';
-import { calculate } from '@metaplex/arweave-cost';
+import { calculate } from '@j0nnyboi/arweave-cost';
 import { ARWEAVE_PAYMENT_WALLET } from '../constants';
 import { sendTransactionWithRetryWithKeypair } from '../transactions';
 

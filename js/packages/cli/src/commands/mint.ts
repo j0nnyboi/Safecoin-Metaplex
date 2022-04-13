@@ -14,7 +14,7 @@ import {
   TOKEN_METADATA_PROGRAM_ID,
   TOKEN_PROGRAM_ID,
 } from '../helpers/constants';
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 import { MintLayout, Token } from '@safecoin/safe-token';
 import { createAssociatedTokenAccountInstruction } from '../helpers/instructions';
 import { sendTransactionWithRetryWithKeypair } from '../helpers/transactions';

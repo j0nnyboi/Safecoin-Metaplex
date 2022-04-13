@@ -3,7 +3,7 @@ import base58 from 'bs58';
 import { PublicKey } from '@safecoin/web3.js';
 type StringPublicKey = string;
 
-import { BN } from '@project-serum/anchor';
+import { BN } from '@j0nnyboi/anchor';
 
 export enum MetadataKey {
   Uninitialized = 0,

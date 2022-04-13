@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import * as fs from 'fs';
 import { program } from 'commander';
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 import { LAMPORTS_PER_SOL } from '@safecoin/web3.js';
 import { Token, MintLayout } from '@safecoin/safe-token';
 import {

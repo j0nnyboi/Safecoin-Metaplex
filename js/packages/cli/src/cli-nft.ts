@@ -3,7 +3,7 @@ import log from 'loglevel';
 import { mintNFT, updateMetadata, verifyCollection } from './commands/mint-nft';
 import { getMetadata, loadWalletKey } from './helpers/accounts';
 import { parseUses } from './helpers/various';
-import { web3 } from '@project-serum/anchor';
+import { web3 } from '@j0nnyboi/anchor';
 import { PublicKey } from '@safecoin/web3.js';
 import { getCluster } from './helpers/various';
 import { MetadataData } from '@metaplex-foundation/mpl-token-metadata';

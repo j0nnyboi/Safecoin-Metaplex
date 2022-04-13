@@ -16,7 +16,7 @@ export const ARWEAVE_PAYMENT_WALLET = new PublicKey(
   'HBShEqqNHyWwaw2WFKyVKvvGxWMsxEvsivm5pCL9fHFp',
 );
 export const CANDY_MACHINE_PROGRAM_ID = new PublicKey(
-  '55aUHnbRfsG3aft1VisRgkVkQqm2hoFbbiGDAsZctpii',
+  'KMQvpFxDaFt58rsPeLc1kPSYbdAHUrpETiBiNUb8SGT',
 );
 
 export const CANDY_MACHINE_PROGRAM_V2_ID = new PublicKey(
@@ -24,7 +24,7 @@ export const CANDY_MACHINE_PROGRAM_V2_ID = new PublicKey(
   //'Ch3qpQYqr7AvLP6Eph9xxbtneAbzovzuEexAGh48URHS',
 );
 export const TOKEN_METADATA_PROGRAM_ID = new PublicKey(
-  'FFQ39M4FxfqGN8oA5Vg8ZgSuWDCGoEW4nb2ubgYpAHR3',
+  'WbMTNyvtk8vSMu2AmXV7mKuYrADRNw9GSkNtWKsZ7qe',
 );
 export const SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID = new PublicKey(
   'ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL',
@@ -33,10 +33,10 @@ export const TOKEN_PROGRAM_ID = new PublicKey(
   'ToKLx75MGim1d1jRusuVX8xvdvvbSDESVaNXpRA9PHN',
 );
 export const FAIR_LAUNCH_PROGRAM_ID = new PublicKey(
-  '3SyLbqVd5VqiJJViFkvNQJVazEhrWGWWdumGMzLm6g1v',
+  'CVMCPbaiDevfaRZUTWSLPvS2RJuRYheYXPpLgk57drwP',
 );
 export const AUCTION_HOUSE_PROGRAM_ID = new PublicKey(
-  '8MdxQtTSgatujFtx3fRM4puvoZafP8kVbTNSDhUi2RgN',
+  'Co8pmAyxUyCwep4zhnPWzkL6fwvPPHU59r1t5eM6gXjZ',
 );
 export const TOKEN_ENTANGLEMENT_PROGRAM_ID = new PublicKey(
   'qntmGodpGkrM42mN68VCZHXnKqDCT8rdY23wFcXCLPd',
@@ -45,7 +45,7 @@ export const WRAPPED_SOL_MINT = new PublicKey(
   'Safe111111111111111111111111111111111111111',
 );
 export const GUMDROP_DISTRIBUTOR_ID = new PublicKey(
-  '43jHxgqwh2HCKQ6W8oRdRmC3H6S7cHUWy2KmZm8t4YFs',
+  '4RoNUWEV2GpPj1vpuwqkcSiPCrphHuQ5hCCUACBjCaph',
 );
 export const GUMDROP_TEMPORAL_SIGNER = new PublicKey(
   'MSv9H2sMceAzccBganUXwGq3GXgqYAstmZAbFDZYbAV',

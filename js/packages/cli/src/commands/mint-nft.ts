@@ -10,7 +10,7 @@ import {
   getMetadata,
   getMasterEdition,
 } from '../helpers/accounts';
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 import { Creator, METADATA_SCHEMA } from '../helpers/schema';
 import { serialize } from 'borsh';
 import { TOKEN_PROGRAM_ID } from '../helpers/constants';

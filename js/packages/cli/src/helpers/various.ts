@@ -2,7 +2,7 @@ import { LAMPORTS_PER_SOL, AccountInfo } from '@safecoin/web3.js';
 import fs from 'fs';
 import weighted from 'weighted';
 import path from 'path';
-import { BN, Program, web3 } from '@project-serum/anchor';
+import { BN, Program, web3 } from '@j0nnyboi/anchor';
 import { Token, TOKEN_PROGRAM_ID } from '@safecoin/safe-token';
 import { StorageType } from './storage-type';
 import { getAtaForMint } from './accounts';

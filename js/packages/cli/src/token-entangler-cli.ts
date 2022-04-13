@@ -10,7 +10,7 @@ import {
   loadTokenEntanglementProgream,
   loadWalletKey,
 } from './helpers/accounts';
-import { BN, web3, Program } from '@project-serum/anchor';
+import { BN, web3, Program } from '@j0nnyboi/anchor';
 import { TOKEN_PROGRAM_ID, WRAPPED_SOL_MINT } from './helpers/constants';
 import { ASSOCIATED_TOKEN_PROGRAM_ID, Token } from '@safecoin/safe-token';
 import { getPriceWithMantissa } from './helpers/various';

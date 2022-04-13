@@ -1,7 +1,7 @@
 import { PublicKey, Keypair } from '@safecoin/web3.js';
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 import { sendTransactionWithRetryWithKeypair } from '../helpers/transactions';
-import { Program } from '@project-serum/anchor';
+import { Program } from '@j0nnyboi/anchor';
 
 export async function withdraw(
   anchorProgram: Program,

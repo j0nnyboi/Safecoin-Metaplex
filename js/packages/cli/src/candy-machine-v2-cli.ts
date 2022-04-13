@@ -2,7 +2,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { program } from 'commander';
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 
 import {
   chunks,

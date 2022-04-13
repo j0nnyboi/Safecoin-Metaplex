@@ -2,7 +2,7 @@ import { Keypair, PublicKey, TransactionInstruction } from '@safecoin/web3.js';
 import { TOKEN_METADATA_PROGRAM_ID } from '../helpers/constants';
 import { sendTransactionWithRetryWithKeypair } from '../helpers/transactions';
 import { loadCandyProgram, loadWalletKey } from '../helpers/accounts';
-import { Program } from '@project-serum/anchor';
+import { Program } from '@j0nnyboi/anchor';
 
 const METADATA_SIGNATURE = Buffer.from([7]); //now thats some voodoo magic. WTF metaplex? XD
 

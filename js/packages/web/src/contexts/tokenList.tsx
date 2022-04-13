@@ -4,7 +4,7 @@ import {
   TokenListContainer,
   TokenListProvider,
 } from "@j0nnyboi/safe-token-registry";
-import { WRAPPED_SOL_MINT } from '@j0nnyboi/serum/lib/token-instructions';
+import { WRAPPED_SAFE_MINT } from '@j0nnyboi/serum/lib/token-instructions';
 
 // Tag in the spl-token-registry for sollet wrapped tokens.
 export const SPL_REGISTRY_SOLLET_TAG = "wrapped-safecoin";
@@ -32,9 +32,9 @@ export function SPLTokenListProvider({ children = null as any }) {
   const subscribedTokenMints = process.env.NEXT_SPL_TOKEN_MINTS?
     [
 
-      WRAPPED_SOL_MINT,
+      WRAPPED_SAFE_MINT,
       ...process.env.NEXT_SPL_TOKEN_MINTS.split(",")
-    ]: [WRAPPED_SOL_MINT]
+    ]: [WRAPPED_SAFE_MINT]
 
   useEffect(() => {
     new TokenListProvider().resolve().then(setTokenList);

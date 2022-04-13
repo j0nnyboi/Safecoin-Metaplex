@@ -14,7 +14,7 @@ import {
   loadAuctionHouseProgram,
   loadWalletKey,
 } from './helpers/accounts';
-import { BN, web3 } from '@project-serum/anchor';
+import { BN, web3 } from '@j0nnyboi/anchor';
 import {
   TOKEN_PROGRAM_ID,
   WRAPPED_SOL_MINT,
