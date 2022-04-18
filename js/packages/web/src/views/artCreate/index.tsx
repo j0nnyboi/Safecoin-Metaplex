@@ -31,7 +31,7 @@ import {
   MetaplexOverlay,
   MetadataFile,
   StringPublicKey,
-  WRAPPED_SAFE_MINT,
+  WRAPPED_SOL_MINT,
   getAssetCostToStore,
   LAMPORT_MULTIPLIER,
 } from '@oyster/common';

@@ -456,7 +456,7 @@ export const AuctionCreateView = () => {
       attributes.instantSalePrice &&
       attributes.priceFloor === attributes.instantSalePrice;
 
-    const LAMPORTS_PER_TOKEN = attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? LAMPORTS_PER_SOL
+    const LAMPORTS_PER_TOKEN = attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? LAMPORTS_PER_SAFE
       : Math.pow(10, attributes.quoteMintInfo.decimals || 0)
 
     const auctionSettings: IPartialCreateAuctionArgs = {
@@ -1918,7 +1918,7 @@ const ReviewStep = (props: {
     // TODO: add
   }, [setCost]);
 
-  const balance = (account?.lamports || 0) / LAMPORTS_PER_SOL;
+  const balance = (account?.lamports || 0) / LAMPORTS_PER_SAFE;
 
   let item = props.attributes.items?.[0];
 

@@ -16,7 +16,7 @@ import {
   useNativeAccount,
   useWalletModal,
   useQuerySearch,
-  WRAPPED_SAFE_MINT,
+  WRAPPED_SOL_MINT,
 } from '@oyster/common';
 import { useMeta, useSolPrice } from '../../contexts';
 import { useTokenList } from '../../contexts/tokenList';
