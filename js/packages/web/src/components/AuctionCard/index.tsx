@@ -47,7 +47,7 @@ import { startAuctionManually } from '../../actions/startAuctionManually';
 import BN from 'bn.js';
 import { Confetti } from '../Confetti';
 import { QUOTE_MINT } from '../../constants';
-import { Connection, LAMPORTS_PER_SOL } from '@safecoin/web3.js';
+import { Connection, LAMPORTS_PER_SAFE } from '@safecoin/web3.js';
 import { useMeta } from '../../contexts';
 import moment from 'moment';
 import { AmountLabel } from '../AmountLabel';
@@ -248,12 +248,12 @@ export const AuctionCard = ({
   const symbol = tokenInfo
     ? tokenInfo.symbol
     : mintKey == WRAPPED_SOL_MINT.toBase58()
-    ? 'SOL'
+    ? 'SAFE'
     : 'CUSTOM';
 
   const LAMPORTS_PER_MINT = tokenInfo
     ? Math.ceil(10 ** tokenInfo.decimals)
-    : LAMPORTS_PER_SOL;
+    : LAMPORTS_PER_SAFE;
 
   //console.log("[--P]AuctionCard", tokenInfo, mintKey)
   const myPayingAccount = balance.accounts[0];

@@ -16,7 +16,7 @@ async function fetchAssetCostToStore(fileSizes: number[]) {
   const result = await calculate(fileSizes);
   log.debug('Arweave cost estimates:', result);
 
-  return result.safecoin * anchor.web3.LAMPORTS_PER_SOL;
+  return result.safecoin * anchor.web3.LAMPORTS_PER_SAFE;
 }
 
 async function upload(data: FormData, manifest, index) {

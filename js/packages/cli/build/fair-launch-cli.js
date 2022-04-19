@@ -92,10 +92,10 @@ commander_1.program
     const walletKeyPair = (0, accounts_1.loadWalletKey)(keypair);
     const anchorProgram = await (0, accounts_1.loadFairLaunchProgram)(walletKeyPair, env);
     if (!treasuryMint) {
-        priceRangeStartNumber = Math.ceil(priceRangeStartNumber * web3_js_1.LAMPORTS_PER_SOL);
-        priceRangeEndNumber = Math.ceil(priceRangeEndNumber * web3_js_1.LAMPORTS_PER_SOL);
-        tickSizeNumber = Math.ceil(tickSizeNumber * web3_js_1.LAMPORTS_PER_SOL);
-        feeNumber = Math.ceil(feeNumber * web3_js_1.LAMPORTS_PER_SOL);
+        priceRangeStartNumber = Math.ceil(priceRangeStartNumber * web3_js_1.LAMPORTS_PER_SAFE);
+        priceRangeEndNumber = Math.ceil(priceRangeEndNumber * web3_js_1.LAMPORTS_PER_SAFE);
+        tickSizeNumber = Math.ceil(tickSizeNumber * web3_js_1.LAMPORTS_PER_SAFE);
+        feeNumber = Math.ceil(feeNumber * web3_js_1.LAMPORTS_PER_SAFE);
     }
     else {
         const token = new spl_token_1.Token(anchorProgram.provider.connection, 
@@ -202,10 +202,10 @@ commander_1.program
     const walletKeyPair = (0, accounts_1.loadWalletKey)(keypair);
     const anchorProgram = await (0, accounts_1.loadFairLaunchProgram)(walletKeyPair, env);
     if (!mint) {
-        priceRangeStartNumber = Math.ceil(priceRangeStartNumber * web3_js_1.LAMPORTS_PER_SOL);
-        priceRangeEndNumber = Math.ceil(priceRangeEndNumber * web3_js_1.LAMPORTS_PER_SOL);
-        tickSizeNumber = Math.ceil(tickSizeNumber * web3_js_1.LAMPORTS_PER_SOL);
-        feeNumber = Math.ceil(feeNumber * web3_js_1.LAMPORTS_PER_SOL);
+        priceRangeStartNumber = Math.ceil(priceRangeStartNumber * web3_js_1.LAMPORTS_PER_SAFE);
+        priceRangeEndNumber = Math.ceil(priceRangeEndNumber * web3_js_1.LAMPORTS_PER_SAFE);
+        tickSizeNumber = Math.ceil(tickSizeNumber * web3_js_1.LAMPORTS_PER_SAFE);
+        feeNumber = Math.ceil(feeNumber * web3_js_1.LAMPORTS_PER_SAFE);
     }
     else {
         const token = new spl_token_1.Token(anchorProgram.provider.connection, 
@@ -268,7 +268,7 @@ commander_1.program
         : undefined;
     //@ts-ignore
     if (!fairLaunchObj.treasuryMint) {
-        amountNumber = Math.ceil(amountNumber * web3_js_1.LAMPORTS_PER_SOL);
+        amountNumber = Math.ceil(amountNumber * web3_js_1.LAMPORTS_PER_SAFE);
     }
     else {
         const transferAuthority = anchor.web3.Keypair.generate();
@@ -421,7 +421,7 @@ async function adjustTicket({ amountNumber, fairLaunchObj, adjuster, fairLaunch,
     //@ts-ignore
     if (!fairLaunchObj.treasuryMint) {
         if (adjustMantissa)
-            amountNumber = Math.ceil(amountNumber * web3_js_1.LAMPORTS_PER_SOL);
+            amountNumber = Math.ceil(amountNumber * web3_js_1.LAMPORTS_PER_SAFE);
     }
     else {
         const transferAuthority = anchor.web3.Keypair.generate();

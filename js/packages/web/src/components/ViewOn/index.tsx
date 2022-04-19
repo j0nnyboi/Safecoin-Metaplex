@@ -24,7 +24,7 @@ export const ViewOn = ({ id }: { id: string }) => {
               const cluster = endpoint.name;
               const explorerURL = new URL(
                 `account/${art?.mint || ''}`,
-                'https://explorer.safecoin.com',
+                'https://explorer.safecoin.org',
               );
               if (!cluster.includes('mainnet')) {
                 explorerURL.searchParams.set('cluster', cluster);

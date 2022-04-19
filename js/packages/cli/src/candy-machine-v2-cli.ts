@@ -11,7 +11,7 @@ import {
   parsePrice,
   shuffle,
 } from './helpers/various';
-import { PublicKey, LAMPORTS_PER_SOL } from '@safecoin/web3.js';
+import { PublicKey, LAMPORTS_PER_SAFE } from '@safecoin/web3.js';
 import {
   CACHE_PATH,
   CONFIG_LINE_SIZE_V2,
@@ -263,7 +263,7 @@ programCommand('withdraw')
     for (const cg in machines) {
       t += machines[cg].account.lamports;
     }
-    const totalValue = t / LAMPORTS_PER_SOL;
+    const totalValue = t / LAMPORTS_PER_SAFE;
     const cpf = parseFloat(charityPercent);
     let charityPub;
     log.info(

@@ -1,4 +1,4 @@
-import { LAMPORTS_PER_SOL, AccountInfo } from '@safecoin/web3.js';
+import { LAMPORTS_PER_SAFE, AccountInfo } from '@safecoin/web3.js';
 import fs from 'fs';
 import weighted from 'weighted';
 import path from 'path';
@@ -358,7 +358,7 @@ export function fromUTF8Array(data: number[]) {
   return str;
 }
 
-export function parsePrice(price: string, mantissa: number = LAMPORTS_PER_SOL) {
+export function parsePrice(price: string, mantissa: number = LAMPORTS_PER_SAFE) {
   return Math.ceil(parseFloat(price) * mantissa);
 }
 

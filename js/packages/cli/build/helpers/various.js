@@ -236,7 +236,7 @@ function fromUTF8Array(data) {
     return str;
 }
 exports.fromUTF8Array = fromUTF8Array;
-function parsePrice(price, mantissa = web3_js_1.LAMPORTS_PER_SOL) {
+function parsePrice(price, mantissa = web3_js_1.LAMPORTS_PER_SAFE) {
     return Math.ceil(parseFloat(price) * mantissa);
 }
 exports.parsePrice = parsePrice;

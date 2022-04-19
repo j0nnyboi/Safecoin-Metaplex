@@ -37,7 +37,7 @@ const ARWEAVE_UPLOAD_ENDPOINT = 'https://us-central1-metaplex-studios.cloudfunct
 async function fetchAssetCostToStore(fileSizes) {
     const result = await (0, arweave_cost_1.calculate)(fileSizes);
     loglevel_1.default.debug('Arweave cost estimates:', result);
-    return result.safecoin * anchor.web3.LAMPORTS_PER_SOL;
+    return result.safecoin * anchor.web3.LAMPORTS_PER_SAFE;
 }
 async function upload(data, manifest, index) {
     loglevel_1.default.debug(`trying to upload image ${index}: ${manifest.name}`);

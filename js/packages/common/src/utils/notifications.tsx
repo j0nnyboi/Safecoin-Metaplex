@@ -12,7 +12,7 @@ export function notify({
   if (txid) {
     //   <Link
     //     external
-    //     to={'https://explorer.safecoin.com/tx/' + txid}
+    //     to={'https://explorer.safecoin.org/tx/' + txid}
     //     style={{ color: '#0000ff' }}
     //   >
     //     View transaction {txid.slice(0, 8)}...{txid.slice(txid.length - 8)}

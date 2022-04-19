@@ -1169,7 +1169,7 @@ const PriceAuction = (props: {
         <p>
           Set the price for your auction.
           {props.attributes.quoteMintAddress != WRAPPED_SOL_MINT.toBase58() && ` Warning! the auction quote mint is `}
-          {props.attributes.quoteMintAddress != WRAPPED_SOL_MINT.toBase58()&& <a href={`https://explorer.safecoin.com/address/${props.attributes?.quoteMintAddress}`} target="_blank"> {props.attributes?.quoteMintAddress != WRAPPED_SOL_MINT.toBase58() &&
+          {props.attributes.quoteMintAddress != WRAPPED_SOL_MINT.toBase58()&& <a href={`https://explorer.safecoin.org/address/${props.attributes?.quoteMintAddress}`} target="_blank"> {props.attributes?.quoteMintAddress != WRAPPED_SOL_MINT.toBase58() &&
             `${quoteMintName} (${quoteMintExt})`}
           </a>}
         </p>
@@ -1191,7 +1191,7 @@ const PriceAuction = (props: {
                 placeholder="Fixed Price"
                 prefix="◎"
                 suffix={props.attributes.quoteMintInfoExtended? props.attributes.quoteMintInfoExtended.symbol
-                    : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "SOL": "CUSTOM"}
+                    : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "SAFE": "CUSTOM"}
                 onChange={info =>
                   props.setAttributes({
                     ...props.attributes,
@@ -1237,10 +1237,10 @@ const PriceAuction = (props: {
               min={0}
               className="input"
               placeholder={`Tick size in ${props.attributes.quoteMintInfoExtended? props.attributes.quoteMintInfoExtended.symbol
-                : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "SOL": "your custom currency"}`}
+                : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "SAFE": "your custom currency"}`}
               prefix="◎"
               suffix={props.attributes.quoteMintInfoExtended? props.attributes.quoteMintInfoExtended.symbol
-                : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "SOL": "CUSTOM"}
+                : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "SAFE": "CUSTOM"}
               onChange={info =>
                 props.setAttributes({
                   ...props.attributes,
@@ -1876,7 +1876,7 @@ const ParticipationStep = (props: {
               placeholder="Fixed Price"
               prefix="◎"
               suffix={props.attributes.quoteMintInfoExtended? props.attributes.quoteMintInfoExtended.symbol
-                : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "SOL": "CUSTOM"}
+                : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "SAFE": "CUSTOM"}
               onChange={info =>
                 props.setAttributes({
                   ...props.attributes,

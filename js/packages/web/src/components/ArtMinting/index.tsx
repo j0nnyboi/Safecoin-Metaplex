@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
-import { LAMPORTS_PER_SOL, PublicKey } from '@safecoin/web3.js';
+import { LAMPORTS_PER_SAFE, PublicKey } from '@safecoin/web3.js';
 import { MintLayout, AccountLayout } from '@safecoin/safe-token';
 import { Button, Form, Input, Modal, InputNumber } from 'antd';
 import debounce from 'lodash/debounce';
@@ -95,7 +95,7 @@ export const ArtMinting = ({ id, onMint }: ArtMintingProps) => {
             metadataRentExempt +
             editionRentExempt) *
           editions) /
-        LAMPORTS_PER_SOL;
+        LAMPORTS_PER_SAFE;
 
       setTotalCost(cost);
     })();

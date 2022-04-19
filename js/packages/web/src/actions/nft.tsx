@@ -201,7 +201,7 @@ export const mintNFT = async (
   //   SystemProgram.transfer({
   //     fromPubkey: wallet.publicKey,
   //     toPubkey: payerPublicKey,
-  //     lamports: 0.5 * LAMPORTS_PER_SOL // block.feeCalculator.lamportsPerSignature * 3 + mintRent, // TODO
+  //     lamports: 0.5 * LAMPORTS_PER_SAFE // block.feeCalculator.lamportsPerSignature * 3 + mintRent, // TODO
   //   }),
   // );
 
@@ -264,7 +264,7 @@ export const mintNFT = async (
 
     // TODO: connect to testnet arweave
     //const arweaveLink = `https://arweave.net/${metadataFile.transactionId}`;
-    const arweaveLink = `http://www.metaplex.darkartlabs.tech:1984/${metadataFile.transactionId}`;
+    const arweaveLink = `http://safestore.testnet.darkartlabs.tech:1984/${metadataFile.transactionId}`;
   
     await updateMetadata(
       new Data({

@@ -2,7 +2,7 @@ import * as anchor from '@project-serum/anchor';
 import { TOKEN_PROGRAM_ID } from '@safecoin/safe-token';
 import { SystemProgram } from '@safecoin/web3.js';
 import {
-  LAMPORTS_PER_SOL,
+  LAMPORTS_PER_SAFE,
   SYSVAR_RENT_PUBKEY,
   TransactionInstruction,
 } from '@safecoin/web3.js';
@@ -40,7 +40,7 @@ export const formatNumber = {
       return undefined;
     }
 
-    return val.toNumber() / LAMPORTS_PER_SOL;
+    return val.toNumber() / LAMPORTS_PER_SAFE;
   },
 };
 

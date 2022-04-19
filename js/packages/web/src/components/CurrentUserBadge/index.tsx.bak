@@ -436,7 +436,7 @@ export const CurrentUserBadgeMobile = (props: {
   if (!wallet || !publicKey) {
     return null;
   }
-  const balance = (account?.lamports || 0) / LAMPORTS_PER_SOL;
+  const balance = (account?.lamports || 0) / LAMPORTS_PER_SAFE;
   const balanceInUSD = balance * solPrice;
 
   const iconStyle: React.CSSProperties = {

@@ -176,7 +176,7 @@ programCommand('withdraw')
     for (const cg in configs) {
         t += configs[cg].account.lamports;
     }
-    const totalValue = t / web3_js_1.LAMPORTS_PER_SOL;
+    const totalValue = t / web3_js_1.LAMPORTS_PER_SAFE;
     const cpf = parseFloat(charityPercent);
     let charityPub;
     loglevel_1.default.info(`Total Number of Candy Machine Config Accounts to drain ${configs.length}`);

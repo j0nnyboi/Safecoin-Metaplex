@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export declare const ActionConfirmation: (props: {
     className?: string;
     onClose: () => void;

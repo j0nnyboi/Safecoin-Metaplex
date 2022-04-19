@@ -43,7 +43,7 @@ export function SPLTokenListProvider({ children = null as any }) {
   const hasOtherTokens = !!process.env.NEXT_SPL_TOKEN_MINTS;
 
   // Added tokenList to know in which currency the auction is (SOL or other SPL)
-  const mainnetTokens = tokenList?tokenList.filterByClusterSlug("devnet").getList().filter(f=> subscribedTokenMints.some(s=> s == f.address) )
+  const mainnetTokens = tokenList?tokenList.filterByClusterSlug("testnet").getList().filter(f=> subscribedTokenMints.some(s=> s == f.address) )
     :[]
 
   const tokenMap = useMemo(() => {
