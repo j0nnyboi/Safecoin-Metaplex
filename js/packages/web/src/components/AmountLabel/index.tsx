@@ -37,10 +37,10 @@ export const AmountLabel = (props: IAmountLabel) => {
   if (amount >= 1) {
     formattedAmount = formatAmount(amount);
   }
-
+  console.log("++++++ TOKENINFO ", tokenInfo)
   const solPrice = useSolPrice();
   const altSplPrice = useAllSplPrices().filter(a=>a.tokenMint == tokenInfo?.address)[0]?.tokenPrice
-  const tokenPrice = tokenInfo?.address == WRAPPED_SOL_MINT.toBase58()? solPrice: altSplPrice
+  const tokenPrice = tokenInfo?.address == "Safe1111111111111111111111111111111111111"? solPrice: altSplPrice
 
   const [priceUSD, setPriceUSD] = useState<number | undefined>(undefined);
 

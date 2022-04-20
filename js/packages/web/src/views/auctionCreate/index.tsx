@@ -145,6 +145,7 @@ export interface AuctionState {
 }
 
 export const AuctionCreateView = () => {
+  //console.log("WRAPPED SOL MINT ", useTokenList().tokenMap.get("Safe1111111111111111111111111111111111111"))
   const connection = useConnection();
   const wallet = useWallet();
   const { whitelistedCreatorsByCreator, storeIndexer } = useMeta();
@@ -1217,7 +1218,7 @@ const PriceAuction = (props: {
                 placeholder="Price"
                 prefix="◎"
                 suffix={props.attributes.quoteMintInfoExtended? props.attributes.quoteMintInfoExtended.symbol
-                  : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "SOL": "CUSTOM"}
+                  : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "SAFE": "CUSTOM"}
                 onChange={info =>
                   props.setAttributes({
                     ...props.attributes,
@@ -1237,10 +1238,10 @@ const PriceAuction = (props: {
               min={0}
               className="input"
               placeholder={`Tick size in ${props.attributes.quoteMintInfoExtended? props.attributes.quoteMintInfoExtended.symbol
-                : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "SAFE": "your custom currency"}`}
+                : props.attributes.quoteMintAddress == "Safe1111111111111111111111111111111111111"? "SAFE": "your custom currency"}`}
               prefix="◎"
               suffix={props.attributes.quoteMintInfoExtended? props.attributes.quoteMintInfoExtended.symbol
-                : props.attributes.quoteMintAddress == WRAPPED_SOL_MINT.toBase58()? "SAFE": "CUSTOM"}
+                : props.attributes.quoteMintAddress == "Safe1111111111111111111111111111111111111"? "SAFE": "CUSTOM"}
               onChange={info =>
                 props.setAttributes({
                   ...props.attributes,
@@ -1909,6 +1910,7 @@ const ReviewStep = (props: {
 }) => {
   const [showFundsIssueModal, setShowFundsIssueModal] = useState(false)
   const [cost, setCost] = useState(0);
+  //console.log("WRAPPED SOL MINT ", useTokenList().tokenMap.get("Safe1111111111111111111111111111111111111"))
   const { account } = useNativeAccount();
   useEffect(() => {
     const rentCall = Promise.all([
@@ -1954,7 +1956,7 @@ const ReviewStep = (props: {
             }
           />
           {cost ? (
-            <AmountLabel title="Cost to Create" amount={cost} tokenInfo={useTokenList().tokenMap.get(WRAPPED_SOL_MINT.toString())}/>
+            <AmountLabel title="Cost to Create" amount={cost} tokenInfo={useTokenList().tokenMap.get("Safe1111111111111111111111111111111111111")}/>
           ) : (
             <Spin />
           )}

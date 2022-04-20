@@ -168,7 +168,7 @@ export const CurrentUserBadge = (props: {
   showAddress?: boolean;
   iconSize?: number;
 }) => {
-  const { wallet, publicKey, disconnect } = useWallet();
+  const { wallet, publicKey, disconnect } = useWallet(); 
   const { account } = useNativeAccount();
   const solPrice = useSolPrice();
   const [showAddFundsModal, setShowAddFundsModal] = useState<Boolean>(false);
@@ -178,7 +178,8 @@ export const CurrentUserBadge = (props: {
   }
   const balance = (account?.lamports || 0) / LAMPORTS_PER_SAFE
   const balanceInUSD = balance * solPrice;
-  const solMintInfo = useTokenList().tokenMap.get(WRAPPED_SOL_MINT.toString());
+  const solMintInfo = useTokenList().tokenMap.get("Safe1111111111111111111111111111111111111");
+  //console.log("CLIST SHOULD SHOW HERE ", WRAPPED_SOL_MINT.toString())
   const iconStyle: React.CSSProperties = {
     display: 'flex',
     width: props.iconSize,
@@ -239,7 +240,7 @@ export const CurrentUserBadge = (props: {
                       color: '#FFFFFF',
                     }}
                   >
-                    {formatNumber.format(balance)} SAFE
+                    {formatNumber.format(balance)} SAFEE
                   </span>
                   &nbsp;
                   <span

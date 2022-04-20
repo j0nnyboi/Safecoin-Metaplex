@@ -53,7 +53,8 @@ export const AuctionNumbers = (props: {
   const isUpcoming = auctionView.state === AuctionViewState.Upcoming;
   const isStarted = auctionView.state === AuctionViewState.Live;
 
-  const tokenInfo = useTokenList().mainnetTokens.filter(m=>m.address == auctionView.auction.info.tokenMint)[0]
+  const tokenInfo = useTokenList().mainnetTokens[0]
+  //console.log("tokenInfotokenInfo ", tokenInfo)
   const ended = isEnded(state);
 
   return (
