@@ -3,7 +3,7 @@ import { Statistic } from 'antd';
 import { useSolPrice, useAllSplPrices } from '../../contexts';
 import { formatAmount, formatUSD, WRAPPED_SOL_MINT } from '@oyster/common';
 import { TokenCircle } from '../Custom';
-import { TokenInfo } from '@safecoin/safe-token-registry';
+import { TokenInfo } from '@j0nnyboi/safe-token-registry';
 
 interface IAmountLabel {
   amount: number | string;
