@@ -1,7 +1,7 @@
 import EventEmitter from 'event-emitter';
 
 import { Magic } from 'magic-sdk';
-import { safecoinExtension } from '@magic-ext/safecoin';
+import { safecoinExtension } from '@j0nnyboi/magic-ext-safecoin';
 
 const events = new EventEmitter();
 // let MagicSDK = null;

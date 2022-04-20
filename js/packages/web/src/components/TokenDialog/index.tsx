@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useSwappableTokens, useTokenList } from "../../contexts/tokenList";
 import { Row, Col, Typography, Modal, Tabs, Input, List } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-import { TokenInfo } from "@safecoin/safe-token-registry";
+import { TokenInfo } from "@j0nnyboi/safe-token-registry";
 import { TokenCircle } from "../Custom";
 import { MetaplexModal, shortenAddress, toPublicKey } from "@oyster/common";
 
