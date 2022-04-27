@@ -1,0 +1,22 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.next": false,
+    "**/dist": true,
+    "node_modules": true,
+    "packages/cli/node_modules": true,
+    "packages/common/dist/**": true,
+    "packages/web/.next": true,
+    "packages/web/node_modules": true,
+    "packages\\web/.next": true,
+    "packages\\gumdrop/build": true,
+    "**/build": true,
+    "packages\\gumdrop/*.*": true
+  },
+  "explorerExclude.backup": null
+}
