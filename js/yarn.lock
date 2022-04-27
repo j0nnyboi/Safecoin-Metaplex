@@ -3180,6 +3180,13 @@
   resolved "https://registry.yarnpkg.com/@j0nnyboi/magic-ext-safecoin/-/magic-ext-safecoin-0.1.0.tgz#17ca7c315c108e8b215c32bc98b7372260c86af5"
   integrity sha512-Ywc6k3gUjM/Q9Css0copbzNWDQ8n4Jl51EoEmERcpJC6S9dYHbPn03Rq2oSSK+aeoMCX+IS08Jeh+pvjbAavAQ==
 
+"@j0nnyboi/safe-token-registry@0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@j0nnyboi/safe-token-registry/-/safe-token-registry-0.1.3.tgz#300624af0fc523d68e61f3a2990fc6d6b0c45a66"
+  integrity sha512-yT25nrCYdz5Dov2GS+LIu9wbXB6eJ3F/0Dl4cYJatXOrpKPeZTAv5+c2X6xNNp+0GK91ZRM4OQxMnOANIKo7bQ==
+  dependencies:
+    cross-fetch "3.0.6"
+
 "@j0nnyboi/safe-token-registry@^0.1.0":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@j0nnyboi/safe-token-registry/-/safe-token-registry-0.1.1.tgz#02e66ebc686adbc5a33240d3f4ca30c9c7bb9cde"
@@ -5171,7 +5178,7 @@
 "@metaplex-foundation/mpl-token-metadata@file:Metaplex-program-library/token-metadata/js":
   version "1.1.0"
   dependencies:
-    "@metaplex-foundation/mpl-core" "file:../../../../AppData/Local/Yarn/Cache/v6/npm-@metaplex-foundation-mpl-token-metadata-1.1.0-657d1540-c730-498b-aaeb-45370f596c4d-1651074183584/node_modules/core/js"
+    "@metaplex-foundation/mpl-core" "file:../../../../AppData/Local/Yarn/Cache/v6/npm-@metaplex-foundation-mpl-token-metadata-1.1.0-7e60f695-628b-42ed-be72-e7079d44a783-1651076910295/node_modules/core/js"
     "@safecoin/safe-token" "^0.1.7-b"
     "@safecoin/web3.js" "^1.29.3"
 

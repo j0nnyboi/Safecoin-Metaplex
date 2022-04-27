@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { Connection, PublicKey } from '@safecoin/web3.js';
 import BN from 'bn.js';
 import { PackKey, PackDistributionType, PackSetState } from '..';

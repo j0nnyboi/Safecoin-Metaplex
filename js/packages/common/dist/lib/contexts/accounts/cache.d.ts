@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { AccountInfo, Connection, PublicKey } from '@safecoin/web3.js';
 import { MintInfo } from '@safecoin/safe-token';
 import { TokenAccount } from '../../models';

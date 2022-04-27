@@ -10,7 +10,7 @@ export declare const findProgramAddress: (seeds: (Buffer | Uint8Array)[], progra
 export declare function shortenAddress(address: string, chars?: number): string;
 export declare function getTokenName(map: KnownTokenMap, mint?: string | PublicKey, shorten?: boolean): string;
 export declare function getVerboseTokenName(map: KnownTokenMap, mint?: string | PublicKey, shorten?: boolean): string;
-export declare function getTokenByName(tokenMap: KnownTokenMap, name: string): TokenInfo | null;
+export declare function getTokenByName(tokenMap: KnownTokenMap, name: string): any;
 export declare function getTokenIcon(map: KnownTokenMap, mintAddress?: string | PublicKey): string | undefined;
 export declare function isKnownMint(map: KnownTokenMap, mintAddress: string): boolean;
 export declare const STABLE_COINS: Set<string>;
