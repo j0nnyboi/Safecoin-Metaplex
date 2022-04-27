@@ -5171,7 +5171,7 @@
 "@metaplex-foundation/mpl-token-metadata@file:Metaplex-program-library/token-metadata/js":
   version "1.1.0"
   dependencies:
-    "@metaplex-foundation/mpl-core" "file:../../../../.cache/yarn/v6/npm-@metaplex-foundation-mpl-token-metadata-1.1.0-6478acae-6ca1-4274-8557-0ade2d213dd2-1650391117413/node_modules/core/js"
+    "@metaplex-foundation/mpl-core" "file:../../../../AppData/Local/Yarn/Cache/v6/npm-@metaplex-foundation-mpl-token-metadata-1.1.0-657d1540-c730-498b-aaeb-45370f596c4d-1651074183584/node_modules/core/js"
     "@safecoin/safe-token" "^0.1.7-b"
     "@safecoin/web3.js" "^1.29.3"
 
