@@ -178,8 +178,8 @@ export const CurrentUserBadge = (props: {
   }
   const balance = (account?.lamports || 0) / LAMPORTS_PER_SAFE
   const balanceInUSD = balance * solPrice;
-  const solMintInfo = useTokenList().tokenMap.get("Safe1111111111111111111111111111111111111");
-  //console.log("CLIST SHOULD SHOW HERE ", WRAPPED_SOL_MINT.toString())
+  const solMintInfo = useTokenList().tokenMap.get(WRAPPED_SOL_MINT.toBase58());
+  //console.log("CLIST SHOULD SHOW HERE ", solMintInfo)
   const iconStyle: React.CSSProperties = {
     display: 'flex',
     width: props.iconSize,
