@@ -7,7 +7,7 @@ import { Token, TOKEN_PROGRAM_ID } from '@safecoin/safe-token';
 import { StorageType } from './storage-type';
 import { getAtaForMint } from './accounts';
 import { CLUSTERS, DEFAULT_CLUSTER } from './constants';
-import { Uses, UseMethod } from '@metaplex-foundation/mpl-token-metadata';
+import { Uses, UseMethod } from '@j0nnyboi/mpl-token-metadata';
 
 const { readFile } = fs.promises;
 
@@ -358,7 +358,10 @@ export function fromUTF8Array(data: number[]) {
   return str;
 }
 
-export function parsePrice(price: string, mantissa: number = LAMPORTS_PER_SAFE) {
+export function parsePrice(
+  price: string,
+  mantissa: number = LAMPORTS_PER_SAFE,
+) {
   return Math.ceil(parseFloat(price) * mantissa);
 }
 

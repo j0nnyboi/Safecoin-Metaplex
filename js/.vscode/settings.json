@@ -15,7 +15,7 @@
     "packages/web/node_modules": true,
     "packages\\web/.next": true,
     "packages\\gumdrop/build": true,
-    "**/build": true,
+    "**/build": false,
     "packages\\gumdrop/*.*": true
   },
   "explorerExclude.backup": null

@@ -32,7 +32,7 @@ import {
   Collection,
   Uses,
   VerifyCollection,
-} from '@metaplex-foundation/mpl-token-metadata';
+} from '@j0nnyboi/mpl-token-metadata';
 
 export const createMetadata = async (
   metadataLink: string,

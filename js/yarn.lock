@@ -3180,6 +3180,23 @@
   resolved "https://registry.yarnpkg.com/@j0nnyboi/magic-ext-safecoin/-/magic-ext-safecoin-0.1.0.tgz#17ca7c315c108e8b215c32bc98b7372260c86af5"
   integrity sha512-Ywc6k3gUjM/Q9Css0copbzNWDQ8n4Jl51EoEmERcpJC6S9dYHbPn03Rq2oSSK+aeoMCX+IS08Jeh+pvjbAavAQ==
 
+"@j0nnyboi/mpl-core@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@j0nnyboi/mpl-core/-/mpl-core-0.0.1.tgz#03362f18038b22b56dd265a4ed873c4b5ef5ce02"
+  integrity sha512-Q5KYRaXs9kcl7o3AglkXoLX4HjN69zMg9Eeu0VrH57tb10d7jzr6lKqh/6M47/4P2Nzy0l+aaqAi0rGsnW9GBQ==
+  dependencies:
+    "@safecoin/web3.js" "^1.29.3"
+    bs58 "^4.0.1"
+
+"@j0nnyboi/mpl-token-metadata@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@j0nnyboi/mpl-token-metadata/-/mpl-token-metadata-0.0.1.tgz#29b8dc5b15a42c1dd097c33c7ee096b906194e73"
+  integrity sha512-52c7jY8DgJrzhDDuEP6rYfWn2SmcPHC5W7q+e7lzITMX3ekKYz5WwvjBun2OpjLO2lXoxweBhreYbsYFJ9NtLw==
+  dependencies:
+    "@j0nnyboi/mpl-core" "0.0.1"
+    "@safecoin/safe-token" "^0.1.7-b"
+    "@safecoin/web3.js" "^1.29.3"
+
 "@j0nnyboi/safe-token-registry@0.1.3":
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/@j0nnyboi/safe-token-registry/-/safe-token-registry-0.1.3.tgz#300624af0fc523d68e61f3a2990fc6d6b0c45a66"
@@ -5168,19 +5185,6 @@
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@metamask/safe-event-emitter/-/safe-event-emitter-2.0.0.tgz#af577b477c683fad17c619a78208cede06f9605c"
   integrity sha512-/kSXhY692qiV1MXu6EeOZvg5nECLclxNXcKCxJ3cXQgYuRymRHpdx/t7JXfsK+JLjwA1e1c1/SBrlQYpusC29Q==
-
-"@metaplex-foundation/mpl-core@file:Metaplex-program-library/core/js":
-  version "0.0.2"
-  dependencies:
-    "@safecoin/web3.js" "^1.29.3"
-    bs58 "^4.0.1"
-
-"@metaplex-foundation/mpl-token-metadata@file:Metaplex-program-library/token-metadata/js":
-  version "1.1.0"
-  dependencies:
-    "@metaplex-foundation/mpl-core" "file:../../../../AppData/Local/Yarn/Cache/v6/npm-@metaplex-foundation-mpl-token-metadata-1.1.0-0e5dedee-10ef-4cfa-96e9-c0e74d7beee4-1651092317364/node_modules/core/js"
-    "@safecoin/safe-token" "^0.1.7-b"
-    "@safecoin/web3.js" "^1.29.3"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
