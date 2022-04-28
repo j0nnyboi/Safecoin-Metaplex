@@ -1,3 +1,4 @@
 /node_modules/
 /packages/common/dist/lib/*
 /packages/common/dist/tsconfig.tsbuildinfo
+/packages/cli/build
