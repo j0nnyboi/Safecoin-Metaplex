@@ -6,11 +6,7 @@ import Home from './Home';
 import { clusterApiUrl } from '@safecoin/web3.js';
 import { WalletAdapterNetwork } from '@j0nnyboi/wallet-adapter-base';
 import {
-  getPhantomWallet,
-  getSlopeWallet,
-  getSolflareWallet,
   getSolletWallet,
-  getSolletExtensionWallet,
 } from '@j0nnyboi/wallet-adapter-wallets';
 
 import {
@@ -55,11 +51,7 @@ const App = () => {
 
   const wallets = useMemo(
     () => [
-      getPhantomWallet(),
-      getSolflareWallet(),
-      getSlopeWallet(),
-      getSolletWallet({ network }),
-      getSolletExtensionWallet({ network }),
+      getSolletWallet({ network })
     ],
     [],
   );
