@@ -4,7 +4,7 @@ import {
   WalletProvider as BaseWalletProvider,
 } from '@araviel/wallet-adapter-react';
 import {
-  getSolletWallet,
+  getSafecoinWallet,
   WalletName,
 } from '@araviel/wallet-adapter-wallets';
 import { Button, Collapse } from 'antd';
@@ -45,7 +45,7 @@ export const WalletModal: FC = () => {
     setShowWallets(false);
   }, [setVisible, setShowWallets]);
 
-  const SolletWallet = useMemo(() => getSolletWallet(), []);
+  const SolletWallet = useMemo(() => getSafecoinWallet(), []);
 
   return (
     <MetaplexModal title="Connect Wallet" visible={visible} onCancel={close}>
@@ -204,7 +204,7 @@ export const WalletProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const wallets = useMemo(
     () => [
 
-      getSolletWallet(),
+      getSafecoinWallet(),
     ],
     [],
   );

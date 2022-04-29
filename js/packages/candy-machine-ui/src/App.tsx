@@ -6,14 +6,14 @@ import Home from './Home';
 import { clusterApiUrl } from '@safecoin/web3.js';
 import { WalletAdapterNetwork } from '@araviel/wallet-adapter-base';
 import {
-  getSolletWallet,
+  getSafecoinWallet,
 } from '@araviel/wallet-adapter-wallets';
 
 import {
   ConnectionProvider,
   WalletProvider,
 } from '@araviel/wallet-adapter-react';
-import { WalletDialogProvider } from '@safecoin/wallet-adapter-material-ui';
+import { WalletDialogProvider } from '@araviel/wallet-adapter-material-ui';
 
 import { ThemeProvider, createTheme } from '@material-ui/core';
 
@@ -51,7 +51,7 @@ const App = () => {
 
   const wallets = useMemo(
     () => [
-      getSolletWallet({ network })
+      getSafecoinWallet({ network })
     ],
     [],
   );

@@ -4,7 +4,7 @@ import {
   WalletProvider as BaseWalletProvider,
 } from "@araviel/wallet-adapter-react";
 import {
-  getSolletWallet,
+  getSafecoinWallet,
 } from "@araviel/wallet-adapter-wallets";
 import { Button } from "antd";
 import React, {
@@ -163,7 +163,7 @@ export const WalletModalProvider: FC<{ children: ReactNode }> = ({
 export const WalletProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const wallets = useMemo(
     () => [
-      getSolletWallet(),
+      getSafecoinWallet(),
     ],
     []
   );

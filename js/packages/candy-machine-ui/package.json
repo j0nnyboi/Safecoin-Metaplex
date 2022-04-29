@@ -12,7 +12,7 @@
     "@j0nnyboi/anchor": "0.17.0",
     "@safecoin/safe-token": "^0.1.7-b",
     "@araviel/wallet-adapter-base": "^0.7.0",
-    "@j0nnyboi/wallet-adapter-material-ui": "^0.2.0",
+    "@araviel/wallet-adapter-material-ui": "^0.13.1",
     "@araviel/wallet-adapter-react": "0.13.1",
     "@araviel/wallet-adapter-react-ui": "^0.6.1",
     "@safecoin/web3.js": "^1.29.3",

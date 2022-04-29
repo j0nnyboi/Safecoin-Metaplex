@@ -7,7 +7,7 @@ import Paper from '@material-ui/core/Paper';
 import Alert from '@material-ui/lab/Alert';
 import { PublicKey } from '@safecoin/web3.js';
 import { useWallet } from '@araviel/wallet-adapter-react';
-import { WalletDialogButton } from '@safecoin/wallet-adapter-material-ui';
+import { WalletDialogButton } from '@araviel/wallet-adapter-material-ui';
 import {
   awaitTransactionSignatureConfirmation,
   CandyMachineAccount,
