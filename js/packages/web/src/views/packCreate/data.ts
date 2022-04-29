@@ -1,4 +1,4 @@
-import { PackDistributionType } from '@oyster/common';
+import { PackDistributionType } from '@j0nnyboi/common';
 import { PackState } from './interface';
 
 export const INITIAL_PACK_STATE: PackState = {

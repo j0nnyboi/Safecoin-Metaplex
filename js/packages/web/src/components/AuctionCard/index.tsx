@@ -27,7 +27,7 @@ import {
   Bid,
   BidderPot,
   shortenAddress,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import {
   AuctionView,
   AuctionViewState,
@@ -58,7 +58,7 @@ import {
   BidRedemptionTicket,
   MAX_PRIZE_TRACKING_TICKET_SIZE,
   WinningConfigType,
-} from '@oyster/common/dist/lib/models/metaplex/index';
+} from '@j0nnyboi/common/dist/lib/models/metaplex/index';
 import { useActionButtonContent } from './hooks/useActionButtonContent';
 import { endSale } from './utils/endSale';
 import { useInstantSaleState } from './hooks/useInstantSaleState';

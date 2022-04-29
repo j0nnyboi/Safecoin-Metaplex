@@ -1,4 +1,4 @@
-import { addCardToPack } from '@oyster/common';
+import { addCardToPack } from '@j0nnyboi/common';
 import { TransactionInstruction } from '@safecoin/web3.js';
 
 import { GetAddCardToPackParams } from './interface';

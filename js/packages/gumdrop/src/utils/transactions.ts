@@ -11,7 +11,7 @@ import {
   TransactionInstruction,
   TransactionSignature,
 } from '@safecoin/web3.js';
-import { sleep } from '@oyster/common';
+import { sleep } from '@j0nnyboi/common';
 import log from 'loglevel';
 
 interface BlockhashAndFeeCalculator {

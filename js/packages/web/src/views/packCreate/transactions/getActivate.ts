@@ -1,4 +1,4 @@
-import { activate } from '@oyster/common';
+import { activate } from '@j0nnyboi/common';
 import { TransactionInstruction } from '@safecoin/web3.js';
 
 import { GetActivateParams } from './interface';

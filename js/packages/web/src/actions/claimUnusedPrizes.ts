@@ -12,7 +12,7 @@ import {
   BidderMetadata,
   toPublicKey,
   WalletSigner,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 import { AccountLayout, MintLayout } from '@safecoin/safe-token';
 import { AuctionView } from '../hooks';
@@ -25,8 +25,8 @@ import {
   getBidRedemption,
   PrizeTrackingTicket,
   AuctionViewItem,
-} from '@oyster/common/dist/lib/models/metaplex/index';
-import { createTokenAccount } from '@oyster/common/dist/lib/actions/account';
+} from '@j0nnyboi/common/dist/lib/models/metaplex/index';
+import { createTokenAccount } from '@j0nnyboi/common/dist/lib/actions/account';
 import {
   eligibleForParticipationPrizeGivenWinningIndex,
   setupRedeemParticipationInstructions,

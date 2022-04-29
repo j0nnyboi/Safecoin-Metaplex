@@ -5,7 +5,7 @@ import {
   sendTransactionsInChunks,
   SequenceType,
   toPublicKey,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { BN } from 'bn.js';
 
 import {

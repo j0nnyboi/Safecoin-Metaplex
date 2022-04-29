@@ -1,4 +1,4 @@
-import { TokenInfo } from '@safecoin/safe-token-registry';
+import { TokenInfo } from '@j0nnyboi/safe-token-registry';
 
 export const filterModalSolTokens = (tokens: TokenInfo[]) => {
   return tokens;

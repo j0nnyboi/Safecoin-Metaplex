@@ -5,7 +5,7 @@ import { ModalProps } from 'antd/lib/modal';
 import { LogoLink } from '../../components/AppBar';
 import { textContent } from './textContent';
 import useMagicLink from '../../hooks/magicLink/useMagicLink';
-import { shortenAddress } from '@oyster/common';
+import { shortenAddress } from '@j0nnyboi/common';
 import { getUser, getWalletAddress, saveUser } from './userInfo';
 
 const { Content } = Layout;

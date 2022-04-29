@@ -1,4 +1,4 @@
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 
 import { MintLayout, TOKEN_PROGRAM_ID, Token } from '@safecoin/safe-token';
 import { SystemProgram } from '@safecoin/web3.js';

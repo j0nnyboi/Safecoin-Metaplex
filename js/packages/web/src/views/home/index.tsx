@@ -1,6 +1,6 @@
 import { Layout } from 'antd';
 import React from 'react';
-import { useStore } from '@oyster/common';
+import { useStore } from '@j0nnyboi/common';
 import { useMeta } from '../../contexts';
 import { SalesListView } from './components/SalesList';
 import { SetupView } from './setup';

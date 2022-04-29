@@ -12,7 +12,7 @@ import {
   findProgramAddress,
   toPublicKey,
   WalletSigner,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 
 import BN from 'bn.js';
 import { closeVault } from './closeVault';

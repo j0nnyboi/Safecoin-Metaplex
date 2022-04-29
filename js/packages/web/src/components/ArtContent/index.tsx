@@ -1,6 +1,6 @@
 import React, { Ref, useCallback, useEffect, useState } from 'react';
 import { Image } from 'antd';
-import { MetadataCategory, MetadataFile, pubkeyToString } from '@oyster/common';
+import { MetadataCategory, MetadataFile, pubkeyToString } from '@j0nnyboi/common';
 import { MeshViewer } from '../MeshViewer';
 import { ThreeDots } from '../MyLoader';
 import { useCachedImage, useExtendedArt } from '../../hooks';

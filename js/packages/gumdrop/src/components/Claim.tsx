@@ -20,7 +20,7 @@ import {
 
 import {
   useWallet,
-} from "@safecoin/wallet-adapter-react";
+} from "@j0nnyboi/wallet-adapter-react";
 import {
   Connection as RPCConnection,
   Keypair,
@@ -39,7 +39,7 @@ import {
 } from "@safecoin/safe-token";
 import {
   notify,
-} from "@oyster/common";
+} from "@j0nnyboi/common";
 import { sha256 } from "js-sha256";
 import BN from 'bn.js';
 import * as bs58 from "bs58";

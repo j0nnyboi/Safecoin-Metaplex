@@ -17,12 +17,12 @@ import {
   useWalletModal,
   useQuerySearch,
   WRAPPED_SOL_MINT,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { useMeta, useSolPrice } from '../../contexts';
 import { useTokenList } from '../../contexts/tokenList';
 import { TokenCircle } from '../Custom';
 
-('@safecoin/wallet-adapter-base');
+('@j0nnyboi/wallet-adapter-base');
 
 const btnStyle: React.CSSProperties = {
   border: 'none',
@@ -228,6 +228,8 @@ export const CurrentUserBadge = (props: {
                 <div
                   style={{
                     marginBottom: 10,
+                    display:'flex',
+                    alignItems: 'center'
                   }}
                 >
                   <TokenCircle
@@ -240,7 +242,7 @@ export const CurrentUserBadge = (props: {
                       color: '#FFFFFF',
                     }}
                   >
-                    {formatNumber.format(balance)} SAFEE
+                    {formatNumber.format(balance)} SAFE
                   </span>
                   &nbsp;
                   <span

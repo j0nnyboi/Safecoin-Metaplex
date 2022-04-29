@@ -1,4 +1,4 @@
-import { useMeta } from '@oyster/common';
+import { useMeta } from '@j0nnyboi/common';
 import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 
 import { useCreatorArts } from '../../../hooks';

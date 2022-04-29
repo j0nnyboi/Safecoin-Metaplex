@@ -12,7 +12,7 @@ import {
   StringPublicKey,
   AuctionDataExtended,
   createPipelineExecutor,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import BN from 'bn.js';
 import { useEffect, useMemo, useState } from 'react';
@@ -29,7 +29,7 @@ import {
   SafetyDepositConfig,
   WinningConfigType,
   AuctionViewItem,
-} from '@oyster/common/dist/lib/models/metaplex/index';
+} from '@j0nnyboi/common/dist/lib/models/metaplex/index';
 
 export enum AuctionViewState {
   Live = '0',

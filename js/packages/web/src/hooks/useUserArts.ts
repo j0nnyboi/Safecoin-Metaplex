@@ -3,7 +3,7 @@ import {
   MetadataKey,
   ParsedAccount,
   useUserAccounts,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import BN from 'bn.js';
 import { SafetyDepositDraft } from '../actions/createAuctionManager';
 import {
@@ -11,7 +11,7 @@ import {
   ParticipationConfigV2,
   WinningConfigType,
   WinningConstraint,
-} from '@oyster/common/dist/lib/models/metaplex/index';
+} from '@j0nnyboi/common/dist/lib/models/metaplex/index';
 import { useMeta } from './../contexts';
 
 export const useUserArts = (): SafetyDepositDraft[] => {

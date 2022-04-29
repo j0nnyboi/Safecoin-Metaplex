@@ -3,7 +3,7 @@ import { Card } from 'antd';
 
 import { Artist } from '../../types';
 
-import { shortenAddress } from '@oyster/common';
+import { shortenAddress } from '@j0nnyboi/common';
 import { MetaAvatar } from '../MetaAvatar';
 
 export const ArtistCard = ({ artist }: { artist: Artist }) => {

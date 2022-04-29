@@ -7,7 +7,7 @@ import { CardLoader } from '../../components/MyLoader';
 import { ArtworkViewState } from './types';
 import { useItems } from './hooks/useItems';
 import ItemCard from './components/ItemCard';
-import { useUserAccounts } from '@oyster/common';
+import { useUserAccounts } from '@j0nnyboi/common';
 import { DownOutlined } from '@ant-design/icons';
 import { isMetadata, isPack } from './utils';
 

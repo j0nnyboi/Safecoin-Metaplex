@@ -1,4 +1,4 @@
-import { PackDistributionType } from '@oyster/common';
+import { PackDistributionType } from '@j0nnyboi/common';
 
 export const DISTRIBUTION_TYPES_DATA: Record<
   PackDistributionType,

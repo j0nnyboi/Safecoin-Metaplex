@@ -1,22 +1,22 @@
 import './App.css';
 import { useMemo } from 'react';
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 import Home from './Home';
 
 import { clusterApiUrl } from '@safecoin/web3.js';
-import { WalletAdapterNetwork } from '@safecoin/wallet-adapter-base';
+import { WalletAdapterNetwork } from '@j0nnyboi/wallet-adapter-base';
 import {
   getPhantomWallet,
   getSlopeWallet,
   getSolflareWallet,
   getSolletWallet,
   getSolletExtensionWallet,
-} from '@safecoin/wallet-adapter-wallets';
+} from '@j0nnyboi/wallet-adapter-wallets';
 
 import {
   ConnectionProvider,
   WalletProvider,
-} from '@safecoin/wallet-adapter-react';
+} from '@j0nnyboi/wallet-adapter-react';
 import { WalletDialogProvider } from '@safecoin/wallet-adapter-material-ui';
 
 import { ThemeProvider, createTheme } from '@material-ui/core';

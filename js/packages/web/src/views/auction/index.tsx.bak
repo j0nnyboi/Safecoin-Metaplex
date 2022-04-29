@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Button, Card, Carousel, Col, List, Row, Skeleton } from 'antd';
 import { AuctionCard } from '../../components/AuctionCard';
 import { Connection } from '@safecoin/web3.js';
-import { AuctionViewItem } from '@oyster/common/dist/lib/models/metaplex/index';
+import { AuctionViewItem } from '@j0nnyboi/common/dist/lib/models/metaplex/index';
 import {
   AuctionView as Auction,
   useArt,
@@ -29,8 +29,8 @@ import {
   useMint,
   useMeta,
   BidStateType,
-} from '@oyster/common';
-import { useWallet } from '@safecoin/wallet-adapter-react';
+} from '@j0nnyboi/common';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { MintInfo, Token } from '@safecoin/safe-token';
 import { getHandleAndRegistryKey } from '@safecoin/safe-name-service';
 import useWindowDimensions from '../../utils/layout';

@@ -1,4 +1,4 @@
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';

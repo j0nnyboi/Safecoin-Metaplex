@@ -1,7 +1,7 @@
-import { ParsedAccount, useMeta } from '@oyster/common';
-import { PackVoucher } from '@oyster/common/dist/lib/models/packs/accounts/PackVoucher';
-import { ProvingProcess } from '@oyster/common/dist/lib/models/packs/accounts/ProvingProcess';
-import { PackSet } from '@oyster/common/dist/lib/models/packs/accounts/PackSet';
+import { ParsedAccount, useMeta } from '@j0nnyboi/common';
+import { PackVoucher } from '@j0nnyboi/common/dist/lib/models/packs/accounts/PackVoucher';
+import { ProvingProcess } from '@j0nnyboi/common/dist/lib/models/packs/accounts/ProvingProcess';
+import { PackSet } from '@j0nnyboi/common/dist/lib/models/packs/accounts/PackSet';
 
 import { ExtendedPack } from '../../../types/packs';
 

@@ -6,7 +6,7 @@ import {
   SequenceType,
   StringPublicKey,
   TokenAccount,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { setupMintEditionIntoWalletInstructions } from './setupMintEditionIntoWalletInstructions';
 import { Art } from '../types';
 import { WalletContextState } from '@j0nnyboi/wallet-adapter-react';

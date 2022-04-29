@@ -1,5 +1,5 @@
-import { ParsedAccount, useMeta } from '@oyster/common';
-import { ProvingProcess } from '@oyster/common/dist/lib/models/packs/accounts/ProvingProcess';
+import { ParsedAccount, useMeta } from '@j0nnyboi/common';
+import { ProvingProcess } from '@j0nnyboi/common/dist/lib/models/packs/accounts/ProvingProcess';
 
 import { SafetyDepositDraft } from '../../../actions/createAuctionManager';
 import { useUserArts } from '../../../hooks';

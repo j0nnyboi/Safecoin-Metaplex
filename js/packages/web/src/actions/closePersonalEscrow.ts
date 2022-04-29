@@ -5,7 +5,7 @@ import {
   StringPublicKey,
   toPublicKey,
   WalletSigner,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 import { Token } from '@safecoin/safe-token';
 // When you are an artist and you receive royalties, due to the design of the system

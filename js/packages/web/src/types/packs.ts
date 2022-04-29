@@ -1,7 +1,7 @@
-import { PackVoucher } from '@oyster/common/dist/lib/models/packs/accounts/PackVoucher';
-import { ParsedAccount, StringPublicKey } from '@oyster/common';
-import { PackSet } from '@oyster/common/dist/lib/models/packs/accounts/PackSet';
-import { ProvingProcess } from '@oyster/common/dist/lib/models/packs/accounts/ProvingProcess';
+import { PackVoucher } from '@j0nnyboi/common/dist/lib/models/packs/accounts/PackVoucher';
+import { ParsedAccount, StringPublicKey } from '@j0nnyboi/common';
+import { PackSet } from '@j0nnyboi/common/dist/lib/models/packs/accounts/PackSet';
+import { ProvingProcess } from '@j0nnyboi/common/dist/lib/models/packs/accounts/ProvingProcess';
 
 export type VoucherByKey = Record<string, ParsedAccount<PackVoucher>>;
 export type ExtendedVoucher = ParsedAccount<PackVoucher> & {

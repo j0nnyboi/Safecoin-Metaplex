@@ -4,9 +4,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useConnection } from '../contexts';
 
 import { useMemo } from 'react';
-import { useWallet } from '@safecoin/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 import { searchEntanglements } from '../utils/entangler';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';

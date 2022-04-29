@@ -5,7 +5,7 @@ import {
   mintNewEditionFromMasterEditionViaToken,
   StringPublicKey,
   TokenAccount,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { createMintAndAccountWithOne } from './createMintAndAccountWithOne';
 import { Art } from '../types';
 import { WalletContextState } from '@j0nnyboi/wallet-adapter-react';

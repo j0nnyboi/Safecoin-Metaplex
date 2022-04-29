@@ -1,4 +1,4 @@
-import { PackDistributionType } from '@oyster/common';
+import { PackDistributionType } from '@j0nnyboi/common';
 import { PackState } from '../interface';
 import { CreatePackSteps } from '../types';
 

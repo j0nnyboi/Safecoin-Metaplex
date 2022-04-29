@@ -1,4 +1,4 @@
-import { programIds } from '@oyster/common';
+import { programIds } from '@j0nnyboi/common';
 import { AccountLayout } from '@safecoin/safe-token';
 import { TransactionInstruction } from '@safecoin/web3.js';
 

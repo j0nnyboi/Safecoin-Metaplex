@@ -7,7 +7,7 @@ import {
   fromLamports,
   CountdownState,
   PriceFloorType,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { AuctionView, AuctionViewState, useBidsForAuction } from '../../hooks';
 import { AmountLabel } from '../AmountLabel';
 import { useAuctionCountdown } from '../../hooks/useAuctionCountdown';

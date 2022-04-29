@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoreProvider } from '@oyster/common';
+import { StoreProvider } from '@j0nnyboi/common';
 import { FC } from 'react';
 export const Providers: FC = ({ children }) => {
   return (

@@ -12,7 +12,7 @@
     "@mui/icons-material": "^5.0.1",
     "@mui/material": "^5.0.2",
     "@safecoin/safe-token": "^0.1.7-b",
-    "@safecoin/safe-token-registry": "file:../../../../token-list",
+    "@j0nnyboi/safe-token-registry": "file:../../../../token-list",
     "@j0nnyboi/wallet-adapter-base": "^0.3.0",
     "@j0nnyboi/wallet-adapter-react": "^0.3.0",
     "@j0nnyboi/wallet-adapter-wallets": "^0.3.0",

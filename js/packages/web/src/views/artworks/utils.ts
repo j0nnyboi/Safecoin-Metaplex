@@ -1,4 +1,4 @@
-import { Metadata, ParsedAccount } from '@oyster/common';
+import { Metadata, ParsedAccount } from '@j0nnyboi/common';
 import { ExtendedPack } from '../../types/packs';
 import { Item } from './types';
 

@@ -9,9 +9,9 @@ import { useMemo, useEffect } from 'react';
 
 import {
     useWallet,
-} from "@safecoin/wallet-adapter-react";
+} from "@j0nnyboi/wallet-adapter-react";
 import React from "react";
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 
 import {
     useConnection,

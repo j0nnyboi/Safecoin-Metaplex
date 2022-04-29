@@ -11,7 +11,7 @@ import {
   sendTransactions,
   SequenceType,
   WalletSigner,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { cacheAuctionIndexer } from './cacheAuctionInIndexer';
 import { buildListWhileNonZero } from '../hooks';
 import { BN } from 'bn.js';

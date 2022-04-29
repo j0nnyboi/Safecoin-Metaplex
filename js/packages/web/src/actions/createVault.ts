@@ -11,13 +11,13 @@ import {
   StringPublicKey,
   toPublicKey,
   WalletSigner,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import {
   initVault,
   MAX_VAULT_SIZE,
   VAULT_PREFIX,
-} from '@oyster/common/dist/lib/actions/vault';
-import { createTokenAccount } from '@oyster/common/dist/lib/actions/account';
+} from '@j0nnyboi/common/dist/lib/actions/vault';
+import { createTokenAccount } from '@j0nnyboi/common/dist/lib/actions/account';
 
 import { AccountLayout, MintLayout } from '@safecoin/safe-token';
 import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';

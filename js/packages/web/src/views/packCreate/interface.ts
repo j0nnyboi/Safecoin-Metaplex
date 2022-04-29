@@ -1,4 +1,4 @@
-import { PackDistributionType, TokenAccount } from '@oyster/common';
+import { PackDistributionType, TokenAccount } from '@j0nnyboi/common';
 import { Keypair } from '@safecoin/web3.js';
 import BN from 'bn.js';
 

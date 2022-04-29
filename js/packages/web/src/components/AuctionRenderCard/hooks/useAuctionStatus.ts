@@ -5,7 +5,7 @@ import {
   fromLamports,
   PriceFloorType,
   useMint,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import {
   AuctionView,
   AuctionViewState,

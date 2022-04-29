@@ -1,11 +1,11 @@
-import { WalletAdapter, WalletError } from "@safecoin/wallet-adapter-base";
+import { WalletAdapter, WalletError } from "@j0nnyboi/wallet-adapter-base";
 import {
   useWallet,
   WalletProvider as BaseWalletProvider,
-} from "@safecoin/wallet-adapter-react";
+} from "@j0nnyboi/wallet-adapter-react";
 import {
   getSolletWallet,
-} from "@safecoin/wallet-adapter-wallets";
+} from "@j0nnyboi/wallet-adapter-wallets";
 import { Button } from "antd";
 import React, {
   createContext,
@@ -17,7 +17,7 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { notify } from "@oyster/common";
+import { notify } from "@j0nnyboi/common";
 import { DefaultModal } from "../../components";
 
 import "./wallet.less";

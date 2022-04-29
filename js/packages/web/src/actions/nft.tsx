@@ -17,7 +17,7 @@ import {
   Attribute,
   getAssetCostToStore,
   ARWEAVE_UPLOAD_ENDPOINT
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 
 import React, { Dispatch, SetStateAction } from 'react';
 import { MintLayout, Token } from '@safecoin/safe-token';

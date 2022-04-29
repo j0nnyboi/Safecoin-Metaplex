@@ -15,7 +15,7 @@ import {
   VaultState,
   WalletSigner,
   WRAPPED_SOL_MINT,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { Connection } from '@safecoin/web3.js';
 import { Badge, Popover, List } from 'antd';

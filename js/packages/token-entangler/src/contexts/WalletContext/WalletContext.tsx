@@ -1,8 +1,8 @@
-import { WalletAdapter, WalletError } from '@safecoin/wallet-adapter-base';
+import { WalletAdapter, WalletError } from '@j0nnyboi/wallet-adapter-base';
 import {
   useWallet,
   WalletProvider as BaseWalletProvider,
-} from '@safecoin/wallet-adapter-react';
+} from '@j0nnyboi/wallet-adapter-react';
 import {
   getLedgerWallet,
   getMathWallet,
@@ -11,7 +11,7 @@ import {
   getSolletWallet,
   getSolongWallet,
   getTorusWallet,
-} from '@safecoin/wallet-adapter-wallets';
+} from '@j0nnyboi/wallet-adapter-wallets';
 import { Button } from 'antd';
 import React, {
   createContext,

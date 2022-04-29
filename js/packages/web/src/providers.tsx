@@ -4,7 +4,7 @@ import {
   StoreProvider,
   WalletProvider,
   MetaProvider,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import React, { FC } from 'react';
 import { ConfettiProvider } from './components/Confetti';
 import { AppLayout } from './components/Layout';

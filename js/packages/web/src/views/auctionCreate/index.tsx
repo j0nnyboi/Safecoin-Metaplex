@@ -34,7 +34,7 @@ import {
   WRAPPED_SOL_MINT,
   shortenAddress,
   useNativeAccount,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { Connection, LAMPORTS_PER_SAFE, PublicKey } from '@safecoin/web3.js';
 import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { MintInfo, MintLayout } from '@safecoin/safe-token';
@@ -43,14 +43,14 @@ import { capitalize } from 'lodash';
 import {
   WinningConfigType,
   AmountRange,
-} from '@oyster/common/dist/lib/models/metaplex/index';
+} from '@j0nnyboi/common/dist/lib/models/metaplex/index';
 import moment from 'moment';
 import {
   createAuctionManager,
   SafetyDepositDraft,
 } from '../../actions/createAuctionManager';
 import BN from 'bn.js';
-import { constants } from '@oyster/common';
+import { constants } from '@j0nnyboi/common';
 import { DateTimePicker } from '../../components/DateTimePicker';
 import { AmountLabel } from '../../components/AmountLabel';
 import { useMeta } from '../../contexts';
@@ -59,8 +59,8 @@ import { PlusCircleOutlined } from '@ant-design/icons';
 import { SystemProgram } from '@safecoin/web3.js';
 import TokenDialog, { TokenButton } from '../../components/TokenDialog';
 import { useTokenList } from '../../contexts/tokenList';
-import { mintTo } from '@project-serum/serum/lib/token-instructions';
-import { TokenInfo } from '@safecoin/safe-token-registry'
+import { mintTo } from '@j0nnyboi/serum/lib/token-instructions';
+import { TokenInfo } from '@j0nnyboi/safe-token-registry'
 import { FundsIssueModal } from "../../components/FundsIssueModal";
 
 const { Option } = Select;

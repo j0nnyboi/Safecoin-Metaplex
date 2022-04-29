@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useState, useCallback } from 'react';
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 
 import styled from 'styled-components';
 import { Container, Snackbar } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Alert from '@material-ui/lab/Alert';
 import { PublicKey } from '@safecoin/web3.js';
-import { useWallet } from '@safecoin/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { WalletDialogButton } from '@safecoin/wallet-adapter-material-ui';
 import {
   awaitTransactionSignatureConfirmation,

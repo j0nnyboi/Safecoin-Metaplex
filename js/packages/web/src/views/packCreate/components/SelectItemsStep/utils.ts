@@ -1,4 +1,4 @@
-import { StringPublicKey } from '@oyster/common';
+import { StringPublicKey } from '@j0nnyboi/common';
 
 import { SafetyDepositDraft } from '../../../../actions/createAuctionManager';
 

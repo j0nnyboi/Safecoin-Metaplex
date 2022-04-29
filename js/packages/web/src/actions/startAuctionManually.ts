@@ -1,6 +1,6 @@
 import { Connection, Keypair, TransactionInstruction } from '@safecoin/web3.js';
-import { startAuction } from '@oyster/common/dist/lib/models/metaplex/index';
-import { notify, sendTransactionWithRetry, WalletSigner } from '@oyster/common';
+import { startAuction } from '@j0nnyboi/common/dist/lib/models/metaplex/index';
+import { notify, sendTransactionWithRetry, WalletSigner } from '@j0nnyboi/common';
 import { AuctionView } from '../hooks';
 
 export async function startAuctionManually(

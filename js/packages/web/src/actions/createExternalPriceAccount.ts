@@ -11,12 +11,12 @@ import {
   StringPublicKey,
   toPublicKey,
   WalletSigner,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import {
   updateExternalPriceAccount,
   ExternalPriceAccount,
   MAX_EXTERNAL_ACCOUNT_SIZE,
-} from '@oyster/common/dist/lib/actions/vault';
+} from '@j0nnyboi/common/dist/lib/actions/vault';
 
 import BN from 'bn.js';
 import { QUOTE_MINT } from '../constants';

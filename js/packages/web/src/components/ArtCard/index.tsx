@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardProps, Button, Badge } from 'antd';
-import { MetadataCategory, StringPublicKey } from '@oyster/common';
+import { MetadataCategory, StringPublicKey } from '@j0nnyboi/common';
 import { ArtContent } from '../ArtContent';
 import { useArt } from '../../hooks';
 import { Artist, ArtType } from '../../types';

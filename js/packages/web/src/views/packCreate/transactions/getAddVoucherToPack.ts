@@ -1,4 +1,4 @@
-import { addVoucherToPack } from '@oyster/common';
+import { addVoucherToPack } from '@j0nnyboi/common';
 import { TransactionInstruction } from '@safecoin/web3.js';
 
 import { GetAddVoucherToPackParams } from './interface';

@@ -4,7 +4,7 @@ import {
   useConnection,
   useMeta,
   useUserAccounts,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { useHistory } from 'react-router-dom';
 

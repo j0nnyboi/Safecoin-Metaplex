@@ -8,7 +8,7 @@
     "**/Thumbs.db": true,
     "**/.next": false,
     "**/dist": true,
-    "node_modules": true,
+    "node_modules": false,
     "packages/cli/node_modules": true,
     "packages/common/dist/**": true,
     "packages/web/.next": true,

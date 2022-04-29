@@ -5,8 +5,8 @@ import {
   ParsedAccount,
   StringPublicKey,
   toPublicKey,
-} from '@oyster/common';
-import { ProvingProcess } from '@oyster/common/dist/lib/models/packs/accounts/ProvingProcess';
+} from '@j0nnyboi/common';
+import { ProvingProcess } from '@j0nnyboi/common/dist/lib/models/packs/accounts/ProvingProcess';
 import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 import { requestCards } from '../../transactions/requestCards';

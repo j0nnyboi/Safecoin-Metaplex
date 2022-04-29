@@ -18,10 +18,10 @@ import {
   programIds,
   pubkeyToString,
   WRAPPED_SOL_MINT,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
-import { approve } from '@oyster/common/dist/lib/models/account';
-import { TokenAccount } from '@oyster/common/dist/lib/models/account';
+import { approve } from '@j0nnyboi/common/dist/lib/models/account';
+import { TokenAccount } from '@j0nnyboi/common/dist/lib/models/account';
 
 import { AccountLayout, MintInfo } from '@safecoin/safe-token';
 import { AuctionView } from '../hooks';

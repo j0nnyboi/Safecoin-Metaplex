@@ -15,13 +15,13 @@ import {
 
 import {
   useWallet,
-} from "@safecoin/wallet-adapter-react";
+} from "@j0nnyboi/wallet-adapter-react";
 import {
   Keypair,
 } from "@safecoin/web3.js";
 import {
   notify,
-} from "@oyster/common";
+} from "@j0nnyboi/common";
 
 import {
   useConnection,

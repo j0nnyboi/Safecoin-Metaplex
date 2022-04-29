@@ -1,4 +1,4 @@
-import { ParsedAccount, WhitelistedCreator } from '@oyster/common';
+import { ParsedAccount, WhitelistedCreator } from '@j0nnyboi/common';
 import { Artist } from '../../types';
 
 export const getCreator = (

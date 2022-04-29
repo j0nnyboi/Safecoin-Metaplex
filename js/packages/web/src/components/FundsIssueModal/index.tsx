@@ -1,5 +1,5 @@
 import React from 'react';
-import { MetaplexModal, WRAPPED_SOL_MINT } from '@oyster/common';
+import { MetaplexModal, WRAPPED_SOL_MINT } from '@j0nnyboi/common';
 import { AmountLabel } from "../AmountLabel";
 import { useTokenList } from "../../contexts/tokenList";
 import { Button } from "antd";

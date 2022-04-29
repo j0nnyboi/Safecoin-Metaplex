@@ -1,7 +1,7 @@
 import { InstructionsModal } from '../InstructionsModal';
 import React from 'react';
 import { LABELS } from '../../constants';
-import { ConnectButton } from '@oyster/common';
+import { ConnectButton } from '@j0nnyboi/common';
 
 interface HowToBuyModalProps {
   buttonClassName: string;

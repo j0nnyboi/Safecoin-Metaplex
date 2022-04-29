@@ -1,4 +1,4 @@
-import { initPackSet } from '@oyster/common';
+import { initPackSet } from '@j0nnyboi/common';
 import { TransactionInstruction } from '@safecoin/web3.js';
 import { BN } from 'bn.js';
 

@@ -1,5 +1,5 @@
-import { Metadata, ParsedAccount, StringPublicKey } from '@oyster/common';
-import { ProvingProcess } from '@oyster/common/dist/lib/models/packs/accounts/ProvingProcess';
+import { Metadata, ParsedAccount, StringPublicKey } from '@j0nnyboi/common';
+import { ProvingProcess } from '@j0nnyboi/common/dist/lib/models/packs/accounts/ProvingProcess';
 
 interface GetInitialProvingProcessParams {
   provingProcesses: Record<string, ParsedAccount<ProvingProcess>>;

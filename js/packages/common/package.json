@@ -1,5 +1,5 @@
 {
-  "name": "@oyster/common",
+  "name": "@j0nnyboi/common",
   "version": "0.0.2",
   "description": "Oyster common utilities",
   "main": "dist/lib/index.js",

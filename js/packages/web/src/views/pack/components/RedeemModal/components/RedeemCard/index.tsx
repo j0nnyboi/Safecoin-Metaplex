@@ -1,4 +1,4 @@
-import { Metadata, ParsedAccount, shortenAddress } from '@oyster/common';
+import { Metadata, ParsedAccount, shortenAddress } from '@j0nnyboi/common';
 import React from 'react';
 
 import { ArtContent } from '../../../../../../components/ArtContent';

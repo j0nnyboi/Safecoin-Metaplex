@@ -7,7 +7,7 @@ import {
   programIds,
   StringPublicKey,
   toPublicKey,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 export async function createMintAndAccountWithOne(

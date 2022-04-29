@@ -23,7 +23,7 @@ import FilePresentIcon from '@mui/icons-material/FilePresent';
 
 import {
   useWallet,
-} from "@safecoin/wallet-adapter-react";
+} from "@j0nnyboi/wallet-adapter-react";
 import {
   Keypair,
   PublicKey,
@@ -34,7 +34,7 @@ import {
 import {
   notify,
   shortenAddress,
-} from "@oyster/common";
+} from "@j0nnyboi/common";
 import BN from 'bn.js';
 
 import {

@@ -10,7 +10,7 @@ import { Token } from '@safecoin/safe-token';
 import {
   SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID,
   TOKEN_PROGRAM_ID,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { sha256 } from 'js-sha256';
 import BN from 'bn.js';
 import * as bs58 from 'bs58';

@@ -4,7 +4,7 @@ import {
   useMint,
   useUserAccounts,
   WRAPPED_SOL_MINT,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { useEffect, useMemo, useState } from 'react';
 import { useSolPrice, useAllSplPrices } from '../contexts';
 

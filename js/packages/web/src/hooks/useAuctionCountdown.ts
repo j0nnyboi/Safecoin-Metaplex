@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { CountdownState } from '@oyster/common';
+import { CountdownState } from '@j0nnyboi/common';
 import { AuctionView } from './useAuctions';
 
 export const useAuctionCountdown = (auctionView: AuctionView) => {

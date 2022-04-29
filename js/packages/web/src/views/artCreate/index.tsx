@@ -34,7 +34,7 @@ import {
   WRAPPED_SOL_MINT,
   getAssetCostToStore,
   LAMPORT_MULTIPLIER,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { Connection } from '@safecoin/web3.js';
 import { MintLayout } from '@safecoin/safe-token';

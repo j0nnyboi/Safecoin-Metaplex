@@ -1,6 +1,6 @@
 import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { AuctionView } from '../../../hooks';
-import { BidStateType } from '@oyster/common';
+import { BidStateType } from '@j0nnyboi/common';
 
 interface ActionButtonContentProps {
   isInstantSale: boolean;

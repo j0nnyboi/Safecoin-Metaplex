@@ -1,6 +1,6 @@
-import { WalletContextState } from '@safecoin/wallet-adapter-react';
+import { WalletContextState } from '@j0nnyboi/wallet-adapter-react';
 import { Connection, PublicKey } from '@safecoin/web3.js';
-import { TokenAccount } from '@oyster/common';
+import { TokenAccount } from '@j0nnyboi/common';
 
 import { PackState, SelectedItem, SelectedVoucher } from '../interface';
 

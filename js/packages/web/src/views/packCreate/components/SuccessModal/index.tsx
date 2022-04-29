@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { Button } from 'antd';
 
-import { MetaplexOverlay } from '@oyster/common';
+import { MetaplexOverlay } from '@j0nnyboi/common';
 
 import { Confetti } from '../../../../components/Confetti';
 

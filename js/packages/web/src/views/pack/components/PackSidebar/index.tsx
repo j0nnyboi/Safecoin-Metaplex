@@ -1,4 +1,4 @@
-import { shortenAddress, royalty, pubkeyToString } from '@oyster/common';
+import { shortenAddress, royalty, pubkeyToString } from '@j0nnyboi/common';
 import React from 'react';
 import { Skeleton, Divider } from 'antd';
 import { useWallet } from '@j0nnyboi/wallet-adapter-react';

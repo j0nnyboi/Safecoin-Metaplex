@@ -1,4 +1,4 @@
-import { useLocalStorageState } from "@oyster/common";
+import { useLocalStorageState } from "@j0nnyboi/common";
 import {
   Keypair,
   Commitment,
@@ -16,9 +16,9 @@ import {
   TokenInfo,
   TokenListProvider,
   ENV as ChainId,
-} from "@safecoin/safe-token-registry";
+} from "@j0nnyboi/safe-token-registry";
 import { WalletSigner } from "./WalletContext/WalletContext";
-import { WalletNotConnectedError } from "@safecoin/wallet-adapter-base";
+import { WalletNotConnectedError } from "@j0nnyboi/wallet-adapter-base";
 
 interface BlockhashAndFeeCalculator {
   blockhash: Blockhash;

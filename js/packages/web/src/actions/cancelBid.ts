@@ -14,14 +14,14 @@ import {
   toPublicKey,
   pubkeyToString,
   WRAPPED_SOL_MINT,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { AccountLayout } from '@safecoin/safe-token';
 import { TransactionInstruction, Keypair, Connection } from '@safecoin/web3.js';
 import { AuctionView } from '../hooks';
 import {
   BidRedemptionTicket,
   PrizeTrackingTicket,
-} from '@oyster/common/dist/lib/models/metaplex/index';
+} from '@j0nnyboi/common/dist/lib/models/metaplex/index';
 import { claimUnusedPrizes } from './claimUnusedPrizes';
 import { findAta, setupPlaceBid } from './sendPlaceBid';
 import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';

@@ -1,4 +1,4 @@
-import { PackDistributionType } from '@oyster/common';
+import { PackDistributionType } from '@j0nnyboi/common';
 import React, { memo, ReactElement } from 'react';
 import { Input, Tooltip } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';

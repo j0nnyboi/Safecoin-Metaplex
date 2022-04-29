@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Statistic } from 'antd';
 import { useSolPrice, useAllSplPrices } from '../../contexts';
-import { formatAmount, formatUSD, WRAPPED_SOL_MINT } from '@oyster/common';
+import { formatAmount, formatUSD, WRAPPED_SOL_MINT } from '@j0nnyboi/common';
 import { TokenCircle } from '../Custom';
 import { TokenInfo } from '@j0nnyboi/safe-token-registry';
 

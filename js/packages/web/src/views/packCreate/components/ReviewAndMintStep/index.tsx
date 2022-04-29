@@ -3,7 +3,7 @@ import { Image } from 'antd';
 
 import { ReviewAndMintStepProps } from './interface';
 import { getTotalNFTsCount } from './utils';
-import { PackDistributionType } from '@oyster/common';
+import { PackDistributionType } from '@j0nnyboi/common';
 
 const ReviewAndMintStep = ({
   uri,

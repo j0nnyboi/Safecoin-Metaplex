@@ -4,7 +4,7 @@ import {
   requestCardToRedeem,
   cleanUp,
   chunks,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 
 import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 import { Keypair, TransactionInstruction } from '@safecoin/web3.js';

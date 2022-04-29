@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Select } from 'antd';
-import { useWallet } from '@safecoin/wallet-adapter-react';
-import { contexts, useQuerySearch } from '@oyster/common';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { contexts, useQuerySearch } from '@j0nnyboi/common';
 
 const { ENDPOINTS, useConnectionConfig } = contexts.Connection;
 

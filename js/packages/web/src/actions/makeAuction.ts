@@ -7,11 +7,11 @@ import {
   StringPublicKey,
   toPublicKey,
   WalletSigner,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import {
   AUCTION_PREFIX,
   createAuction,
-} from '@oyster/common/dist/lib/actions/auction';
+} from '@j0nnyboi/common/dist/lib/actions/auction';
 import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 
 // This command makes an auction

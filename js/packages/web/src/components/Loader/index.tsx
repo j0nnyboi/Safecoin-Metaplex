@@ -1,4 +1,4 @@
-import { useMeta } from '@oyster/common';
+import { useMeta } from '@j0nnyboi/common';
 import React, { FC } from 'react';
 
 export const LoaderProvider: FC = ({ children }) => {

@@ -1,7 +1,7 @@
-import { ParsedAccount, StringPublicKey, TokenAccount } from '@oyster/common';
-import { PackSet } from '@oyster/common/dist/lib/models/packs/accounts/PackSet';
-import { ProvingProcess } from '@oyster/common/dist/lib/models/packs/accounts/ProvingProcess';
-import { WalletContextState } from '@safecoin/wallet-adapter-react';
+import { ParsedAccount, StringPublicKey, TokenAccount } from '@j0nnyboi/common';
+import { PackSet } from '@j0nnyboi/common/dist/lib/models/packs/accounts/PackSet';
+import { ProvingProcess } from '@j0nnyboi/common/dist/lib/models/packs/accounts/ProvingProcess';
+import { WalletContextState } from '@j0nnyboi/wallet-adapter-react';
 import { Connection } from '@safecoin/web3.js';
 
 import { SafetyDepositDraft } from '../../../actions/createAuctionManager';

@@ -1,8 +1,8 @@
-import { WalletContextState } from '@safecoin/wallet-adapter-react';
-import { MetaState, ParsedAccount, StringPublicKey } from '@oyster/common';
+import { WalletContextState } from '@j0nnyboi/wallet-adapter-react';
+import { MetaState, ParsedAccount, StringPublicKey } from '@j0nnyboi/common';
 import { Connection, Keypair, TransactionInstruction } from '@safecoin/web3.js';
 import BN from 'bn.js';
-import { PackSet } from '@oyster/common/dist/lib/models/packs/accounts/PackSet';
+import { PackSet } from '@j0nnyboi/common/dist/lib/models/packs/accounts/PackSet';
 
 import { PackMetadataByPackCard } from '../contexts/hooks/useMetadataByPackCard';
 

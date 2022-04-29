@@ -1,7 +1,7 @@
 import React from "react";
-import { useWallet } from "@safecoin/wallet-adapter-react";
+import { useWallet } from "@j0nnyboi/wallet-adapter-react";
 import { ENDPOINTS, useColorMode, useConnectionConfig } from "../../contexts";
-import { notify, shortenAddress } from "@oyster/common";
+import { notify, shortenAddress } from "@j0nnyboi/common";
 import { CopyOutlined } from "@ant-design/icons";
 import { ModalEnum, useModal, useWalletModal } from "../../contexts";
 import {

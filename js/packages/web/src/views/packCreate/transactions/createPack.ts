@@ -2,10 +2,10 @@ import {
   MAX_PACK_SET_SIZE,
   sendTransactionsInChunks,
   SequenceType,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { Keypair, TransactionInstruction } from '@safecoin/web3.js';
 import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
-import { programIds } from '@oyster/common';
+import { programIds } from '@j0nnyboi/common';
 
 import { CreatePackParams } from './interface';
 import { getInitPackSet } from './getInitPackSet';

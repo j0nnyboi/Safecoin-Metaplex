@@ -9,7 +9,7 @@ import {
 
 import { Connection as ContextConnection } from '../contexts';
 import { deserializeUnchecked } from 'borsh';
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 import {
   SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID,
   TOKEN_ENTANGLEMENT_PROGRAM_ID,
@@ -20,7 +20,7 @@ import {
   Token,
   TOKEN_PROGRAM_ID,
 } from '@safecoin/safe-token';
-import { BN } from '@project-serum/anchor';
+import { BN } from '@j0nnyboi/anchor';
 import { getEdition, getMetadata, getTokenAmount } from './accounts';
 import mints from './valid_mints.json';
 import { extendBorsh } from './borsh';

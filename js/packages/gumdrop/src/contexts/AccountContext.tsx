@@ -5,10 +5,10 @@ import React, {
   useState,
 } from 'react';
 import { useConnection } from './ConnectionContext';
-import { useWallet } from '@safecoin/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { AccountInfo, Connection, PublicKey } from '@safecoin/web3.js';
 import { AccountLayout, MintInfo, MintLayout, u64 } from '@safecoin/safe-token';
-import { EventEmitter, programIds, chunks, StringPublicKey, WRAPPED_SOL_MINT } from '@oyster/common';
+import { EventEmitter, programIds, chunks, StringPublicKey, WRAPPED_SOL_MINT } from '@j0nnyboi/common';
 
 import { TokenAccount } from '../models';
 

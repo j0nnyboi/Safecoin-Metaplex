@@ -11,7 +11,7 @@ import {
   CurrentUserBadge,
   CurrentUserBadgeMobile,
 } from '../CurrentUserBadge';
-import { ConnectButton } from '@oyster/common';
+import { ConnectButton } from '@j0nnyboi/common';
 import { MobileNavbar } from '../MobileNavbar';
 
 const getDefaultLinkActions = (connected: boolean) => {

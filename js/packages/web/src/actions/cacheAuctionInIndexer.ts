@@ -1,15 +1,15 @@
 import { Keypair, TransactionInstruction } from '@safecoin/web3.js';
 import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
-import { ParsedAccount, StringPublicKey, WalletSigner } from '@oyster/common';
-import { getSafetyDepositBoxAddress } from '@oyster/common/dist/lib/actions/vault';
+import { ParsedAccount, StringPublicKey, WalletSigner } from '@j0nnyboi/common';
+import { getSafetyDepositBoxAddress } from '@j0nnyboi/common/dist/lib/actions/vault';
 import {
   StoreIndexer,
   getStoreIndexer,
   getAuctionCache,
   MAX_INDEXED_ELEMENTS,
-} from '@oyster/common/dist/lib/models/metaplex/index';
-import { setStoreIndex } from '@oyster/common/dist/lib/models/metaplex/setStoreIndex';
-import { setAuctionCache } from '@oyster/common/dist/lib/models/metaplex/setAuctionCache';
+} from '@j0nnyboi/common/dist/lib/models/metaplex/index';
+import { setStoreIndex } from '@j0nnyboi/common/dist/lib/models/metaplex/setStoreIndex';
+import { setAuctionCache } from '@j0nnyboi/common/dist/lib/models/metaplex/setAuctionCache';
 import BN from 'bn.js';
 
 // This command caches an auction at position 0, page 0, and moves everything up

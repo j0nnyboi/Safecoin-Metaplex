@@ -10,9 +10,9 @@ import Typography from '@mui/material/Typography';
 
 import { useConnection } from '../contexts';
 
-import { useWallet } from '@safecoin/wallet-adapter-react';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@j0nnyboi/anchor';
 import { getOwnedNFTMints, searchEntanglements } from '../utils/entangler';
 import { useHistory } from 'react-router-dom';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';

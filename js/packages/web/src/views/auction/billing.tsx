@@ -25,7 +25,7 @@ import {
   toPublicKey,
   WalletSigner,
   WRAPPED_SOL_MINT,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { useMeta } from '../../contexts';
 import {
@@ -34,7 +34,7 @@ import {
   NonWinningConstraint,
   PayoutTicket,
   WinningConstraint,
-} from '@oyster/common/dist/lib/models/metaplex/index';
+} from '@j0nnyboi/common/dist/lib/models/metaplex/index';
 import { Connection } from '@safecoin/web3.js';
 import { settle } from '../../actions/settle';
 import { MintInfo } from '@safecoin/safe-token';

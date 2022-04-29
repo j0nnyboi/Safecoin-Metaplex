@@ -13,7 +13,7 @@ import {
   programIds,
   toPublicKey,
   WalletSigner,
-} from '@oyster/common';
+} from '@j0nnyboi/common';
 import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
 import { Token } from '@safecoin/safe-token';
 
