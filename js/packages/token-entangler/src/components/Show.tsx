@@ -1,6 +1,6 @@
 import React from 'react';
 import { useConnection } from '../contexts';
-import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { useWallet } from '@araviel/wallet-adapter-react';
 import { useMemo, useEffect } from 'react';
 import * as anchor from '@j0nnyboi/anchor';
 import { showEntanglement } from '../utils/entangler';

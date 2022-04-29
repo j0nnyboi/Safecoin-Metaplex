@@ -15,7 +15,7 @@ import {
 
 import {
   useWallet,
-} from "@j0nnyboi/wallet-adapter-react";
+} from "@araviel/wallet-adapter-react";
 import {
   Keypair,
 } from "@safecoin/web3.js";

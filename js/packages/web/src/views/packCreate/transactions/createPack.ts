@@ -4,7 +4,7 @@ import {
   SequenceType,
 } from '@j0nnyboi/common';
 import { Keypair, TransactionInstruction } from '@safecoin/web3.js';
-import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
+import { WalletNotConnectedError } from '@araviel/wallet-adapter-base';
 import { programIds } from '@j0nnyboi/common';
 
 import { CreatePackParams } from './interface';

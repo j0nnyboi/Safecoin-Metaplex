@@ -18,7 +18,7 @@ import {
 import { AccountLayout } from '@safecoin/safe-token';
 import BN from 'bn.js';
 import { SafetyDepositDraft } from './createAuctionManager';
-import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
+import { WalletNotConnectedError } from '@araviel/wallet-adapter-base';
 
 export interface SafetyDepositInstructionTemplate {
   box: {

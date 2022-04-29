@@ -9,7 +9,7 @@ import { useMemo, useEffect } from 'react';
 
 import {
     useWallet,
-} from "@j0nnyboi/wallet-adapter-react";
+} from "@araviel/wallet-adapter-react";
 import React from "react";
 import * as anchor from '@j0nnyboi/anchor';
 

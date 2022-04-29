@@ -1,5 +1,5 @@
 import { Keypair, Connection, TransactionInstruction } from '@safecoin/web3.js';
-import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
+import { WalletNotConnectedError } from '@araviel/wallet-adapter-base';
 import { StringPublicKey, toPublicKey, WalletSigner } from '@j0nnyboi/common';
 import { createTokenAccount } from '@j0nnyboi/common/dist/lib/actions/account';
 import {

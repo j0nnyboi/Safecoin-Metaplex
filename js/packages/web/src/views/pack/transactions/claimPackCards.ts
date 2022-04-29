@@ -1,4 +1,4 @@
-import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
+import { WalletNotConnectedError } from '@araviel/wallet-adapter-base';
 import {
   claimPack,
   findPackCardProgramAddress,

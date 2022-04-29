@@ -8,7 +8,7 @@ import {
 } from '@j0nnyboi/common';
 import { createMintAndAccountWithOne } from './createMintAndAccountWithOne';
 import { Art } from '../types';
-import { WalletContextState } from '@j0nnyboi/wallet-adapter-react';
+import { WalletContextState } from '@araviel/wallet-adapter-react';
 
 export async function setupMintEditionIntoWalletInstructions(
   art: Art,

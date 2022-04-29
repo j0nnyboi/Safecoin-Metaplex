@@ -1,5 +1,5 @@
 import { StringPublicKey } from '@j0nnyboi/common';
-import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { useWallet } from '@araviel/wallet-adapter-react';
 import { useEffect, useState } from 'react';
 import {
   AuctionView,

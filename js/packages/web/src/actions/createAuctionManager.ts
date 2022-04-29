@@ -26,7 +26,7 @@ import {
   toPublicKey,
   WalletSigner,
 } from '@j0nnyboi/common';
-import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
+import { WalletNotConnectedError } from '@araviel/wallet-adapter-base';
 import { AccountLayout, Token } from '@safecoin/safe-token';
 import BN from 'bn.js';
 import {

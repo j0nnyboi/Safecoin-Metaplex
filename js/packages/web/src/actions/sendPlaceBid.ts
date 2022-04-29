@@ -19,7 +19,7 @@ import {
   pubkeyToString,
   WRAPPED_SOL_MINT,
 } from '@j0nnyboi/common';
-import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
+import { WalletNotConnectedError } from '@araviel/wallet-adapter-base';
 import { approve } from '@j0nnyboi/common/dist/lib/models/account';
 import { TokenAccount } from '@j0nnyboi/common/dist/lib/models/account';
 

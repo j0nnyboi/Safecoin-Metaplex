@@ -6,7 +6,7 @@ import {
   toPublicKey,
   WalletSigner,
 } from '@j0nnyboi/common';
-import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
+import { WalletNotConnectedError } from '@araviel/wallet-adapter-base';
 import { Token } from '@safecoin/safe-token';
 // When you are an artist and you receive royalties, due to the design of the system
 // it is to a permanent ATA WSOL account. This is because the auctioneer can't transfer monies

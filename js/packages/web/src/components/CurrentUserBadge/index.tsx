@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { useWallet } from '@araviel/wallet-adapter-react';
 import { LAMPORTS_PER_SAFE, PublicKey } from '@safecoin/web3.js';
 import { Button, Popover, Select } from 'antd';
 import {
@@ -22,7 +22,7 @@ import { useMeta, useSolPrice } from '../../contexts';
 import { useTokenList } from '../../contexts/tokenList';
 import { TokenCircle } from '../Custom';
 
-('@j0nnyboi/wallet-adapter-base');
+('@araviel/wallet-adapter-base');
 
 const btnStyle: React.CSSProperties = {
   border: 'none',

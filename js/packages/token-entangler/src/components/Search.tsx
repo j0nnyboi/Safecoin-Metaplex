@@ -4,7 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useConnection } from '../contexts';
 
 import { useMemo } from 'react';
-import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { useWallet } from '@araviel/wallet-adapter-react';
 
 import * as anchor from '@j0nnyboi/anchor';
 import { searchEntanglements } from '../utils/entangler';

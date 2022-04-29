@@ -12,7 +12,7 @@ import {
   AUCTION_PREFIX,
   createAuction,
 } from '@j0nnyboi/common/dist/lib/actions/auction';
-import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
+import { WalletNotConnectedError } from '@araviel/wallet-adapter-base';
 
 // This command makes an auction
 export async function makeAuction(

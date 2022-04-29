@@ -8,7 +8,7 @@ import {
 import { WhitelistedCreator } from '@j0nnyboi/common/dist/lib/models/metaplex/index';
 import { setStore } from '@j0nnyboi/common/dist/lib/models/metaplex/setStore';
 import { setWhitelistedCreator } from '@j0nnyboi/common/dist/lib/models/metaplex/setWhitelistedCreator';
-import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
+import { WalletNotConnectedError } from '@araviel/wallet-adapter-base';
 
 // TODO if this becomes very slow move to batching txns like we do with settle.ts
 // but given how little this should be used keep it simple

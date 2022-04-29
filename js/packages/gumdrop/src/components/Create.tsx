@@ -23,7 +23,7 @@ import FilePresentIcon from '@mui/icons-material/FilePresent';
 
 import {
   useWallet,
-} from "@j0nnyboi/wallet-adapter-react";
+} from "@araviel/wallet-adapter-react";
 import {
   Keypair,
   PublicKey,

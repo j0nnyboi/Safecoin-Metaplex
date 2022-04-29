@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 
 import { useConnection } from '../contexts';
 
-import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { useWallet } from '@araviel/wallet-adapter-react';
 
 import * as anchor from '@j0nnyboi/anchor';
 import { getOwnedNFTMints, searchEntanglements } from '../utils/entangler';

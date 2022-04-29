@@ -30,7 +30,7 @@ import {
   useMeta,
   BidStateType,
 } from '@j0nnyboi/common';
-import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { useWallet } from '@araviel/wallet-adapter-react';
 import { MintInfo, Token } from '@safecoin/safe-token';
 import { getHandleAndRegistryKey } from '@safecoin/safe-name-service';
 import useWindowDimensions from '../../utils/layout';

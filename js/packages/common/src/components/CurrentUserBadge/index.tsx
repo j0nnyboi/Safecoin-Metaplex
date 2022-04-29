@@ -1,6 +1,6 @@
 import React from 'react';
 import { LAMPORTS_PER_SAFE } from '@safecoin/web3.js';
-import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { useWallet } from '@araviel/wallet-adapter-react';
 import { useNativeAccount } from '../../contexts/accounts';
 import { formatNumber } from '../../utils';
 import { Popover } from 'antd';

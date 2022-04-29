@@ -13,7 +13,7 @@ import {
   AuctionDataExtended,
   createPipelineExecutor,
 } from '@j0nnyboi/common';
-import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { useWallet } from '@araviel/wallet-adapter-react';
 import BN from 'bn.js';
 import { useEffect, useMemo, useState } from 'react';
 import { useMeta } from '../contexts';

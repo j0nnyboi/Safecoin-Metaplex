@@ -20,7 +20,7 @@ import {
 import { createTokenAccount } from '@j0nnyboi/common/dist/lib/actions/account';
 
 import { AccountLayout, MintLayout } from '@safecoin/safe-token';
-import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
+import { WalletNotConnectedError } from '@araviel/wallet-adapter-base';
 
 // This command creates the external pricing oracle a vault
 // This gets the vault ready for adding the tokens.

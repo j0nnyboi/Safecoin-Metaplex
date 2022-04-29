@@ -1,7 +1,7 @@
 import { ParsedAccount, StringPublicKey, TokenAccount } from '@j0nnyboi/common';
 import { PackSet } from '@j0nnyboi/common/dist/lib/models/packs/accounts/PackSet';
 import { ProvingProcess } from '@j0nnyboi/common/dist/lib/models/packs/accounts/ProvingProcess';
-import { WalletContextState } from '@j0nnyboi/wallet-adapter-react';
+import { WalletContextState } from '@araviel/wallet-adapter-react';
 import { Connection } from '@safecoin/web3.js';
 
 import { SafetyDepositDraft } from '../../../actions/createAuctionManager';

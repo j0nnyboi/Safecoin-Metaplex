@@ -6,7 +6,7 @@ import { Container, Snackbar } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Alert from '@material-ui/lab/Alert';
 import { PublicKey } from '@safecoin/web3.js';
-import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { useWallet } from '@araviel/wallet-adapter-react';
 import { WalletDialogButton } from '@safecoin/wallet-adapter-material-ui';
 import {
   awaitTransactionSignatureConfirmation,
@@ -18,7 +18,7 @@ import {
 import { AlertState } from './utils';
 import { Header } from './Header';
 import { MintButton } from './MintButton';
-import { GatewayProvider } from '@civic/safecoin-gateway-react';
+import { GatewayProvider } from '@civic/solana-gateway-react';
 
 const ConnectButton = styled(WalletDialogButton)`
   width: 100%;

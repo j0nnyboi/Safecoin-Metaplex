@@ -16,7 +16,7 @@ import {
   WalletSigner,
   WRAPPED_SOL_MINT,
 } from '@j0nnyboi/common';
-import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { useWallet } from '@araviel/wallet-adapter-react';
 import { Connection } from '@safecoin/web3.js';
 import { Badge, Popover, List } from 'antd';
 import { Link } from 'react-router-dom';

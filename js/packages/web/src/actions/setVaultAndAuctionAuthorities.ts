@@ -5,7 +5,7 @@ import {
   StringPublicKey,
   WalletSigner,
 } from '@j0nnyboi/common';
-import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
+import { WalletNotConnectedError } from '@araviel/wallet-adapter-base';
 
 // This command sets the authorities on the vault and auction to be the newly created auction manager.
 export async function setVaultAndAuctionAuthorities(

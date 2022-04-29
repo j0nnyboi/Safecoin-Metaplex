@@ -14,7 +14,7 @@ import {
   toPublicKey,
   WalletSigner,
 } from '@j0nnyboi/common';
-import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
+import { WalletNotConnectedError } from '@araviel/wallet-adapter-base';
 import { Token } from '@safecoin/safe-token';
 
 const BATCH_SIZE = 10;

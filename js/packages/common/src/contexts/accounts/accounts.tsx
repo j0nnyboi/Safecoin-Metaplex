@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { useWallet } from '@araviel/wallet-adapter-react';
 import { AccountInfo, Connection, PublicKey } from '@safecoin/web3.js';
 import { AccountLayout, MintInfo, u64 } from '@safecoin/safe-token';
 import { useConnection } from '../../contexts/connection';

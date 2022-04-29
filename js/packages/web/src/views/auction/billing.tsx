@@ -26,7 +26,7 @@ import {
   WalletSigner,
   WRAPPED_SOL_MINT,
 } from '@j0nnyboi/common';
-import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { useWallet } from '@araviel/wallet-adapter-react';
 import { useMeta } from '../../contexts';
 import {
   getBidderKeys,

@@ -20,7 +20,7 @@ import {
 
 import {
   useWallet,
-} from "@j0nnyboi/wallet-adapter-react";
+} from "@araviel/wallet-adapter-react";
 import {
   Connection as RPCConnection,
   Keypair,

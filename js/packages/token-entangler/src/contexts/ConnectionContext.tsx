@@ -21,7 +21,7 @@ import {
   ENV as ChainId,
 } from '@j0nnyboi/safe-token-registry';
 import { WalletSigner } from './WalletContext/WalletContext';
-import { WalletNotConnectedError } from '@j0nnyboi/wallet-adapter-base';
+import { WalletNotConnectedError } from '@araviel/wallet-adapter-base';
 
 type UseStorageReturnValue = {
   getItem: (key: string) => string;

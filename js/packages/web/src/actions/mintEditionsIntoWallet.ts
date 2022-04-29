@@ -9,7 +9,7 @@ import {
 } from '@j0nnyboi/common';
 import { setupMintEditionIntoWalletInstructions } from './setupMintEditionIntoWalletInstructions';
 import { Art } from '../types';
-import { WalletContextState } from '@j0nnyboi/wallet-adapter-react';
+import { WalletContextState } from '@araviel/wallet-adapter-react';
 
 // TODO: Refactor. Extract batching logic,
 //  as the similar one is used in settle.ts and convertMasterEditions.ts

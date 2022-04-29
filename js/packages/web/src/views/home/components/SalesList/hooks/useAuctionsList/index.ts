@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { useWallet } from '@araviel/wallet-adapter-react';
 
 import { useAuctions, AuctionView } from '../../../../../../hooks';
 

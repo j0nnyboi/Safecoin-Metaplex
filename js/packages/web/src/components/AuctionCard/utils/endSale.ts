@@ -11,7 +11,7 @@ import {
 import { claimUnusedPrizes } from '../../../actions/claimUnusedPrizes';
 import { endAuction } from '../../../models/metaplex/endAuction';
 import { AuctionView } from '../../../hooks';
-import { WalletContextState } from '@j0nnyboi/wallet-adapter-react';
+import { WalletContextState } from '@araviel/wallet-adapter-react';
 
 interface EndSaleParams {
   auctionView: AuctionView;

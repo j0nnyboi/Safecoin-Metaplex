@@ -1,11 +1,11 @@
-import { WalletAdapter, WalletError } from "@j0nnyboi/wallet-adapter-base";
+import { WalletAdapter, WalletError } from "@araviel/wallet-adapter-base";
 import {
   useWallet,
   WalletProvider as BaseWalletProvider,
-} from "@j0nnyboi/wallet-adapter-react";
+} from "@araviel/wallet-adapter-react";
 import {
   getSolletWallet,
-} from "@j0nnyboi/wallet-adapter-wallets";
+} from "@araviel/wallet-adapter-wallets";
 import { Button } from "antd";
 import React, {
   createContext,

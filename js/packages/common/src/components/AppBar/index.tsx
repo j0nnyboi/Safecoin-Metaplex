@@ -5,7 +5,7 @@ import { SettingOutlined } from '@ant-design/icons';
 import { Settings } from '../Settings';
 import { LABELS } from '../../constants/labels';
 import { ConnectButton } from '..';
-import { useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { useWallet } from '@araviel/wallet-adapter-react';
 
 export const AppBar = (props: {
   left?: JSX.Element;
