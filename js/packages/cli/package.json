@@ -38,7 +38,7 @@
     "@aws-sdk/client-s3": "^3.36.0",
     "@bundlr-network/client": "^0.5.9",
     "@j0nnyboi/arweave-cost": "^2.0.0",
-    "@j0nnyboi/anchor": "^0.1.0",
+    "@j0nnyboi/anchor": "^0.19.0",
     "@safecoin/safe-token": "^0.1.7-b",
     "arbundles": "^0.6.12",
     "arweave": "^1.10.16",
@@ -57,7 +57,7 @@
     "mime": "^3.0.0",
     "node-fetch": "^2.6.1",
     "weighted": "^0.3.0",
-    "@metaplex-foundation/mpl-token-metadata": "file:../../Metaplex-program-library/token-metadata/js"
+    "@j0nnyboi/mpl-token-metadata": "0.0.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.6",

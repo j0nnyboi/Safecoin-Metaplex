@@ -8,10 +8,10 @@ const loglevel_1 = __importDefault(require("loglevel"));
 const mint_nft_1 = require("./commands/mint-nft");
 const accounts_1 = require("./helpers/accounts");
 const various_1 = require("./helpers/various");
-const anchor_1 = require("@project-serum/anchor");
+const anchor_1 = require("@j0nnyboi/anchor");
 const web3_js_1 = require("@safecoin/web3.js");
 const various_2 = require("./helpers/various");
-const mpl_token_metadata_1 = require("@metaplex-foundation/mpl-token-metadata");
+const mpl_token_metadata_1 = require("@j0nnyboi/mpl-token-metadata");
 commander_1.program.version('1.1.0');
 loglevel_1.default.setLevel('info');
 programCommand('mint')

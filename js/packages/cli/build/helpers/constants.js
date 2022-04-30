@@ -15,17 +15,17 @@ exports.MAX_URI_LENGTH = 200;
 exports.MAX_SYMBOL_LENGTH = 10;
 exports.MAX_CREATOR_LEN = 32 + 1 + 1;
 exports.MAX_CREATOR_LIMIT = 5;
-exports.ARWEAVE_PAYMENT_WALLET = new web3_js_1.PublicKey('6FKvsq4ydWFci6nGq9ckbjYMtnmaqAoatz5c9XWjiDuS');
-exports.CANDY_MACHINE_PROGRAM_ID = new web3_js_1.PublicKey('cndyAnrLdpjq1Ssp1z8xxDsB8dxe7u4HL5Nxi2K5WXZ');
+exports.ARWEAVE_PAYMENT_WALLET = new web3_js_1.PublicKey('HBShEqqNHyWwaw2WFKyVKvvGxWMsxEvsivm5pCL9fHFp');
+exports.CANDY_MACHINE_PROGRAM_ID = new web3_js_1.PublicKey('KMQvpFxDaFt58rsPeLc1kPSYbdAHUrpETiBiNUb8SGT');
 exports.CANDY_MACHINE_PROGRAM_V2_ID = new web3_js_1.PublicKey('cndy3Z4yapfJBmL3ShUp5exZKqR3z33thTzeNMm2gRZ');
-exports.TOKEN_METADATA_PROGRAM_ID = new web3_js_1.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s');
+exports.TOKEN_METADATA_PROGRAM_ID = new web3_js_1.PublicKey('WbMTNyvtk8vSMu2AmXV7mKuYrADRNw9GSkNtWKsZ7qe');
 exports.SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID = new web3_js_1.PublicKey('ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL');
-exports.TOKEN_PROGRAM_ID = new web3_js_1.PublicKey('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA');
-exports.FAIR_LAUNCH_PROGRAM_ID = new web3_js_1.PublicKey('faircnAB9k59Y4TXmLabBULeuTLgV7TkGMGNkjnA15j');
-exports.AUCTION_HOUSE_PROGRAM_ID = new web3_js_1.PublicKey('hausS13jsjafwWwGqZTUQRmWyvyxn9EQpqMwV1PBBmk');
+exports.TOKEN_PROGRAM_ID = new web3_js_1.PublicKey('ToKLx75MGim1d1jRusuVX8xvdvvbSDESVaNXpRA9PHN');
+exports.FAIR_LAUNCH_PROGRAM_ID = new web3_js_1.PublicKey('CVMCPbaiDevfaRZUTWSLPvS2RJuRYheYXPpLgk57drwP');
+exports.AUCTION_HOUSE_PROGRAM_ID = new web3_js_1.PublicKey('Co8pmAyxUyCwep4zhnPWzkL6fwvPPHU59r1t5eM6gXjZ');
 exports.TOKEN_ENTANGLEMENT_PROGRAM_ID = new web3_js_1.PublicKey('qntmGodpGkrM42mN68VCZHXnKqDCT8rdY23wFcXCLPd');
-exports.WRAPPED_SOL_MINT = new web3_js_1.PublicKey('So11111111111111111111111111111111111111112');
-exports.GUMDROP_DISTRIBUTOR_ID = new web3_js_1.PublicKey('gdrpGjVffourzkdDRrQmySw4aTHr8a3xmQzzxSwFD1a');
+exports.WRAPPED_SOL_MINT = new web3_js_1.PublicKey('Safe111111111111111111111111111111111111111');
+exports.GUMDROP_DISTRIBUTOR_ID = new web3_js_1.PublicKey('4RoNUWEV2GpPj1vpuwqkcSiPCrphHuQ5hCCUACBjCaph');
 exports.GUMDROP_TEMPORAL_SIGNER = new web3_js_1.PublicKey('MSv9H2sMceAzccBganUXwGq3GXgqYAstmZAbFDZYbAV');
 exports.CONFIG_ARRAY_START = 32 + // authority
     4 +
@@ -85,7 +85,7 @@ exports.EXTENSION_JSON = '.json';
 exports.CLUSTERS = [
     {
         name: 'mainnet-beta',
-        url: 'https://api.metaplex.safecoin.com/',
+        url: 'https://api.mainnet-beta.safecoin.org/',
     },
     {
         name: 'testnet',

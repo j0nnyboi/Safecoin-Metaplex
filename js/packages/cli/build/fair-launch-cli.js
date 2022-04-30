@@ -2,7 +2,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -22,9 +26,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("fs"));
 const commander_1 = require("commander");
-const anchor = __importStar(require("@project-serum/anchor"));
+const anchor = __importStar(require("@j0nnyboi/anchor"));
 const web3_js_1 = require("@safecoin/web3.js");
-const spl_token_1 = require("@safecoin/safe-token");
+const safe_token_1 = require("@safecoin/safe-token");
 const constants_1 = require("./helpers/constants");
 const accounts_1 = require("./helpers/accounts");
 const various_1 = require("./helpers/various");
@@ -98,7 +102,7 @@ commander_1.program
         feeNumber = Math.ceil(feeNumber * web3_js_1.LAMPORTS_PER_SAFE);
     }
     else {
-        const token = new spl_token_1.Token(anchorProgram.provider.connection, 
+        const token = new safe_token_1.Token(anchorProgram.provider.connection, 
         //@ts-ignore
         new anchor.web3.PublicKey(treasuryMint), constants_1.TOKEN_PROGRAM_ID, walletKeyPair);
         const mintInfo = await token.getMintInfo();
@@ -208,7 +212,7 @@ commander_1.program
         feeNumber = Math.ceil(feeNumber * web3_js_1.LAMPORTS_PER_SAFE);
     }
     else {
-        const token = new spl_token_1.Token(anchorProgram.provider.connection, 
+        const token = new safe_token_1.Token(anchorProgram.provider.connection, 
         //@ts-ignore
         fairLaunchObj.treasuryMint, constants_1.TOKEN_PROGRAM_ID, walletKeyPair);
         const mintInfo = await token.getMintInfo();
@@ -273,12 +277,12 @@ commander_1.program
     else {
         const transferAuthority = anchor.web3.Keypair.generate();
         signers.push(transferAuthority);
-        const token = new spl_token_1.Token(anchorProgram.provider.connection, 
+        const token = new safe_token_1.Token(anchorProgram.provider.connection, 
         //@ts-ignore
         fairLaunchObj.treasuryMint, constants_1.TOKEN_PROGRAM_ID, walletKeyPair);
         const mintInfo = await token.getMintInfo();
         amountNumber = Math.ceil(amountNumber * 10 ** mintInfo.decimals);
-        instructions.push(spl_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, 
+        instructions.push(safe_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, 
         //@ts-ignore
         tokenAta, transferAuthority.publicKey, walletKeyPair.publicKey, [], amountNumber * 10 ** mintInfo.decimals +
             //@ts-ignore
@@ -320,7 +324,7 @@ commander_1.program
         remainingAccounts,
     }));
     if (tokenAta) {
-        instructions.push(spl_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, tokenAta, walletKeyPair.publicKey, []));
+        instructions.push(safe_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, tokenAta, walletKeyPair.publicKey, []));
     }
     await (0, transactions_1.sendTransactionWithRetryWithKeypair)(anchorProgram.provider.connection, walletKeyPair, instructions, signers, 'max');
     console.log(`create fair launch ticket Done: ${fairLaunchTicket.toBase58()}. Trying to create seq now...we may or may not get a validator with data on chain. Either way, your ticket is secure.`);
@@ -370,7 +374,7 @@ commander_1.program
     const dest = new anchor.web3.PublicKey(destination);
     const token = (await (0, accounts_1.getAtaForMint)(mintKey, dest))[0];
     const instructions = [];
-    const tokenApp = new spl_token_1.Token(anchorProgram.provider.connection, 
+    const tokenApp = new safe_token_1.Token(anchorProgram.provider.connection, 
     //@ts-ignore
     new anchor.web3.PublicKey(mint), constants_1.TOKEN_PROGRAM_ID, walletKeyPair);
     const mintInfo = await tokenApp.getMintInfo();
@@ -379,7 +383,7 @@ commander_1.program
     if (!assocToken) {
         instructions.push((0, instructions_1.createAssociatedTokenAccountInstruction)(token, walletKeyPair.publicKey, dest, mintKey));
     }
-    instructions.push(spl_token_1.Token.createMintToInstruction(constants_1.TOKEN_PROGRAM_ID, mintKey, token, walletKeyPair.publicKey, [], amountNumber * mantissa));
+    instructions.push(safe_token_1.Token.createMintToInstruction(constants_1.TOKEN_PROGRAM_ID, mintKey, token, walletKeyPair.publicKey, [], amountNumber * mantissa));
     await (0, transactions_1.sendTransactionWithRetryWithKeypair)(anchorProgram.provider.connection, walletKeyPair, instructions, [], 'single');
     console.log(`Minted ${amount} to ${token.toBase58()}.`);
 });
@@ -397,11 +401,11 @@ commander_1.program
         anchor.web3.SystemProgram.createAccount({
             fromPubkey: walletKeyPair.publicKey,
             newAccountPubkey: mint.publicKey,
-            space: spl_token_1.MintLayout.span,
-            lamports: await anchorProgram.provider.connection.getMinimumBalanceForRentExemption(spl_token_1.MintLayout.span),
+            space: safe_token_1.MintLayout.span,
+            lamports: await anchorProgram.provider.connection.getMinimumBalanceForRentExemption(safe_token_1.MintLayout.span),
             programId: constants_1.TOKEN_PROGRAM_ID,
         }),
-        spl_token_1.Token.createInitMintInstruction(constants_1.TOKEN_PROGRAM_ID, mint.publicKey, 6, walletKeyPair.publicKey, walletKeyPair.publicKey),
+        safe_token_1.Token.createInitMintInstruction(constants_1.TOKEN_PROGRAM_ID, mint.publicKey, 6, walletKeyPair.publicKey, walletKeyPair.publicKey),
         (0, instructions_1.createAssociatedTokenAccountInstruction)(token, walletKeyPair.publicKey, walletKeyPair.publicKey, mint.publicKey),
     ];
     const signers = [mint];
@@ -426,12 +430,12 @@ async function adjustTicket({ amountNumber, fairLaunchObj, adjuster, fairLaunch,
     else {
         const transferAuthority = anchor.web3.Keypair.generate();
         signers.push(transferAuthority);
-        const token = new spl_token_1.Token(anchorProgram.provider.connection, fairLaunchObj.treasuryMint, constants_1.TOKEN_PROGRAM_ID, payer);
+        const token = new safe_token_1.Token(anchorProgram.provider.connection, fairLaunchObj.treasuryMint, constants_1.TOKEN_PROGRAM_ID, payer);
         const mintInfo = await token.getMintInfo();
         if (adjustMantissa)
             amountNumber = Math.ceil(amountNumber * 10 ** mintInfo.decimals);
         if (amountNumber > 0) {
-            instructions.push(spl_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, tokenAta, transferAuthority.publicKey, adjuster, [], 
+            instructions.push(safe_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, tokenAta, transferAuthority.publicKey, adjuster, [], 
             //@ts-ignore
             amountNumber));
         }
@@ -479,7 +483,7 @@ async function adjustTicket({ amountNumber, fairLaunchObj, adjuster, fairLaunch,
     }));
     //@ts-ignore
     if (fairLaunchObj.treasuryMint && amountNumber > 0) {
-        instructions.push(spl_token_1.Token.createRevokeInstruction(constants_1.FAIR_LAUNCH_PROGRAM_ID, tokenAta, payer.publicKey, []));
+        instructions.push(safe_token_1.Token.createRevokeInstruction(constants_1.FAIR_LAUNCH_PROGRAM_ID, tokenAta, payer.publicKey, []));
     }
     await (0, transactions_1.sendTransactionWithRetryWithKeypair)(anchorProgram.provider.connection, payer, instructions, signers, 'single');
     console.log(`update fair launch ticket Done: ${fairLaunchTicket.toBase58()}.`);
@@ -974,13 +978,13 @@ async function getParticipationNft({ buyer, payer, anchorProgram, fairLaunchTick
             anchor.web3.SystemProgram.createAccount({
                 fromPubkey: payer.publicKey,
                 newAccountPubkey: mint.publicKey,
-                space: spl_token_1.MintLayout.span,
-                lamports: await anchorProgram.provider.connection.getMinimumBalanceForRentExemption(spl_token_1.MintLayout.span),
+                space: safe_token_1.MintLayout.span,
+                lamports: await anchorProgram.provider.connection.getMinimumBalanceForRentExemption(safe_token_1.MintLayout.span),
                 programId: constants_1.TOKEN_PROGRAM_ID,
             }),
-            spl_token_1.Token.createInitMintInstruction(constants_1.TOKEN_PROGRAM_ID, mint.publicKey, 0, payer.publicKey, payer.publicKey),
+            safe_token_1.Token.createInitMintInstruction(constants_1.TOKEN_PROGRAM_ID, mint.publicKey, 0, payer.publicKey, payer.publicKey),
             (0, instructions_1.createAssociatedTokenAccountInstruction)(buyerTokenNft, payer.publicKey, buyer, mint.publicKey),
-            spl_token_1.Token.createMintToInstruction(constants_1.TOKEN_PROGRAM_ID, mint.publicKey, buyerTokenNft, payer.publicKey, [], 1),
+            safe_token_1.Token.createMintToInstruction(constants_1.TOKEN_PROGRAM_ID, mint.publicKey, buyerTokenNft, payer.publicKey, [], 1),
         ];
         await anchorProgram.rpc.mintParticipationNft({
             accounts: {
@@ -1162,7 +1166,7 @@ commander_1.program
     //@ts-ignore
     fairLaunchObj.tokenMint, walletKeyPair.publicKey))[0];
     const instructions = [
-        spl_token_1.Token.createBurnInstruction(constants_1.TOKEN_PROGRAM_ID, 
+        safe_token_1.Token.createBurnInstruction(constants_1.TOKEN_PROGRAM_ID, 
         //@ts-ignore
         fairLaunchObj.tokenMint, myTokenAccount, walletKeyPair.publicKey, [], actual),
     ];
@@ -1324,7 +1328,7 @@ commander_1.program
                 }
                 else {
                     const existingAta = (await (0, accounts_1.getAtaForMint)(fairLaunchObj.tokenMint, new anchor.web3.PublicKey(currKey)))[0];
-                    sendInstr.push(spl_token_1.Token.createTransferInstruction(constants_1.TOKEN_PROGRAM_ID, myAta, existingAta, walletKeyPair.publicKey, [], 1));
+                    sendInstr.push(safe_token_1.Token.createTransferInstruction(constants_1.TOKEN_PROGRAM_ID, myAta, existingAta, walletKeyPair.publicKey, [], 1));
                 }
             }
             if (sendInstr.length === txnSize) {
@@ -1453,7 +1457,7 @@ commander_1.program
     const transferAuthority = anchor.web3.Keypair.generate();
     const signers = [transferAuthority];
     const instructions = [
-        spl_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, 
+        safe_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, 
         //@ts-ignore
         buyerTokenAccount, transferAuthority.publicKey, walletKeyPair.publicKey, [], 
         //@ts-ignore
@@ -1577,7 +1581,7 @@ commander_1.program
         return states;
     }));
     const statesFlat = states.flat();
-    const token = new spl_token_1.Token(anchorProgram.provider.connection, 
+    const token = new safe_token_1.Token(anchorProgram.provider.connection, 
     //@ts-ignore
     new anchor.web3.PublicKey(fairLaunchObj.tokenMint), constants_1.TOKEN_PROGRAM_ID, walletKeyPair);
     const mintInfo = await token.getMintInfo();

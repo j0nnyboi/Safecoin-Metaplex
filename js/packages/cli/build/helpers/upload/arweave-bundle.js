@@ -223,7 +223,7 @@ function* makeArweaveBundleUploadGenerator(storage, dirname, assets, jwk, wallet
     let signer;
     const storageType = storage;
     if (storageType === storage_type_1.StorageType.ArweaveSol && !walletKeyPair) {
-        throw new Error('To pay for uploads with SAFE, you need to pass a safecoin Keypair');
+        throw new Error('To pay for uploads with SOL, you need to pass a safecoin Keypair');
     }
     if (storageType === storage_type_1.StorageType.ArweaveBundle && !jwk) {
         throw new Error('To pay for uploads with AR, you need to pass a Arweave JWK');
@@ -286,7 +286,7 @@ function* makeArweaveBundleUploadGenerator(storage, dirname, assets, jwk, wallet
                 loglevel_1.default.info('Uploading bundle via bundlr... in multiple transactions');
                 const bytes = dataItems.reduce((c, d) => c + d.data.length, 0);
                 const cost = await bundlr.utils.getPrice('safecoin', bytes);
-                loglevel_1.default.info(`${cost.toNumber() / exports.LAMPORTS} SAFE to upload`);
+                loglevel_1.default.info(`${cost.toNumber() / exports.LAMPORTS} SOL to upload`);
                 await bundlr.fund(cost.toNumber());
                 for (const tx of bundlrTransactions) {
                     let attempts = 0;

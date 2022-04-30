@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -23,8 +27,8 @@ exports.mintV2 = exports.mint = void 0;
 const web3_js_1 = require("@safecoin/web3.js");
 const accounts_1 = require("../helpers/accounts");
 const constants_1 = require("../helpers/constants");
-const anchor = __importStar(require("@project-serum/anchor"));
-const spl_token_1 = require("@safecoin/safe-token");
+const anchor = __importStar(require("@j0nnyboi/anchor"));
+const safe_token_1 = require("@safecoin/safe-token");
 const instructions_1 = require("../helpers/instructions");
 const transactions_1 = require("../helpers/transactions");
 async function mint(keypair, env, configAddress, uuid, rpcUrl) {
@@ -40,13 +44,13 @@ async function mint(keypair, env, configAddress, uuid, rpcUrl) {
         anchor.web3.SystemProgram.createAccount({
             fromPubkey: userKeyPair.publicKey,
             newAccountPubkey: mint.publicKey,
-            space: spl_token_1.MintLayout.span,
-            lamports: await anchorProgram.provider.connection.getMinimumBalanceForRentExemption(spl_token_1.MintLayout.span),
+            space: safe_token_1.MintLayout.span,
+            lamports: await anchorProgram.provider.connection.getMinimumBalanceForRentExemption(safe_token_1.MintLayout.span),
             programId: constants_1.TOKEN_PROGRAM_ID,
         }),
-        spl_token_1.Token.createInitMintInstruction(constants_1.TOKEN_PROGRAM_ID, mint.publicKey, 0, userKeyPair.publicKey, userKeyPair.publicKey),
+        safe_token_1.Token.createInitMintInstruction(constants_1.TOKEN_PROGRAM_ID, mint.publicKey, 0, userKeyPair.publicKey, userKeyPair.publicKey),
         (0, instructions_1.createAssociatedTokenAccountInstruction)(userTokenAccountAddress, userKeyPair.publicKey, userKeyPair.publicKey, mint.publicKey),
-        spl_token_1.Token.createMintToInstruction(constants_1.TOKEN_PROGRAM_ID, mint.publicKey, userTokenAccountAddress, userKeyPair.publicKey, [], 1),
+        safe_token_1.Token.createMintToInstruction(constants_1.TOKEN_PROGRAM_ID, mint.publicKey, userTokenAccountAddress, userKeyPair.publicKey, [], 1),
     ];
     let tokenAccount;
     if (candyMachine.tokenMint) {
@@ -62,7 +66,7 @@ async function mint(keypair, env, configAddress, uuid, rpcUrl) {
             isWritable: false,
             isSigner: true,
         });
-        instructions.push(spl_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, tokenAccount, transferAuthority.publicKey, userKeyPair.publicKey, [], candyMachine.data.price.toNumber()));
+        instructions.push(safe_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, tokenAccount, transferAuthority.publicKey, userKeyPair.publicKey, [], candyMachine.data.price.toNumber()));
     }
     const metadataAddress = await (0, accounts_1.getMetadata)(mint.publicKey);
     const masterEdition = await (0, accounts_1.getMasterEdition)(mint.publicKey);
@@ -87,7 +91,7 @@ async function mint(keypair, env, configAddress, uuid, rpcUrl) {
         remainingAccounts,
     }));
     if (tokenAccount) {
-        instructions.push(spl_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, tokenAccount, userKeyPair.publicKey, []));
+        instructions.push(safe_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, tokenAccount, userKeyPair.publicKey, []));
     }
     return (await (0, transactions_1.sendTransactionWithRetryWithKeypair)(anchorProgram.provider.connection, userKeyPair, instructions, signers)).txid;
 }
@@ -105,13 +109,13 @@ async function mintV2(keypair, env, candyMachineAddress, rpcUrl) {
         anchor.web3.SystemProgram.createAccount({
             fromPubkey: userKeyPair.publicKey,
             newAccountPubkey: mint.publicKey,
-            space: spl_token_1.MintLayout.span,
-            lamports: await anchorProgram.provider.connection.getMinimumBalanceForRentExemption(spl_token_1.MintLayout.span),
+            space: safe_token_1.MintLayout.span,
+            lamports: await anchorProgram.provider.connection.getMinimumBalanceForRentExemption(safe_token_1.MintLayout.span),
             programId: constants_1.TOKEN_PROGRAM_ID,
         }),
-        spl_token_1.Token.createInitMintInstruction(constants_1.TOKEN_PROGRAM_ID, mint.publicKey, 0, userKeyPair.publicKey, userKeyPair.publicKey),
+        safe_token_1.Token.createInitMintInstruction(constants_1.TOKEN_PROGRAM_ID, mint.publicKey, 0, userKeyPair.publicKey, userKeyPair.publicKey),
         (0, instructions_1.createAssociatedTokenAccountInstruction)(userTokenAccountAddress, userKeyPair.publicKey, userKeyPair.publicKey, mint.publicKey),
-        spl_token_1.Token.createMintToInstruction(constants_1.TOKEN_PROGRAM_ID, mint.publicKey, userTokenAccountAddress, userKeyPair.publicKey, [], 1),
+        safe_token_1.Token.createMintToInstruction(constants_1.TOKEN_PROGRAM_ID, mint.publicKey, userTokenAccountAddress, userKeyPair.publicKey, [], 1),
     ];
     if (candyMachine.data.whitelistMintSettings) {
         const mint = new anchor.web3.PublicKey(candyMachine.data.whitelistMintSettings.mint);
@@ -136,8 +140,8 @@ async function mintV2(keypair, env, candyMachineAddress, rpcUrl) {
             signers.push(whitelistBurnAuthority);
             const exists = await anchorProgram.provider.connection.getAccountInfo(whitelistToken);
             if (exists) {
-                instructions.push(spl_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, whitelistToken, whitelistBurnAuthority.publicKey, userKeyPair.publicKey, [], 1));
-                cleanupInstructions.push(spl_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, whitelistToken, userKeyPair.publicKey, []));
+                instructions.push(safe_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, whitelistToken, whitelistBurnAuthority.publicKey, userKeyPair.publicKey, [], 1));
+                cleanupInstructions.push(safe_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, whitelistToken, userKeyPair.publicKey, []));
             }
         }
     }
@@ -155,9 +159,9 @@ async function mintV2(keypair, env, candyMachineAddress, rpcUrl) {
             isWritable: false,
             isSigner: true,
         });
-        instructions.push(spl_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, tokenAccount, transferAuthority.publicKey, userKeyPair.publicKey, [], candyMachine.data.price.toNumber()));
+        instructions.push(safe_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, tokenAccount, transferAuthority.publicKey, userKeyPair.publicKey, [], candyMachine.data.price.toNumber()));
         signers.push(transferAuthority);
-        cleanupInstructions.push(spl_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, tokenAccount, userKeyPair.publicKey, []));
+        cleanupInstructions.push(safe_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, tokenAccount, userKeyPair.publicKey, []));
     }
     const metadataAddress = await (0, accounts_1.getMetadata)(mint.publicKey);
     const masterEdition = await (0, accounts_1.getMasterEdition)(mint.publicKey);

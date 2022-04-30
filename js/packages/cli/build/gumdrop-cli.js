@@ -2,7 +2,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -28,7 +32,7 @@ const path = __importStar(require("path"));
 const commander_1 = require("commander");
 const loglevel_1 = __importDefault(require("loglevel"));
 const client_sesv2_1 = require("@aws-sdk/client-sesv2");
-const anchor = __importStar(require("@project-serum/anchor"));
+const anchor = __importStar(require("@j0nnyboi/anchor"));
 const discord = __importStar(require("discord.js"));
 const web3_js_1 = require("@safecoin/web3.js");
 const bn_js_1 = __importDefault(require("bn.js"));

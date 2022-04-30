@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -26,15 +30,15 @@ exports.verifyCollection = exports.updateMetadata = exports.mintNFT = exports.cr
 const instructions_1 = require("../helpers/instructions");
 const transactions_1 = require("../helpers/transactions");
 const accounts_1 = require("../helpers/accounts");
-const anchor = __importStar(require("@project-serum/anchor"));
+const anchor = __importStar(require("@j0nnyboi/anchor"));
 const schema_1 = require("../helpers/schema");
 const borsh_1 = require("borsh");
 const constants_1 = require("../helpers/constants");
 const node_fetch_1 = __importDefault(require("node-fetch"));
-const spl_token_1 = require("@safecoin/safe-token");
+const safe_token_1 = require("@safecoin/safe-token");
 const web3_js_1 = require("@safecoin/web3.js");
 const loglevel_1 = __importDefault(require("loglevel"));
-const mpl_token_metadata_1 = require("@metaplex-foundation/mpl-token-metadata");
+const mpl_token_metadata_1 = require("@j0nnyboi/mpl-token-metadata");
 const createMetadata = async (metadataLink, collection, verifyCreators, uses) => {
     // Metadata
     let metadata;
@@ -89,7 +93,7 @@ const mintNFT = async (connection, walletKeypair, metadataLink, mutableMetadata 
     if (!(wallet === null || wallet === void 0 ? void 0 : wallet.publicKey))
         return;
     // Allocate memory for the account
-    const mintRent = await connection.getMinimumBalanceForRentExemption(spl_token_1.MintLayout.span);
+    const mintRent = await connection.getMinimumBalanceForRentExemption(safe_token_1.MintLayout.span);
     // Generate a mint
     const mint = anchor.web3.Keypair.generate();
     const instructions = [];
@@ -98,10 +102,10 @@ const mintNFT = async (connection, walletKeypair, metadataLink, mutableMetadata 
         fromPubkey: wallet.publicKey,
         newAccountPubkey: mint.publicKey,
         lamports: mintRent,
-        space: spl_token_1.MintLayout.span,
+        space: safe_token_1.MintLayout.span,
         programId: constants_1.TOKEN_PROGRAM_ID,
     }));
-    instructions.push(spl_token_1.Token.createInitMintInstruction(constants_1.TOKEN_PROGRAM_ID, mint.publicKey, 0, wallet.publicKey, wallet.publicKey));
+    instructions.push(safe_token_1.Token.createInitMintInstruction(constants_1.TOKEN_PROGRAM_ID, mint.publicKey, 0, wallet.publicKey, wallet.publicKey));
     const userTokenAccoutAddress = await (0, accounts_1.getTokenWallet)(wallet.publicKey, mint.publicKey);
     instructions.push((0, instructions_1.createAssociatedTokenAccountInstruction)(userTokenAccoutAddress, wallet.publicKey, wallet.publicKey, mint.publicKey));
     // Create metadata
@@ -112,7 +116,7 @@ const mintNFT = async (connection, walletKeypair, metadataLink, mutableMetadata 
         ...mpl_token_metadata_1.CreateMetadataV2Args.SCHEMA,
     ]), new mpl_token_metadata_1.CreateMetadataV2Args({ data, isMutable: mutableMetadata })));
     instructions.push((0, instructions_1.createMetadataInstruction)(metadataAccount, mint.publicKey, wallet.publicKey, wallet.publicKey, wallet.publicKey, txnData));
-    instructions.push(spl_token_1.Token.createMintToInstruction(constants_1.TOKEN_PROGRAM_ID, mint.publicKey, userTokenAccoutAddress, wallet.publicKey, [], 1));
+    instructions.push(safe_token_1.Token.createMintToInstruction(constants_1.TOKEN_PROGRAM_ID, mint.publicKey, userTokenAccoutAddress, wallet.publicKey, [], 1));
     // Create master edition
     const editionAccount = await (0, accounts_1.getMasterEdition)(mint.publicKey);
     txnData = Buffer.from((0, borsh_1.serialize)(new Map([

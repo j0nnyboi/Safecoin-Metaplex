@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -25,30 +29,30 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getProgramAccounts = exports.getBalance = exports.getTokenAmount = exports.loadTokenEntanglementProgream = exports.loadAuctionHouseProgram = exports.loadFairLaunchProgram = exports.loadCandyProgramV2 = exports.loadCandyProgram = exports.loadWalletKey = exports.getTokenEntanglementEscrows = exports.getTokenEntanglement = exports.getAuctionHouseTradeState = exports.getAuctionHouseBuyerEscrow = exports.getAuctionHouseTreasuryAcct = exports.getAuctionHouseFeeAcct = exports.getAuctionHouseProgramAsSigner = exports.getAuctionHouse = exports.getEditionMarkPda = exports.getMasterEdition = exports.getMetadata = exports.getTreasury = exports.getParticipationToken = exports.getParticipationMint = exports.getAtaForMint = exports.getFairLaunchTicketSeqLookup = exports.getFairLaunchLotteryBitmap = exports.getFairLaunchTicket = exports.getCandyMachineCreator = exports.getFairLaunch = exports.getTokenMint = exports.getConfig = exports.deriveCandyMachineV2ProgramAddress = exports.getCandyMachineAddress = exports.getTokenWallet = exports.uuidFromConfigPubkey = exports.createConfig = exports.createCandyMachineV2 = exports.WhitelistMintMode = exports.deserializeAccount = void 0;
 const web3_js_1 = require("@safecoin/web3.js");
 const constants_1 = require("./constants");
-const anchor = __importStar(require("@project-serum/anchor"));
+const anchor = __importStar(require("@j0nnyboi/anchor"));
 const fs_1 = __importDefault(require("fs"));
 const instructions_1 = require("./instructions");
 const loglevel_1 = __importDefault(require("loglevel"));
-const spl_token_1 = require("@safecoin/safe-token");
+const safe_token_1 = require("@safecoin/safe-token");
 const various_1 = require("./various");
 // TODO: expose in spl package
 const deserializeAccount = (data) => {
-    const accountInfo = spl_token_1.AccountLayout.decode(data);
+    const accountInfo = safe_token_1.AccountLayout.decode(data);
     accountInfo.mint = new web3_js_1.PublicKey(accountInfo.mint);
     accountInfo.owner = new web3_js_1.PublicKey(accountInfo.owner);
-    accountInfo.amount = spl_token_1.u64.fromBuffer(accountInfo.amount);
+    accountInfo.amount = safe_token_1.u64.fromBuffer(accountInfo.amount);
     if (accountInfo.delegateOption === 0) {
         accountInfo.delegate = null;
-        accountInfo.delegatedAmount = new spl_token_1.u64(0);
+        accountInfo.delegatedAmount = new safe_token_1.u64(0);
     }
     else {
         accountInfo.delegate = new web3_js_1.PublicKey(accountInfo.delegate);
-        accountInfo.delegatedAmount = spl_token_1.u64.fromBuffer(accountInfo.delegatedAmount);
+        accountInfo.delegatedAmount = safe_token_1.u64.fromBuffer(accountInfo.delegatedAmount);
     }
     accountInfo.isInitialized = accountInfo.state !== 0;
     accountInfo.isFrozen = accountInfo.state === 2;
     if (accountInfo.isNativeOption === 1) {
-        accountInfo.rentExemptReserve = spl_token_1.u64.fromBuffer(accountInfo.isNative);
+        accountInfo.rentExemptReserve = safe_token_1.u64.fromBuffer(accountInfo.isNative);
         accountInfo.isNative = true;
     }
     else {

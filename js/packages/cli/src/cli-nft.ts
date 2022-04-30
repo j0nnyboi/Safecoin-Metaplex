@@ -6,7 +6,7 @@ import { parseUses } from './helpers/various';
 import { web3 } from '@j0nnyboi/anchor';
 import { PublicKey } from '@safecoin/web3.js';
 import { getCluster } from './helpers/various';
-import { MetadataData } from '@metaplex-foundation/mpl-token-metadata';
+import { MetadataData } from '@j0nnyboi/mpl-token-metadata';
 program.version('1.1.0');
 log.setLevel('info');
 

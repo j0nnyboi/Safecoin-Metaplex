@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -23,17 +27,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.arweaveUpload = void 0;
-const anchor = __importStar(require("@project-serum/anchor"));
+const anchor = __importStar(require("@j0nnyboi/anchor"));
 const form_data_1 = __importDefault(require("form-data"));
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const loglevel_1 = __importDefault(require("loglevel"));
 const node_fetch_1 = __importDefault(require("node-fetch"));
 const promises_1 = require("fs/promises");
-const arweave_cost_1 = require("@metaplex/arweave-cost");
+const arweave_cost_1 = require("@j0nnyboi/arweave-cost");
 const constants_1 = require("../constants");
 const transactions_1 = require("../transactions");
-const ARWEAVE_UPLOAD_ENDPOINT = 'https://us-central1-metaplex-studios.cloudfunctions.net/uploadFile';
+const ARWEAVE_UPLOAD_ENDPOINT = 'http://www.metaplex.darkartlabs.tech:5000';
 async function fetchAssetCostToStore(fileSizes) {
     const result = await (0, arweave_cost_1.calculate)(fileSizes);
     loglevel_1.default.debug('Arweave cost estimates:', result);

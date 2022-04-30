@@ -1,7 +1,11 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -24,8 +28,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.closeGumdrop = exports.buildGumdrop = exports.chunk = exports.validateEditionClaims = exports.validateCandyClaims = exports.validateTransferClaims = exports.dropInfoFor = exports.getCreatorTokenAccount = exports.getMintInfo = exports.getCandyMachine = exports.getCandyConfig = exports.parseClaimants = void 0;
 const web3_js_1 = require("@safecoin/web3.js");
-const spl_token_1 = require("@safecoin/safe-token");
-const anchor = __importStar(require("@project-serum/anchor"));
+const safe_token_1 = require("@safecoin/safe-token");
+const anchor = __importStar(require("@j0nnyboi/anchor"));
 const js_sha256_1 = require("js-sha256");
 const bn_js_1 = __importDefault(require("bn.js"));
 const bs58 = __importStar(require("bs58"));
@@ -144,10 +148,10 @@ const getMintInfo = async (connection, mint) => {
         const mintOwner = mintAccount.owner.toBase58();
         throw new Error(`Invalid mint owner ${mintOwner}`);
     }
-    if (mintAccount.data.length !== spl_token_1.MintLayout.span) {
+    if (mintAccount.data.length !== safe_token_1.MintLayout.span) {
         throw new Error(`Invalid mint size ${mintAccount.data.length}`);
     }
-    const mintInfo = spl_token_1.MintLayout.decode(Buffer.from(mintAccount.data));
+    const mintInfo = safe_token_1.MintLayout.decode(Buffer.from(mintAccount.data));
     return {
         key: mintKey,
         info: mintInfo,
@@ -160,10 +164,10 @@ const getCreatorTokenAccount = async (walletKey, connection, mintKey, totalClaim
     if (creatorTokenAccount === null) {
         throw new Error(`Could not fetch creator token account`);
     }
-    if (creatorTokenAccount.data.length !== spl_token_1.AccountLayout.span) {
+    if (creatorTokenAccount.data.length !== safe_token_1.AccountLayout.span) {
         throw new Error(`Invalid token account size ${creatorTokenAccount.data.length}`);
     }
-    const creatorTokenInfo = spl_token_1.AccountLayout.decode(Buffer.from(creatorTokenAccount.data));
+    const creatorTokenInfo = safe_token_1.AccountLayout.decode(Buffer.from(creatorTokenAccount.data));
     if (new bn_js_1.default(creatorTokenInfo.amount, 8, 'le').toNumber() < totalClaim) {
         throw new Error(`Creator token account does not have enough tokens`);
     }
@@ -171,7 +175,7 @@ const getCreatorTokenAccount = async (walletKey, connection, mintKey, totalClaim
 };
 exports.getCreatorTokenAccount = getCreatorTokenAccount;
 const explorerUrlFor = (env, key) => {
-    return `https://explorer.safecoin.com/address/${key}?cluster=${env}`;
+    return `https://explorer.safecoin.org/address/${key}?cluster=${env}`;
 };
 const dropInfoFor = (env, integration, tokenMint, candyConfig, masterMint) => {
     switch (integration) {
@@ -454,7 +458,7 @@ const buildGumdrop = async (connection, walletKey, commMethod, claimIntegration,
         ]),
     }));
     if (claimIntegration === 'transfer') {
-        instructions.push(spl_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, claimInfo.source, distributor, walletKey, [], claimInfo.total));
+        instructions.push(safe_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, claimInfo.source, distributor, walletKey, [], claimInfo.total));
     }
     else if (claimIntegration === 'candy') {
         const [distributorWalletKey] = await web3_js_1.PublicKey.findProgramAddress([Buffer.from('Wallet'), distributor.toBuffer()], constants_1.GUMDROP_DISTRIBUTOR_ID);
@@ -482,8 +486,8 @@ const buildGumdrop = async (connection, walletKey, commMethod, claimIntegration,
             constants_1.TOKEN_PROGRAM_ID.toBuffer(),
             claimInfo.masterMint.key.toBuffer(),
         ], constants_1.SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID);
-        instructions.push(spl_token_1.Token.createAssociatedTokenAccountInstruction(constants_1.SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID, constants_1.TOKEN_PROGRAM_ID, claimInfo.masterMint.key, distributorTokenKey, distributor, walletKey));
-        instructions.push(spl_token_1.Token.createTransferInstruction(constants_1.TOKEN_PROGRAM_ID, claimInfo.masterTokenAccount, distributorTokenKey, walletKey, [], 1));
+        instructions.push(safe_token_1.Token.createAssociatedTokenAccountInstruction(constants_1.SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID, constants_1.TOKEN_PROGRAM_ID, claimInfo.masterMint.key, distributorTokenKey, distributor, walletKey));
+        instructions.push(safe_token_1.Token.createTransferInstruction(constants_1.TOKEN_PROGRAM_ID, claimInfo.masterTokenAccount, distributorTokenKey, walletKey, [], 1));
     }
     return instructions;
 };
@@ -497,7 +501,7 @@ const closeGumdrop = async (connection, walletKey, base, claimMethod, transferMi
         const mint = await (0, exports.getMintInfo)(connection, transferMint);
         const source = await (0, exports.getCreatorTokenAccount)(walletKey, connection, mint.key, 0);
         // distributor is about to be closed anyway so this is redundant but...
-        instructions.push(spl_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, source, walletKey, []));
+        instructions.push(safe_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, source, walletKey, []));
     }
     if (claimMethod === 'candy') {
         const configKey = await (0, exports.getCandyConfig)(connection, candyConfig);

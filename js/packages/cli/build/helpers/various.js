@@ -8,11 +8,11 @@ const web3_js_1 = require("@safecoin/web3.js");
 const fs_1 = __importDefault(require("fs"));
 const weighted_1 = __importDefault(require("weighted"));
 const path_1 = __importDefault(require("path"));
-const anchor_1 = require("@project-serum/anchor");
-const spl_token_1 = require("@safecoin/safe-token");
+const anchor_1 = require("@j0nnyboi/anchor");
+const safe_token_1 = require("@safecoin/safe-token");
 const accounts_1 = require("./accounts");
 const constants_1 = require("./constants");
-const mpl_token_metadata_1 = require("@metaplex-foundation/mpl-token-metadata");
+const mpl_token_metadata_1 = require("@j0nnyboi/mpl-token-metadata");
 const { readFile } = fs_1.default.promises;
 async function getCandyMachineV2Config(walletKeyPair, anchorProgram, configPath) {
     if (configPath === undefined) {
@@ -41,7 +41,7 @@ async function getCandyMachineV2Config(walletKeyPair, anchorProgram, configPath)
         if (!splTokenAccountFigured) {
             throw new Error('If spl-token is set, spl-token-account must also be set');
         }
-        const token = new spl_token_1.Token(anchorProgram.provider.connection, splTokenKey, spl_token_1.TOKEN_PROGRAM_ID, walletKeyPair);
+        const token = new safe_token_1.Token(anchorProgram.provider.connection, splTokenKey, safe_token_1.TOKEN_PROGRAM_ID, walletKeyPair);
         const mintInfo = await token.getMintInfo();
         if (!mintInfo.isInitialized) {
             throw new Error(`The specified spl-token is not initialized`);
@@ -331,7 +331,7 @@ const getMultipleAccountsCore = async (connection, keys, commitment) => {
     throw new Error();
 };
 const getPriceWithMantissa = async (price, mint, walletKeyPair, anchorProgram) => {
-    const token = new spl_token_1.Token(anchorProgram.provider.connection, new anchor_1.web3.PublicKey(mint), spl_token_1.TOKEN_PROGRAM_ID, walletKeyPair);
+    const token = new safe_token_1.Token(anchorProgram.provider.connection, new anchor_1.web3.PublicKey(mint), safe_token_1.TOKEN_PROGRAM_ID, walletKeyPair);
     const mintInfo = await token.getMintInfo();
     const mantissa = 10 ** mintInfo.decimals;
     return Math.ceil(price * mantissa);

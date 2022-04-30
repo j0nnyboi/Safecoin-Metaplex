@@ -7,9 +7,9 @@ exports.getEpKeyFromArgs = void 0;
 const commander_1 = require("commander");
 const loglevel_1 = __importDefault(require("loglevel"));
 const accounts_1 = require("./helpers/accounts");
-const anchor_1 = require("@project-serum/anchor");
+const anchor_1 = require("@j0nnyboi/anchor");
 const constants_1 = require("./helpers/constants");
-const spl_token_1 = require("@safecoin/safe-token");
+const safe_token_1 = require("@safecoin/safe-token");
 const various_1 = require("./helpers/various");
 const transactions_1 = require("./helpers/transactions");
 const schema_1 = require("./helpers/schema");
@@ -124,9 +124,9 @@ programCommand('create_entanglement')
         },
     });
     const instructions = [
-        spl_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, ata, transferAuthority.publicKey, walletKeyPair.publicKey, [], 1),
+        safe_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, ata, transferAuthority.publicKey, walletKeyPair.publicKey, [], 1),
         instruction,
-        spl_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, ata, walletKeyPair.publicKey, []),
+        safe_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, ata, walletKeyPair.publicKey, []),
     ];
     await (0, transactions_1.sendTransactionWithRetryWithKeypair)(anchorProgram.provider.connection, walletKeyPair, instructions, signers, 'max');
     loglevel_1.default.info('Created entanglement', entangledPair.toBase58());
@@ -202,7 +202,7 @@ programCommand('swap')
             entangledPair: epKey,
             tokenProgram: constants_1.TOKEN_PROGRAM_ID,
             systemProgram: anchor_1.web3.SystemProgram.programId,
-            ataProgram: spl_token_1.ASSOCIATED_TOKEN_PROGRAM_ID,
+            ataProgram: safe_token_1.ASSOCIATED_TOKEN_PROGRAM_ID,
             rent: anchor_1.web3.SYSVAR_RENT_PUBKEY,
         },
         remainingAccounts,
@@ -213,19 +213,19 @@ programCommand('swap')
             .map(k => (k.isSigner = true));
     }
     const instructions = [
-        spl_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, token, transferAuthority.publicKey, walletKeyPair.publicKey, [], 1),
+        safe_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, token, transferAuthority.publicKey, walletKeyPair.publicKey, [], 1),
         ...(!isNative
             ? [
-                spl_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, paymentAccount, paymentTransferAuthority.publicKey, walletKeyPair.publicKey, [], 
+                safe_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, paymentAccount, paymentTransferAuthority.publicKey, walletKeyPair.publicKey, [], 
                 //@ts-ignore
                 epObj.price.toNumber()),
             ]
             : []),
         instruction,
-        spl_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, token, walletKeyPair.publicKey, []),
+        safe_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, token, walletKeyPair.publicKey, []),
         ...(!isNative
             ? [
-                spl_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, paymentAccount, walletKeyPair.publicKey, []),
+                safe_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, paymentAccount, walletKeyPair.publicKey, []),
             ]
             : []),
     ];

@@ -7,9 +7,9 @@ exports.getAuctionHouseFromOpts = void 0;
 const commander_1 = require("commander");
 const loglevel_1 = __importDefault(require("loglevel"));
 const accounts_1 = require("./helpers/accounts");
-const anchor_1 = require("@project-serum/anchor");
+const anchor_1 = require("@j0nnyboi/anchor");
 const constants_1 = require("./helpers/constants");
-const spl_token_1 = require("@safecoin/safe-token");
+const safe_token_1 = require("@safecoin/safe-token");
 const various_1 = require("./helpers/various");
 const transactions_1 = require("./helpers/transactions");
 const schema_1 = require("./helpers/schema");
@@ -88,7 +88,7 @@ programCommand('withdraw')
             tokenProgram: constants_1.TOKEN_PROGRAM_ID,
             systemProgram: anchor_1.web3.SystemProgram.programId,
             rent: anchor_1.web3.SYSVAR_RENT_PUBKEY,
-            ataProgram: spl_token_1.ASSOCIATED_TOKEN_PROGRAM_ID,
+            ataProgram: safe_token_1.ASSOCIATED_TOKEN_PROGRAM_ID,
         },
         signers,
     });
@@ -395,7 +395,7 @@ programCommand('execute_sale')
             buyerTradeState,
             tokenProgram: constants_1.TOKEN_PROGRAM_ID,
             systemProgram: anchor_1.web3.SystemProgram.programId,
-            ataProgram: spl_token_1.ASSOCIATED_TOKEN_PROGRAM_ID,
+            ataProgram: safe_token_1.ASSOCIATED_TOKEN_PROGRAM_ID,
             programAsSigner,
             rent: anchor_1.web3.SYSVAR_RENT_PUBKEY,
             freeTradeState,
@@ -492,13 +492,13 @@ programCommand('buy')
         ...(isNative
             ? []
             : [
-                spl_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, ata, transferAuthority.publicKey, walletKeyPair.publicKey, [], buyPriceAdjusted.toNumber()),
+                safe_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, ata, transferAuthority.publicKey, walletKeyPair.publicKey, [], buyPriceAdjusted.toNumber()),
             ]),
         instruction,
         ...(isNative
             ? []
             : [
-                spl_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, ata, walletKeyPair.publicKey, []),
+                safe_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, ata, walletKeyPair.publicKey, []),
             ]),
     ];
     await (0, transactions_1.sendTransactionWithRetryWithKeypair)(anchorProgram.provider.connection, walletKeyPair, instructions, signers, 'max');
@@ -567,13 +567,13 @@ programCommand('deposit')
         ...(isNative
             ? []
             : [
-                spl_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, ata, transferAuthority.publicKey, walletKeyPair.publicKey, [], amountAdjusted),
+                safe_token_1.Token.createApproveInstruction(constants_1.TOKEN_PROGRAM_ID, ata, transferAuthority.publicKey, walletKeyPair.publicKey, [], amountAdjusted),
             ]),
         instruction,
         ...(isNative
             ? []
             : [
-                spl_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, ata, walletKeyPair.publicKey, []),
+                safe_token_1.Token.createRevokeInstruction(constants_1.TOKEN_PROGRAM_ID, ata, walletKeyPair.publicKey, []),
             ]),
     ];
     await (0, transactions_1.sendTransactionWithRetryWithKeypair)(anchorProgram.provider.connection, walletKeyPair, instructions, signers, 'max');
@@ -692,7 +692,7 @@ programCommand('create_auction_house')
             auctionHouseTreasury: treasuryAccount,
             tokenProgram: constants_1.TOKEN_PROGRAM_ID,
             systemProgram: anchor_1.web3.SystemProgram.programId,
-            ataProgram: spl_token_1.ASSOCIATED_TOKEN_PROGRAM_ID,
+            ataProgram: safe_token_1.ASSOCIATED_TOKEN_PROGRAM_ID,
             rent: anchor_1.web3.SYSVAR_RENT_PUBKEY,
         },
     });
@@ -806,7 +806,7 @@ programCommand('update_auction_house')
             auctionHouseTreasury: auctionHouseObj.treasury,
             tokenProgram: constants_1.TOKEN_PROGRAM_ID,
             systemProgram: anchor_1.web3.SystemProgram.programId,
-            ataProgram: spl_token_1.ASSOCIATED_TOKEN_PROGRAM_ID,
+            ataProgram: safe_token_1.ASSOCIATED_TOKEN_PROGRAM_ID,
             rent: anchor_1.web3.SYSVAR_RENT_PUBKEY,
         },
     });
