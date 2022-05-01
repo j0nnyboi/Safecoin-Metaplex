@@ -11,9 +11,9 @@ import { getType, getExtension } from 'mime';
 import { AssetKey } from '../../types';
 import { sleep } from '../various';
 import Transaction from 'arweave/node/lib/transaction';
-import Bundlr from '@bundlr-network/client';
+import Bundlr from '@j0nnyboi/client';
 
-import BundlrTransaction from '@bundlr-network/client/build/src/transaction';
+import BundlrTransaction from '@j0nnyboi/client/build/src/transaction';
 
 export const LAMPORTS = 1_000_000_000;
 /**

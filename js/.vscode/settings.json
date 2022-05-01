@@ -6,7 +6,7 @@
     "**/CVS": true,
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
-    "**/.next": false,
+    "**/.next": true,
     "**/dist": true,
     "node_modules": false,
     "packages/cli/node_modules": true,

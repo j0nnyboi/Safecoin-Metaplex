@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.36.0",
-    "@bundlr-network/client": "^0.5.9",
+    "@j0nnyboi/client": "^0.7.2",
     "@j0nnyboi/arweave-cost": "^2.0.0",
     "@j0nnyboi/anchor": "0.17.0",
     "@safecoin/safe-token": "^0.1.7-b",
