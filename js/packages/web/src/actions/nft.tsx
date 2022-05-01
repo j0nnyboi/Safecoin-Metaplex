@@ -69,7 +69,8 @@ const uploadToArweave = async (data: FormData): Promise<IArweaveResult> => {
    
    //console.log(result.error)
   if (result.error) {
-    return Promise.reject(new Error(resp));
+    console.log(result.error)
+    return Promise.reject(new Error(String(resp)));
   }
 
   return result;

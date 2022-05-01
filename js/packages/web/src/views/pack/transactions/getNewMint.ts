@@ -1,6 +1,6 @@
 import { Connection, Keypair, TransactionInstruction } from '@safecoin/web3.js';
 import { MintLayout } from '@safecoin/safe-token';
-import { WalletContextState } from '@safecoin/wallet-adapter-react';
+import { WalletContextState } from '@j0nnyboi/wallet-adapter-react';
 import { StringPublicKey } from '@oyster/common';
 
 import { createMintAndAccountWithOne } from '../../../actions/createMintAndAccountWithOne';

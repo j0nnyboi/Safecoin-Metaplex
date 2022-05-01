@@ -1,4 +1,4 @@
-import { WalletContextState } from '@safecoin/wallet-adapter-react';
+import { WalletContextState } from '@j0nnyboi/wallet-adapter-react';
 import { MetaState, ParsedAccount, StringPublicKey } from '@oyster/common';
 import { Connection, Keypair, TransactionInstruction } from '@safecoin/web3.js';
 import BN from 'bn.js';

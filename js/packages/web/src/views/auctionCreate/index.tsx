@@ -59,8 +59,8 @@ import { PlusCircleOutlined } from '@ant-design/icons';
 import { SystemProgram } from '@safecoin/web3.js';
 import TokenDialog, { TokenButton } from '../../components/TokenDialog';
 import { useTokenList } from '../../contexts/tokenList';
-import { mintTo } from '@project-serum/serum/lib/token-instructions';
-import { TokenInfo } from '@safecoin/safe-token-registry'
+import { mintTo } from '@j0nnyboi/serum/lib/token-instructions';
+import { TokenInfo } from '@j0nnyboi/safe-token-registry'
 import { FundsIssueModal } from "../../components/FundsIssueModal";
 
 const { Option } = Select;
