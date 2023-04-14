@@ -1,5 +1,5 @@
 {
-  "name": "@metaplex-foundation/mpl-candy-machine",
+  "name": "@leda-mint-io/mpl-candy-machine",
   "version": "5.1.0",
   "programVersion": "4.6.0",
   "description": "MPL Candy Machine JavaScript API. This MPL package is for the current generation of candy machine which is 2.0.0",
@@ -39,16 +39,16 @@
   "author": "Metaplex Maintainers <contact@metaplex.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "@j0nnyboi/beet": "^0.7.1",
-    "@j0nnyboi/beet-safecoin": "^0.4.0",
-    "@j0nnyboi/cusper": "^0.0.2",
-    "@safecoin/safe-token": "^0.3.6",
+    "@j0nnyboi/beet": "^0.4.1",
+    "@j0nnyboi/beet-safecoin": "^0.3.0",
+    "@j0nnyboi/cusper": "^0.0.1",
+    "@safecoin/safe-token": "^0.3.5",
     "@safecoin/web3.js": "^1.66.2"
   },
   "devDependencies": {
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "@j0nnyboi/solita": "^0.19.0",
+    "@j0nnyboi/solita": "^0.12.2",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
     "eslint": "^8.27.0",
